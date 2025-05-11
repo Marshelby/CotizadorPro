@@ -84,7 +84,7 @@ export default function Resultados() {
       const coords = await obtenerUbicacion();
       setUbicacionUsuario(coords);
 
-      const res = await fetch("http://localhost:3001/clasificar", {
+      const res = await fetch("https://cotizadorprobackend.vercel.app/api/clasificar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
