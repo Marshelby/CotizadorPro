@@ -140,7 +140,7 @@ export default function Resultados() {
           <input
             type="text"
             className="px-4 py-2 rounded-full text-black w-72 font-medium"
-            placeholder="quiero un completo"
+            placeholder="¿Qué estás buscando?"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleBuscar()}
@@ -171,4 +171,16 @@ export default function Resultados() {
             onClick={() => setMostrarSoloFavoritos(!mostrarSoloFavoritos)}
             className="bg-white text-black font-bold py-2 px-6 rounded-full font-poppins border border-gray-300"
           >
-            {mostrar
+            {mostrarSoloFavoritos ? "Ver Todos" : "❤️ Ver Favoritos"}
+          </button>
+        </div>
+      </div>
+
+      {listaVisible.length === 0 && busquedaHecha && (
+        <div className="text-center text-white mt-10 text-lg font-semibold">
+          No se encontraron resultados. Intenta con otras palabras.
+        </div>
+      )}
+    </div>
+  );
+}
