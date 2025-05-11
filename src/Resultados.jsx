@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
