@@ -81,18 +81,19 @@ export default function Resultados() {
   const handleBuscar = async () => {
     if (!busqueda.trim()) return;
     try {
+      console.log("Iniciando búsqueda con:", busqueda);
       const coords = await obtenerUbicacion();
       setUbicacionUsuario(coords);
+      console.log("Ubicación obtenida:", coords);
 
       const res = await fetch("https://cotizadorprobackend.vercel.app/api/clasificar", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ texto: busqueda }),
       });
 
       const filtrados = await res.json();
+      console.log("Resultados filtrados:", filtrados);
       setResultados(Array.isArray(filtrados) ? filtrados : []);
       setBusquedaHecha(true);
     } catch (err) {
@@ -125,7 +126,63 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white p-6 pb-96 font-urbanist">
-    {/* CONTENIDO JSX AQUÍ */}
+      <div className="transition-all duration-500 flex flex-wrap justify-between items-center gap-4 mb-4">
+        <h1 className="text-4xl font-bold font-rubik mb-4">
+          <span className="text-pink-500 mr-2">🤖</span>CotizadorPro
+        </h1>
+        <div className="flex flex-wrap gap-4 items-center justify-center">
+          <button
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full font-poppins"
+            onClick={() => setMostrarMapa(true)}
+          >
+            Ver en Mapa
+          </button>
+          <input
+            type="text"
+            className="px-4 py-2 rounded-full text-black w-72 font-medium"
+            placeholder="quiero un completo"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleBuscar()}
+          />
+          <button
+            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full font-poppins"
+            onClick={handleBuscar}
+          >
+            Buscar
+          </button>
+          {busquedaHecha && listaVisible.length > 0 && (
+            <>
+              <button
+                onClick={() => handleOrdenar("precio")}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full font-poppins"
+              >
+                Ordenar por Precio
+              </button>
+              <button
+                onClick={() => handleOrdenar("distancia")}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full font-poppins"
+              >
+                Ordenar por Distancia
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => setMostrarSoloFavoritos(!mostrarSoloFavoritos)}
+            className="bg-white text-black font-bold py-2 px-6 rounded-full font-poppins border border-gray-300"
+          >
+            {mostrarSoloFavoritos ? "Ver Todos" : "❤️ Ver Favoritos"}
+          </button>
+        </div>
+      </div>
+
+      {listaVisible.length === 0 && busquedaHecha && (
+        <div className="text-center text-white mt-10 text-lg font-semibold">
+          No se encontraron resultados. Intenta con otras palabras.
+        </div>
+      )}
+
+      {/* Aquí debería mostrarse la lista y el mapa si corresponde */}
     </div>
   );
 }
