@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
 
@@ -71,7 +70,7 @@ export default function Resultados() {
       <h1 className="text-4xl font-bold mb-2 text-center">
         🤖 <span className="text-gray-800">Cotizador</span><span className="text-pink-500">Pro</span>
       </h1>
-      <p className="text-lg text-white/80 mb-6 text-center max-w-xl">
+      <p className="text-lg text-gray-700 mb-6 text-center max-w-xl">
         Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
       </p>
 
@@ -82,12 +81,12 @@ export default function Resultados() {
           onChange={(e) => setBusqueda(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ej: quiero un completo, sushi, pan..."
-          className="flex-1 rounded-full px-5 py-3 text-black"
+          className="flex-1 rounded-full px-5 py-3 text-black border border-pink-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
         />
         <button onClick={handleBuscar} className="bg-pink-500 hover:bg-pink-600 px-5 py-3 rounded-full">
           Buscar
         </button>
-        <button onClick={mostrarSoloFavoritos} className="bg-white text-pink-500 px-5 py-3 rounded-full">
+        <button onClick={mostrarSoloFavoritos} className="bg-white text-pink-500 px-5 py-3 rounded-full border border-pink-300 hover:bg-pink-50">
           💗 Ver Favoritos
         </button>
       </div>
@@ -112,7 +111,7 @@ export default function Resultados() {
 
       <div className="flex flex-wrap justify-center gap-6 max-w-6xl mt-6">
         {negociosAMostrar.length === 0 && (
-          <p className="text-white text-lg mt-6 text-center max-w-xl">
+          <p className="text-gray-800 text-lg mt-6 text-center max-w-xl">
             No se encontraron resultados para tu búsqueda. Intenta con otras palabras o usa “Ver todos”.
           </p>
         )}
