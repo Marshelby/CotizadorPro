@@ -34,6 +34,10 @@ export default function Resultados() {
     setVerSoloFavoritos(false);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleBuscar();
+  };
+
   const toggleFavorito = (negocio) => {
     const existe = favoritos.find((f) => f.nombre === negocio.nombre);
     if (existe) {
@@ -44,16 +48,17 @@ export default function Resultados() {
   };
 
   const mostrarTodos = () => {
-    setBusqueda("");
-    setResultados(negociosSimulados);
+    if (busqueda.trim()) {
+      handleBuscar(); // Vuelve a buscar con el texto actual
+    } else {
+      setResultados(negociosSimulados.slice(0, 30)); // Muestra solo los primeros 30
+    }
     setMostrarMapa(true);
     setVerSoloFavoritos(false);
   };
 
   const mostrarSoloFavoritos = () => {
-    const soloFavoritos = negociosSimulados.filter((n) =>
-      favoritos.find((f) => f.nombre === n.nombre)
-    );
+    const soloFavoritos = favoritos.map((f) => ({ ...f }));
     setResultados(soloFavoritos);
     setMostrarMapa(true);
     setVerSoloFavoritos(true);
@@ -63,15 +68,19 @@ export default function Resultados() {
 
   return (
     <div className="flex flex-col items-center justify-center px-4 py-6 text-white">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center">
-        Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
+      <h1 className="text-4xl font-bold mb-2 text-center">
+        🤖 Cotizador<span className="text-pink-500">Pro</span>
       </h1>
+      <p className="text-lg text-white/80 mb-6 text-center max-w-xl">
+        Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
+      </p>
 
       <div className="flex flex-col sm:flex-row gap-3 w-full max-w-3xl mb-6">
         <input
           type="text"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Ej: quiero un completo, sushi, pan..."
           className="flex-1 rounded-full px-5 py-3 text-black"
         />
