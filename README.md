@@ -1,12 +1,31 @@
-# React + Vite
+# CotizadorPro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CotizadorPro es una aplicación React + Node.js desplegada en Vercel que permite buscar productos por cercanía y precio, mostrando resultados en un mapa y permitiendo marcar favoritos.
 
-Currently, two official plugins are available:
+## Estructura del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `/src`: Todo el frontend (React + Vite)
+- `/api`: Función backend en Node que clasifica búsquedas
+- `vercel.json`: Configuración para rutas y despliegue en Vercel
 
-## Expanding the ESLint configuration
+## Uso
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Escribe lo que buscas (ej: "quiero pan").
+2. Otorga permisos de ubicación.
+3. Visualiza negocios cercanos ordenados por precio o distancia.
+4. Marca favoritos ❤️ y revísalos en el mapa.
+
+## Tecnologías
+
+- React
+- Vite
+- TailwindCSS
+- Google Maps API
+- Node.js (Serverless)
+- Vercel
+
+---
+
+## Despliegue
+
+El sitio se despliega automáticamente en cada push a `main` desde GitHub gracias a la integración con Vercel.
