@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
-import datosSimulados from "../public/data/pedidosya_datos_quilpue.json";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -35,9 +34,12 @@ export default function Resultados() {
       const coords = await obtenerUbicacion();
       setUbicacionUsuario(coords);
 
+      const res = await fetch("/data/pedidosya_datos_quilpue.json");
+      const data = await res.json();
+
       const texto = busqueda.toLowerCase();
 
-      const filtrados = datosSimulados.filter((negocio) =>
+      const filtrados = data.filter((negocio) =>
         negocio.nombre?.toLowerCase().includes(texto) ||
         negocio.tipoDetectado?.toLowerCase().includes(texto)
       );
