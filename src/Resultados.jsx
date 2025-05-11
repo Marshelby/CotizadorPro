@@ -53,51 +53,62 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white p-6 pb-96 font-urbanist">
-      <h1 className="text-3xl font-bold mb-6">CotizadorPro</h1>
-      <div className="flex flex-wrap gap-4 items-center justify-center mb-4">
-        <button
-          className="bg-yellow-400 text-black px-4 py-2 rounded-full font-bold"
-          onClick={() => setMostrarMapa(true)}
-        >
-          Ver en Mapa
-        </button>
-        <input
-          type="text"
-          className="text-black px-4 py-2 rounded-full w-72"
-          placeholder="¿Qué estás buscando?"
-          value={busqueda}
-          onChange={(e) => setBusqueda(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleBuscar()}
-        />
-        <button
-          onClick={handleBuscar}
-          className="bg-pink-500 text-white px-4 py-2 rounded-full font-bold"
-        >
-          Buscar
-        </button>
-        <button
-          onClick={() => setMostrarSoloFavoritos(!mostrarSoloFavoritos)}
-          className="bg-white text-black px-4 py-2 rounded-full font-bold"
-        >
-          {mostrarSoloFavoritos ? "Ver Todos" : "❤️ Ver Favoritos"}
-        </button>
+      {/* CABECERA MODERNA Y CENTRADA */}
+      <div className="max-w-5xl mx-auto text-center flex flex-col items-center gap-4 mb-10">
+        <h1 className="text-5xl font-bold text-white font-rubik tracking-tight drop-shadow-md">
+          🤖 Cotizador<span className="text-pink-500">Pro</span>
+        </h1>
+        <p className="text-lg text-white/80 font-light">
+          Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full px-4 sm:px-0">
+          <input
+            type="text"
+            className="flex-1 px-5 py-3 rounded-full text-black text-lg shadow-md"
+            placeholder="Ej: quiero un completo, sushi, pan..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleBuscar()}
+          />
+          <button
+            onClick={handleBuscar}
+            className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full transition"
+          >
+            Buscar
+          </button>
+          <button
+            onClick={() => setMostrarMapa(true)}
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full transition"
+          >
+            Ver en Mapa
+          </button>
+          <button
+            onClick={() => setMostrarSoloFavoritos(!mostrarSoloFavoritos)}
+            className="bg-white text-black font-semibold px-6 py-3 rounded-full transition"
+          >
+            {mostrarSoloFavoritos ? "Ver Todos" : "❤️ Ver Favoritos"}
+          </button>
+        </div>
       </div>
 
+      {/* MENSAJE SI NO HAY RESULTADOS */}
       {busquedaHecha && listaVisible.length === 0 && (
         <div className="text-center text-white mt-10 text-lg font-semibold">
           No se encontraron resultados. Intenta con otras palabras.
         </div>
       )}
 
+      {/* RESULTADOS */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {listaVisible.map((tienda, i) => (
           <div
             key={i}
-            className="bg-white text-black p-4 rounded-xl shadow-md relative"
+            className="bg-white/90 text-black p-4 rounded-xl shadow-md relative"
           >
             <h2 className="text-xl font-bold mb-2">{tienda.nombre}</h2>
             <p className="text-sm capitalize">
-              Tipo: {tienda.tipoDetectado || "Otro"}
+              Tipo: {tienda.tipoDetectado || "otro"}
             </p>
             <button
               className="absolute top-2 right-2 text-2xl"
@@ -113,6 +124,7 @@ export default function Resultados() {
         ))}
       </div>
 
+      {/* MAPA */}
       {mostrarMapa && ubicacionUsuario && (
         <MapaConUsuarioYTiendas
           usuario={ubicacionUsuario}
