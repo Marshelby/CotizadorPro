@@ -30,12 +30,12 @@ export default function MapaConUsuarioYTiendas({ usuario, negocios, favoritos })
 
     const mapa = L.map("mapa").setView([usuario.lat, usuario.lng], 14);
 
-    // Fondo oscuro
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    // Fondo visual profesional (Carto Light)
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
       attribution: '&copy; OpenStreetMap',
     }).addTo(mapa);
 
-    // Agrega al usuario
+    // Agrega marcador del usuario
     L.marker([usuario.lat, usuario.lng], { icon: iconoUsuario })
       .addTo(mapa)
       .bindPopup("Tú estás aquí");
