@@ -1,115 +1,78 @@
-import React, { useEffect, useRef } from "react";
-import { Loader } from "@googlemaps/js-api-loader";
+import { useEffect } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
-export default function MapaConUsuarioYTiendas({
-  usuario,
-  tiendas,
-  favoritos,
-  mostrarSoloFavoritos,
-  setMostrarSoloFavoritos,
-  setTiendaSeleccionada,
-  onSeleccionar,
-  onCerrar,
-}) {
-  const mapaRef = useRef(null);
+const iconoUsuario = new L.Icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
 
+const iconoNegocio = new L.Icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/1587/1587577.png",
+  iconSize: [35, 35],
+  iconAnchor: [17, 35],
+});
+
+const iconoFavorito = new L.Icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/833/833472.png",
+  iconSize: [35, 35],
+  iconAnchor: [17, 35],
+});
+
+export default function MapaConUsuarioYTiendas({ usuario, negocios, favoritos }) {
   useEffect(() => {
-    const loader = new Loader({
-      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-      version: "weekly",
+    // Elimina cualquier mapa previo
+    if (document.querySelector("#mapa")?._leaflet_id) {
+      document.querySelector("#mapa")._leaflet_id = null;
+    }
+
+    const mapa = L.map("mapa").setView([usuario.lat, usuario.lng], 14);
+
+    // Fondo oscuro
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; OpenStreetMap',
+    }).addTo(mapa);
+
+    // Agrega al usuario
+    L.marker([usuario.lat, usuario.lng], { icon: iconoUsuario })
+      .addTo(mapa)
+      .bindPopup("Tú estás aquí");
+
+    const grupo = L.featureGroup();
+
+    negocios.forEach((negocio) => {
+      const lat = negocio.lat || negocio.latitud || 0;
+      const lng = negocio.lng || negocio.longitud || 0;
+      if (!lat || !lng) return;
+
+      const esFavorito = favoritos.some((f) => f.nombre === negocio.nombre);
+      const icono = esFavorito ? iconoFavorito : iconoNegocio;
+
+      const marker = L.marker([lat, lng], { icon: icono })
+        .bindPopup(`<strong>${negocio.nombre}</strong><br/>Tipo: ${negocio.tipoDetectado}`);
+      marker.addTo(grupo);
     });
 
-    loader.load().then(() => {
-      if (!usuario) return;
+    grupo.addTo(mapa);
 
-      const map = new google.maps.Map(mapaRef.current, {
-        center: usuario,
-        zoom: 14,
-        styles: [
-          { elementType: "geometry", stylers: [{ color: "#212121" }] },
-          { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-          { elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
-          { elementType: "labels.text.stroke", stylers: [{ color: "#212121" }] },
-          {
-            featureType: "administrative",
-            elementType: "geometry",
-            stylers: [{ color: "#757575" }],
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#757575" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry.fill",
-            stylers: [{ color: "#2c2c2c" }],
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#8a8a8a" }],
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#000000" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#3d3d3d" }],
-          },
-        ],
-      });
+    if (grupo.getLayers().length > 0) {
+      mapa.fitBounds(grupo.getBounds().pad(0.3));
+    }
 
-      // Marcador del usuario
-      new google.maps.Marker({
-        position: usuario,
-        map,
-        title: "Tú estás aquí",
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 10,
-          fillColor: "#00f",
-          fillOpacity: 1,
-          strokeWeight: 2,
-          strokeColor: "#fff",
-        },
-      });
-
-      // Marcadores de tiendas
-      tiendas.forEach((tienda) => {
-        if (!tienda.lat || !tienda.lng) return;
-
-        const esFavorito = favoritos.some((f) => f.nombre === tienda.nombre);
-
-        const marker = new google.maps.Marker({
-          position: { lat: tienda.lat, lng: tienda.lng },
-          map,
-          title: tienda.nombre,
-          icon: esFavorito
-            ? "https://cdn-icons-png.flaticon.com/512/833/833472.png"
-            : "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
-        });
-
-        marker.addListener("click", () => {
-          setTiendaSeleccionada(tienda);
-          onSeleccionar(tienda);
-        });
-      });
-    });
-  }, [usuario, tiendas, favoritos]);
+    return () => mapa.remove();
+  }, [usuario, negocios, favoritos]);
 
   return (
-    <div className="w-full h-full relative">
-      <div ref={mapaRef} className="w-full h-full" />
-      <button
-        onClick={onCerrar}
-        className="absolute top-2 right-2 text-white text-2xl bg-black bg-opacity-60 rounded-full px-4 py-2 hover:bg-opacity-80 z-10"
-      >
-        ×
-      </button>
-    </div>
+    <div
+      id="mapa"
+      style={{
+        height: "500px",
+        marginTop: "60px",
+        borderRadius: "20px",
+        overflow: "hidden",
+        boxShadow: "0 0 20px rgba(0,0,0,0.3)",
+      }}
+    />
   );
 }
