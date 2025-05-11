@@ -49,9 +49,9 @@ export default function Resultados() {
 
   const mostrarTodos = () => {
     if (busqueda.trim()) {
-      handleBuscar(); // Vuelve a buscar con el texto actual
+      handleBuscar();
     } else {
-      setResultados(negociosSimulados.slice(0, 30)); // Muestra solo los primeros 30
+      setResultados(negociosSimulados.slice(0, 30));
     }
     setMostrarMapa(true);
     setVerSoloFavoritos(false);
@@ -69,7 +69,7 @@ export default function Resultados() {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-6 text-white">
       <h1 className="text-4xl font-bold mb-2 text-center">
-        🤖 Cotizador<span className="text-pink-500">Pro</span>
+        🤖 <span className="text-gray-800">Cotizador</span><span className="text-pink-500">Pro</span>
       </h1>
       <p className="text-lg text-white/80 mb-6 text-center max-w-xl">
         Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
@@ -86,9 +86,6 @@ export default function Resultados() {
         />
         <button onClick={handleBuscar} className="bg-pink-500 hover:bg-pink-600 px-5 py-3 rounded-full">
           Buscar
-        </button>
-        <button onClick={() => setMostrarMapa(true)} className="bg-yellow-400 hover:bg-yellow-500 px-5 py-3 rounded-full">
-          Ver en Mapa
         </button>
         <button onClick={mostrarSoloFavoritos} className="bg-white text-pink-500 px-5 py-3 rounded-full">
           💗 Ver Favoritos
