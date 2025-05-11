@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
 export default function MapaConUsuarioYTiendas({
