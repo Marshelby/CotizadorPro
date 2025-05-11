@@ -86,7 +86,7 @@ export default function Resultados() {
       setUbicacionUsuario(coords);
       console.log("Ubicación obtenida:", coords);
 
-      const res = await fetch("https://cotizadorprobackend.vercel.app/api/clasificar", {
+      const res = await fetch("/api/clasificar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ texto: busqueda }),
@@ -171,18 +171,4 @@ export default function Resultados() {
             onClick={() => setMostrarSoloFavoritos(!mostrarSoloFavoritos)}
             className="bg-white text-black font-bold py-2 px-6 rounded-full font-poppins border border-gray-300"
           >
-            {mostrarSoloFavoritos ? "Ver Todos" : "❤️ Ver Favoritos"}
-          </button>
-        </div>
-      </div>
-
-      {listaVisible.length === 0 && busquedaHecha && (
-        <div className="text-center text-white mt-10 text-lg font-semibold">
-          No se encontraron resultados. Intenta con otras palabras.
-        </div>
-      )}
-
-      {/* Aquí debería mostrarse la lista y el mapa si corresponde */}
-    </div>
-  );
-}
+            {mostrar
