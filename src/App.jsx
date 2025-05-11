@@ -1,4 +1,5 @@
-import Resultados from './Resultados';
+import React from "react";
+import Resultados from "./Resultados";
 
 function App() {
   return <Resultados />;
