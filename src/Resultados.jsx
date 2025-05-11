@@ -100,7 +100,7 @@ export default function Resultados() {
             favoritos={favoritos}
           />
           <div className="flex justify-center gap-4 mt-4">
-            <button onClick={mostrarTodos} className="bg-blue-100 text-blue-800 px-6 py-2 rounded-full shadow hover:bg-blue-200">
+            <button onClick={mostrarTodos} className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full shadow hover:bg-gray-300">
               Ver todos
             </button>
             <button onClick={mostrarSoloFavoritos} className="bg-pink-100 text-pink-800 px-6 py-2 rounded-full shadow hover:bg-pink-200">
@@ -112,7 +112,9 @@ export default function Resultados() {
 
       <div className="flex flex-wrap justify-center gap-6 max-w-6xl mt-6">
         {negociosAMostrar.length === 0 && (
-          <p className="text-white text-lg mt-6">No se encontraron resultados. Intenta con otras palabras.</p>
+          <p className="text-white text-lg mt-6 text-center max-w-xl">
+            No se encontraron resultados para tu búsqueda. Intenta con otras palabras o usa “Ver todos”.
+          </p>
         )}
 
         {negociosAMostrar.map((negocio) => (
