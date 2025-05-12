@@ -103,16 +103,18 @@ export default function Resultados() {
       </div>
 
       {mostrarMapa && (
-        <>
-          <div className="mt-8 animate-fadeIn">
-            <MapaConUsuarioYTiendas
-              negocios={resultadosFiltrados}
-              favoritos={favoritos}
-              ubicacionUsuario={ubicacionUsuario}
-              alternarFavorito={alternarFavorito}
-            />
-          </div>
+        <div className="mt-8 animate-fadeIn">
+          <MapaConUsuarioYTiendas
+            negocios={resultadosFiltrados}
+            favoritos={favoritos}
+            ubicacionUsuario={ubicacionUsuario}
+            alternarFavorito={alternarFavorito}
+          />
+        </div>
+      )}
 
+      {busquedaHecha && (
+        <>
           <div className="flex justify-center mt-6 gap-4">
             <button
               onClick={() => setVerFavoritos(false)}
@@ -136,26 +138,25 @@ export default function Resultados() {
             </button>
           </div>
 
-          {/* 🚀 Tarjetas de resultados */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 max-w-5xl mx-auto">
-            {resultadosFiltrados.map((negocio, index) => (
-              <div key={index} className="bg-white border rounded-2xl shadow-lg p-5 text-left">
-                <h2 className="text-xl font-semibold text-gray-900">{negocio.nombre}</h2>
-                <p className="text-sm text-gray-600">{negocio.direccion || "Dirección no disponible"}</p>
-                <p className="mt-2 text-md text-gray-800">
-                  Precio estimado: <span className="font-bold">${negocio.precio?.toLocaleString() || "N/A"}</span>
-                </p>
-                <button
-                  onClick={() => alternarFavorito(negocio.nombre)}
-                  className="mt-4 text-sm px-4 py-2 bg-pink-100 hover:bg-pink-200 rounded-full"
-                >
-                  {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {resultadosFiltrados.length === 0 && (
+          {resultadosFiltrados.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 max-w-5xl mx-auto">
+              {resultadosFiltrados.map((negocio, index) => (
+                <div key={index} className="bg-white border rounded-2xl shadow-lg p-5 text-left">
+                  <h2 className="text-xl font-semibold text-gray-900">{negocio.nombre}</h2>
+                  <p className="text-sm text-gray-600">{negocio.direccion || "Dirección no disponible"}</p>
+                  <p className="mt-2 text-md text-gray-800">
+                    Precio estimado: <span className="font-bold">${negocio.precio?.toLocaleString() || "N/A"}</span>
+                  </p>
+                  <button
+                    onClick={() => alternarFavorito(negocio.nombre)}
+                    className="mt-4 text-sm px-4 py-2 bg-pink-100 hover:bg-pink-200 rounded-full"
+                  >
+                    {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
             <p className="mt-10 text-gray-500">
               No se encontraron resultados para tu búsqueda. Intenta con otras palabras o usa “Ver todos”.
             </p>
