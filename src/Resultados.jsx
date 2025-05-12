@@ -1,6 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
+
+const imagenPorTipo = {
+  sanguchería: "/img/sangucheria.png",
+  panadería: "/img/panaderia.png",
+  supermercado: "/img/supermercado.png",
+  botillería: "/img/botilleria.png",
+  bar: "/img/bar.png",
+  otro: "/img/generic.png",
+};
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -8,124 +17,136 @@ export default function Resultados() {
   const [mostrarMapa, setMostrarMapa] = useState(false);
   const [ubicacionUsuario, setUbicacionUsuario] = useState(null);
   const [favoritos, setFavoritos] = useState([]);
-  const [verSoloFavoritos, setVerSoloFavoritos] = useState(false);
+  const [verFavoritos, setVerFavoritos] = useState(false);
+  const [busquedaHecha, setBusquedaHecha] = useState(false);
+
+  const obtenerUbicacion = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error("Error obteniendo ubicación:", error);
+          reject(error);
+        }
+      );
+    });
+  };
+
+  const manejarBusqueda = async () => {
+    if (!busqueda.trim()) return;
+    try {
+      const ubicacion = await obtenerUbicacion();
+      setUbicacionUsuario(ubicacion);
+      setMostrarMapa(true);
+      setBusquedaHecha(true);
+
+      const respuesta = await fetch("/api/clasificar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ busqueda, negocios: negociosSimulados }),
+      });
+
+      const datos = await respuesta.json();
+      setResultados(datos.resultados || []);
+    } catch (error) {
+      console.error("Error al buscar lugares:", error);
+      setResultados([]);
+    }
+  };
+
+  const alternarFavorito = (nombre) => {
+    setFavoritos((prev) =>
+      prev.includes(nombre) ? prev.filter((n) => n !== nombre) : [...prev, nombre]
+    );
+  };
+
+  const resultadosFiltrados = verFavoritos
+    ? resultados.filter((neg) => favoritos.includes(neg.nombre))
+    : resultados;
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setUbicacionUsuario({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        });
-      },
-      () => alert("No pudimos obtener tu ubicación 😢")
-    );
-  }, []);
-
-  const handleBuscar = () => {
-    const texto = busqueda.toLowerCase();
-    const filtrados = negociosSimulados.filter((n) =>
-      n.nombre?.toLowerCase().includes(texto) ||
-      n.tipoDetectado?.toLowerCase().includes(texto)
-    );
-    setResultados(filtrados);
-    setMostrarMapa(true);
-    setVerSoloFavoritos(false);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleBuscar();
-  };
-
-  const toggleFavorito = (negocio) => {
-    const existe = favoritos.find((f) => f.nombre === negocio.nombre);
-    if (existe) {
-      setFavoritos(favoritos.filter((f) => f.nombre !== negocio.nombre));
-    } else {
-      setFavoritos([...favoritos, negocio]);
-    }
-  };
-
-  const mostrarTodos = () => {
-    if (busqueda.trim()) {
-      handleBuscar();
-    } else {
-      setResultados(negociosSimulados.slice(0, 30));
-    }
-    setMostrarMapa(true);
-    setVerSoloFavoritos(false);
-  };
-
-  const mostrarSoloFavoritos = () => {
-    const soloFavoritos = favoritos.map((f) => ({ ...f }));
-    setResultados(soloFavoritos);
-    setMostrarMapa(true);
-    setVerSoloFavoritos(true);
-  };
-
-  const negociosAMostrar = verSoloFavoritos ? favoritos : resultados;
+    const manejarEnter = (e) => {
+      if (e.key === "Enter") manejarBusqueda();
+    };
+    window.addEventListener("keydown", manejarEnter);
+    return () => window.removeEventListener("keydown", manejarEnter);
+  }, [busqueda]);
 
   return (
-    <div className="flex flex-col items-center justify-center px-4 py-6 text-white">
-      <h1 className="text-4xl font-bold mb-2 text-center">
-        🤖 <span className="text-gray-800">Cotizador</span><span className="text-pink-500">Pro</span>
+    <div className="min-h-screen bg-white text-center px-4">
+      <h1 className="text-4xl font-bold mt-8 flex justify-center items-center gap-2">
+        <span role="img" aria-label="robot">🤖</span>
+        <span className="text-gray-900">Cotizador</span>
+        <span className="text-pink-500">Pro</span>
       </h1>
-      <p className="text-lg text-gray-700 mb-6 text-center max-w-xl">
-        Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
-      </p>
-
-      <div className="flex flex-col sm:flex-row gap-3 w-full max-w-3xl mb-6">
+      <p className="text-gray-700 mt-2 text-lg">Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨</p>
+      <div className="flex justify-center items-center gap-2 mt-6">
         <input
-          type="text"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
-          onKeyDown={handleKeyDown}
           placeholder="Ej: quiero un completo, sushi, pan..."
-          className="flex-1 rounded-full px-5 py-3 text-black border border-pink-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+          className="rounded-full px-6 py-3 w-full max-w-lg text-center border border-pink-200 shadow-sm"
         />
-        <button onClick={handleBuscar} className="bg-pink-500 hover:bg-pink-600 px-5 py-3 rounded-full">
+        <button
+          onClick={manejarBusqueda}
+          className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full shadow"
+        >
           Buscar
         </button>
-        <button onClick={mostrarSoloFavoritos} className="bg-white text-pink-500 px-5 py-3 rounded-full border border-pink-300 hover:bg-pink-50">
-          💗 Ver Favoritos
+        <button
+          onClick={() => setVerFavoritos(!verFavoritos)}
+          className={`flex items-center gap-2 border px-6 py-3 rounded-full shadow ${verFavoritos ? "border-pink-300 bg-pink-50" : "border-pink-100 bg-white"}`}
+        >
+          <span role="img" aria-label="corazon">💗</span> Ver Favoritos
         </button>
       </div>
 
-      {mostrarMapa && ubicacionUsuario && (
-        <div className="w-full max-w-5xl mb-6">
-          <MapaConUsuarioYTiendas
-            usuario={ubicacionUsuario}
-            negocios={negociosAMostrar}
-            favoritos={favoritos}
-          />
-          <div className="flex justify-center gap-4 mt-4">
-            <button onClick={mostrarTodos} className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full shadow hover:bg-gray-300">
+      {mostrarMapa && (
+        <>
+          <div className="mt-8 animate-fadeIn">
+            <MapaConUsuarioYTiendas
+              negocios={resultadosFiltrados}
+              favoritos={favoritos}
+              ubicacionUsuario={ubicacionUsuario}
+              alternarFavorito={alternarFavorito}
+            />
+          </div>
+
+          <div className="flex justify-center mt-6 gap-4">
+            <button
+              onClick={() => setVerFavoritos(false)}
+              className={`px-6 py-2 rounded-full text-sm shadow transition-all duration-200 ${
+                !verFavoritos
+                  ? "bg-blue-300 text-blue-900 border-2 border-blue-500 font-bold"
+                  : "bg-gray-100 text-gray-600 border border-gray-300"
+              }`}
+            >
               Ver todos
             </button>
-            <button onClick={mostrarSoloFavoritos} className="bg-pink-100 text-pink-800 px-6 py-2 rounded-full shadow hover:bg-pink-200">
+            <button
+              onClick={() => setVerFavoritos(true)}
+              className={`px-6 py-2 rounded-full text-sm shadow transition-all duration-200 ${
+                verFavoritos
+                  ? "bg-pink-300 text-pink-900 border-2 border-pink-500 font-bold"
+                  : "bg-gray-100 text-gray-600 border border-gray-300"
+              }`}
+            >
               Ver favoritos
             </button>
           </div>
-        </div>
+
+          {resultadosFiltrados.length === 0 && (
+            <p className="mt-10 text-gray-500">
+              No se encontraron resultados para tu búsqueda. Intenta con otras palabras o usa “Ver todos”.
+            </p>
+          )}
+        </>
       )}
-
-      <div className="flex flex-wrap justify-center gap-6 max-w-6xl mt-6">
-        {negociosAMostrar.length === 0 && (
-          <p className="text-gray-800 text-lg mt-6 text-center max-w-xl">
-            No se encontraron resultados para tu búsqueda. Intenta con otras palabras o usa “Ver todos”.
-          </p>
-        )}
-
-        {negociosAMostrar.map((negocio) => (
-          <div key={negocio.nombre} className="bg-white text-black rounded-2xl shadow p-5 w-72">
-            <h2 className="text-xl font-bold">{negocio.nombre}</h2>
-            <p className="text-gray-700">Tipo: {negocio.tipoDetectado}</p>
-            <button onClick={() => toggleFavorito(negocio)} className="text-pink-500 mt-2 text-xl">
-              {favoritos.find((f) => f.nombre === negocio.nombre) ? "💖" : "🤍"}
-            </button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
