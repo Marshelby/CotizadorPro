@@ -21,19 +21,21 @@ const iconoFavorito = new L.Icon({
   iconAnchor: [17, 35],
 });
 
-export default function MapaConUsuarioYTiendas({ usuario, negocios, favoritos }) {
+export default function MapaConUsuarioYTiendas({ ubicacionUsuario, negocios, favoritos }) {
   useEffect(() => {
+    if (!ubicacionUsuario) return;
+
     if (document.querySelector("#mapa")?._leaflet_id) {
       document.querySelector("#mapa")._leaflet_id = null;
     }
 
-    const mapa = L.map("mapa").setView([usuario.lat, usuario.lng], 14);
+    const mapa = L.map("mapa").setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
 
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
       attribution: '&copy; OpenStreetMap',
     }).addTo(mapa);
 
-    L.marker([usuario.lat, usuario.lng], { icon: iconoUsuario })
+    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], { icon: iconoUsuario })
       .addTo(mapa)
       .bindPopup("Tú estás aquí");
 
@@ -59,7 +61,7 @@ export default function MapaConUsuarioYTiendas({ usuario, negocios, favoritos })
     }
 
     return () => mapa.remove();
-  }, [usuario, negocios, favoritos]);
+  }, [ubicacionUsuario, negocios, favoritos]);
 
   return (
     <div
