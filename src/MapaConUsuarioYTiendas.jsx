@@ -23,19 +23,16 @@ const iconoFavorito = new L.Icon({
 
 export default function MapaConUsuarioYTiendas({ usuario, negocios, favoritos }) {
   useEffect(() => {
-    // Elimina cualquier mapa previo
     if (document.querySelector("#mapa")?._leaflet_id) {
       document.querySelector("#mapa")._leaflet_id = null;
     }
 
     const mapa = L.map("mapa").setView([usuario.lat, usuario.lng], 14);
 
-    // Fondo visual profesional (Carto Light)
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
       attribution: '&copy; OpenStreetMap',
     }).addTo(mapa);
 
-    // Agrega marcador del usuario
     L.marker([usuario.lat, usuario.lng], { icon: iconoUsuario })
       .addTo(mapa)
       .bindPopup("Tú estás aquí");
