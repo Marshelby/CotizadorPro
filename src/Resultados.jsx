@@ -42,6 +42,10 @@ export default function Resultados() {
         body: JSON.stringify({ busqueda, negocios: negociosSimulados }),
       });
 
+      if (!respuesta.ok) {
+        throw new Error("Error al clasificar la búsqueda");
+      }
+
       const datos = await respuesta.json();
       setResultados(datos.resultados || []);
     } catch (error) {
