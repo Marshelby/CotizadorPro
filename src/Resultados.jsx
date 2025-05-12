@@ -36,7 +36,7 @@ export default function Resultados() {
       setMostrarMapa(true);
       setBusquedaHecha(true);
 
-      const respuesta = await fetch("http://82.25.71.87:3000/clasificar", {
+      const respuesta = await fetch("https://cotizadorpro.cl/clasificar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ busqueda, negocios: negociosSimulados }),
