@@ -102,6 +102,12 @@ export default function Resultados() {
         >
           <span role="img" aria-label="corazon">💗</span> Ver Favoritos
         </button>
+        <button
+          onClick={() => setMostrarMapa((prev) => !prev)}
+          className="mt-2 px-6 py-2 text-sm bg-gray-100 border border-gray-300 rounded-full shadow hover:bg-gray-200 transition"
+        >
+          {mostrarMapa ? "Ocultar mapa" : "Mostrar mapa"}
+        </button>
       </div>
 
       {mostrarMapa && (
