@@ -1,12 +1,17 @@
 const stringSimilarity = require("string-similarity");
 
 export default function handler(req, res) {
+  // 🛡️ Habilitar CORS para permitir solicitudes desde cualquier dominio
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
+  // Manejo de preflight CORS
   if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method !== "POST") return res.status(405).json({ error: "Método no permitido" });
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Método no permitido" });
+  }
 
   let body = "";
   req.on("data", chunk => {
@@ -16,6 +21,7 @@ export default function handler(req, res) {
   req.on("end", () => {
     try {
       const { busqueda, negocios } = JSON.parse(body);
+
       if (!busqueda || !negocios) {
         return res.status(400).json({ error: "Faltan datos en la solicitud" });
       }
