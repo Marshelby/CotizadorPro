@@ -1,6 +1,6 @@
 const stringSimilarity = require("string-similarity");
 
-module.exports = (req, res) => {
+export default function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -20,7 +20,6 @@ module.exports = (req, res) => {
         return res.status(400).json({ error: "Faltan datos en la solicitud" });
       }
 
-      // Clasificación básica por coincidencia textual
       const resultados = negocios.filter((n) => {
         const campos = [n.nombre, n.producto, n.tipo].join(" ").toLowerCase();
         return campos.includes(busqueda.toLowerCase()) ||
@@ -33,6 +32,4 @@ module.exports = (req, res) => {
       res.status(500).json({ error: "Error interno del servidor" });
     }
   });
-};
-
-// línea temporal para forzar commit
+}
