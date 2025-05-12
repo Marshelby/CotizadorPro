@@ -1,15 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
-
-const imagenPorTipo = {
-  sanguchería: "/img/sangucheria.png",
-  panadería: "/img/panaderia.png",
-  supermercado: "/img/supermercado.png",
-  botillería: "/img/botilleria.png",
-  bar: "/img/bar.png",
-  otro: "/img/generic.png",
-};
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -84,7 +75,9 @@ export default function Resultados() {
         <span className="text-gray-900">Cotizador</span>
         <span className="text-pink-500">Pro</span>
       </h1>
-      <p className="text-gray-700 mt-2 text-lg">Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨</p>
+      <p className="text-gray-700 mt-2 text-lg">
+        Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
+      </p>
       <div className="flex justify-center items-center gap-2 mt-6">
         <input
           value={busqueda}
