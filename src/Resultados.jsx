@@ -36,6 +36,9 @@ export default function Resultados() {
       setMostrarMapa(true);
       setBusquedaHecha(true);
 
+      console.log("Buscando:", busqueda);
+      console.log("Negocios cargados:", negociosSimulados.length);
+
       const respuesta = await fetch("https://cotizadorpro.cl/clasificar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -47,6 +50,7 @@ export default function Resultados() {
       }
 
       const datos = await respuesta.json();
+      console.log("Resultados recibidos:", datos.resultados);
       setResultados(datos.resultados || []);
     } catch (error) {
       console.error("Error al buscar lugares:", error);
