@@ -81,22 +81,24 @@ export default function Resultados() {
         Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
       </p>
 
-      <div className="flex justify-center items-center gap-2 mt-6">
+      <div className="flex justify-center items-center gap-2 mt-6 flex-wrap">
         <input
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
           placeholder="Ej: quiero un completo, sushi, pan..."
-          className="rounded-full px-6 py-3 w-full max-w-lg text-center border border-pink-200 shadow-sm"
+          className="rounded-full px-6 py-3 w-full max-w-lg text-center border border-pink-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-300 transition"
         />
         <button
           onClick={manejarBusqueda}
-          className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full shadow"
+          className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-full shadow transition"
         >
           Buscar
         </button>
         <button
           onClick={() => setVerFavoritos(!verFavoritos)}
-          className={`flex items-center gap-2 border px-6 py-3 rounded-full shadow ${verFavoritos ? "border-pink-300 bg-pink-50" : "border-pink-100 bg-white"}`}
+          className={`flex items-center gap-2 border px-6 py-3 rounded-full shadow transition ${
+            verFavoritos ? "border-pink-300 bg-pink-50" : "border-pink-100 bg-white"
+          }`}
         >
           <span role="img" aria-label="corazon">💗</span> Ver Favoritos
         </button>
@@ -115,7 +117,7 @@ export default function Resultados() {
 
       {busquedaHecha && (
         <>
-          <div className="flex justify-center mt-6 gap-4">
+          <div className="flex justify-center mt-6 gap-4 flex-wrap">
             <button
               onClick={() => setVerFavoritos(false)}
               className={`px-6 py-2 rounded-full text-sm shadow transition-all duration-200 ${
@@ -139,17 +141,25 @@ export default function Resultados() {
           </div>
 
           {resultadosFiltrados.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto px-4">
               {resultadosFiltrados.map((negocio, index) => (
-                <div key={index} className="bg-white border rounded-2xl shadow-lg p-5 text-left">
-                  <h2 className="text-xl font-semibold text-gray-900">{negocio.nombre}</h2>
-                  <p className="text-sm text-gray-600">{negocio.direccion || "Dirección no disponible"}</p>
-                  <p className="mt-2 text-md text-gray-800">
-                    Precio estimado: <span className="font-bold">${negocio.precio?.toLocaleString() || "N/A"}</span>
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-6 text-left"
+                >
+                  <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <span role="img" aria-label="local">🏪</span>
+                    {negocio.nombre}
+                  </h2>
+                  <p className="text-sm text-gray-500 mt-1">{negocio.direccion || "Dirección no disponible"}</p>
+                  <p className="mt-3 text-lg text-pink-600 font-semibold">
+                    ${negocio.precio?.toLocaleString() || "N/A"}
                   </p>
                   <button
                     onClick={() => alternarFavorito(negocio.nombre)}
-                    className="mt-4 text-sm px-4 py-2 bg-pink-100 hover:bg-pink-200 rounded-full"
+                    className="mt-4 text-sm w-full py-2 rounded-full border transition-all duration-200
+                      hover:bg-pink-200 hover:border-pink-300
+                      bg-pink-100 border-pink-200 text-pink-800 font-medium"
                   >
                     {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
                   </button>
