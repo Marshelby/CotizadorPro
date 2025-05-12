@@ -10,6 +10,14 @@ const iconoPorTipo = {
   otro: "🏪",
 };
 
+const colorPorTipo = {
+  panadería: "bg-yellow-200",
+  botillería: "bg-red-200",
+  supermercado: "bg-blue-200",
+  sanguchería: "bg-green-200",
+  otro: "bg-gray-200",
+};
+
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
   const [resultados, setResultados] = useState([]);
@@ -119,7 +127,8 @@ export default function Resultados() {
       </div>
 
       {mostrarMapa && (
-        <div className="mt-10 max-w-4xl mx-auto border border-gray-200 rounded-2xl shadow">
+        <div className="mt-10 max-w-4xl mx-auto bg-gray-50 border border-gray-200 rounded-2xl shadow-md p-4">
+          <p className="text-sm text-gray-500 mb-2">Zona de resultados en el mapa</p>
           <MapaConUsuarioYTiendas
             negocios={resultadosFiltrados}
             favoritos={favoritos}
@@ -131,78 +140,3 @@ export default function Resultados() {
 
       {busquedaHecha && (
         <>
-          <div className="flex justify-center mt-6 gap-4 flex-wrap">
-            <button
-              onClick={() => setVerFavoritos(false)}
-              className={`px-6 py-2 rounded-full text-sm shadow transition-all duration-200 ${
-                !verFavoritos
-                  ? "bg-blue-300 text-blue-900 border-2 border-blue-500 font-bold"
-                  : "bg-gray-100 text-gray-600 border border-gray-300"
-              }`}
-            >
-              Ver todos
-            </button>
-            <button
-              onClick={() => setVerFavoritos(true)}
-              className={`px-6 py-2 rounded-full text-sm shadow transition-all duration-200 ${
-                verFavoritos
-                  ? "bg-pink-300 text-pink-900 border-2 border-pink-500 font-bold"
-                  : "bg-gray-100 text-gray-600 border border-gray-300"
-              }`}
-            >
-              Ver favoritos
-            </button>
-          </div>
-
-          <div className="flex justify-center mt-6 gap-4 flex-wrap">
-            <button className="px-5 py-2 rounded-full border border-gray-300 text-sm bg-white hover:bg-gray-100 shadow">
-              Ordenar por precio
-            </button>
-            <button className="px-5 py-2 rounded-full border border-gray-300 text-sm bg-white hover:bg-gray-100 shadow">
-              Ordenar por distancia
-            </button>
-          </div>
-
-          {resultadosFiltrados.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto px-4">
-              {resultadosFiltrados.map((negocio, index) => {
-                const tipo = negocio.tipo?.toLowerCase() || "otro";
-                const icono = iconoPorTipo[tipo] || iconoPorTipo["otro"];
-
-                return (
-                  <div
-                    key={index}
-                    className="bg-white border border-gray-200 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-6 text-left"
-                  >
-                    <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                      <span>{icono}</span>
-                      {negocio.nombre}
-                    </h2>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {negocio.direccion || <span className="text-gray-400">Dirección no disponible</span>}
-                    </p>
-                    <p className="mt-3 text-lg text-pink-600 font-semibold">
-                      {negocio.precio ? `$${negocio.precio.toLocaleString()}` : <span className="text-gray-400">Precio no disponible</span>}
-                    </p>
-                    <button
-                      onClick={() => alternarFavorito(negocio.nombre)}
-                      className="mt-4 text-sm w-full py-2 rounded-full border transition-all duration-200
-                        hover:bg-pink-200 hover:border-pink-300
-                        bg-pink-100 border-pink-200 text-pink-800 font-medium"
-                    >
-                      {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="mt-10 text-gray-500">
-              No se encontraron resultados para tu búsqueda. Intenta con otras palabras o usa “Ver todos”.
-            </p>
-          )}
-        </>
-      )}
-    </div>
-  );
-}
