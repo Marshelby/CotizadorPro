@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
 
+// Diccionario visual por tipo de negocio
+const iconoPorTipo = {
+  panadería: "🍞",
+  botillería: "🍷",
+  supermercado: "🛒",
+  sanguchería: "🌭",
+  otro: "🏪",
+};
+
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
   const [resultados, setResultados] = useState([]);
@@ -111,7 +120,7 @@ export default function Resultados() {
       </div>
 
       {mostrarMapa && (
-        <div className="mt-8 animate-fadeIn">
+        <div className="mt-10 max-w-6xl mx-auto border border-gray-200 rounded-2xl shadow">
           <MapaConUsuarioYTiendas
             negocios={resultadosFiltrados}
             favoritos={favoritos}
@@ -148,29 +157,34 @@ export default function Resultados() {
 
           {resultadosFiltrados.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto px-4">
-              {resultadosFiltrados.map((negocio, index) => (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-200 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-6 text-left"
-                >
-                  <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <span role="img" aria-label="local">🏪</span>
-                    {negocio.nombre}
-                  </h2>
-                  <p className="text-sm text-gray-500 mt-1">{negocio.direccion || "Dirección no disponible"}</p>
-                  <p className="mt-3 text-lg text-pink-600 font-semibold">
-                    ${negocio.precio?.toLocaleString() || "N/A"}
-                  </p>
-                  <button
-                    onClick={() => alternarFavorito(negocio.nombre)}
-                    className="mt-4 text-sm w-full py-2 rounded-full border transition-all duration-200
-                      hover:bg-pink-200 hover:border-pink-300
-                      bg-pink-100 border-pink-200 text-pink-800 font-medium"
+              {resultadosFiltrados.map((negocio, index) => {
+                const tipo = negocio.tipo?.toLowerCase() || "otro";
+                const icono = iconoPorTipo[tipo] || iconoPorTipo["otro"];
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-white border border-gray-200 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-6 text-left"
                   >
-                    {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
-                  </button>
-                </div>
-              ))}
+                    <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                      <span>{icono}</span>
+                      {negocio.nombre}
+                    </h2>
+                    <p className="text-sm text-gray-500 mt-1">{negocio.direccion || "Dirección no disponible"}</p>
+                    <p className="mt-3 text-lg text-pink-600 font-semibold">
+                      ${negocio.precio?.toLocaleString() || "N/A"}
+                    </p>
+                    <button
+                      onClick={() => alternarFavorito(negocio.nombre)}
+                      className="mt-4 text-sm w-full py-2 rounded-full border transition-all duration-200
+                        hover:bg-pink-200 hover:border-pink-300
+                        bg-pink-100 border-pink-200 text-pink-800 font-medium"
+                    >
+                      {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p className="mt-10 text-gray-500">
