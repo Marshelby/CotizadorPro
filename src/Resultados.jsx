@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
 
-// Diccionario visual por tipo de negocio
 const iconoPorTipo = {
   panadería: "🍞",
   botillería: "🍷",
@@ -120,7 +119,7 @@ export default function Resultados() {
       </div>
 
       {mostrarMapa && (
-        <div className="mt-10 max-w-6xl mx-auto border border-gray-200 rounded-2xl shadow">
+        <div className="mt-10 max-w-4xl mx-auto border border-gray-200 rounded-2xl shadow">
           <MapaConUsuarioYTiendas
             negocios={resultadosFiltrados}
             favoritos={favoritos}
@@ -155,6 +154,15 @@ export default function Resultados() {
             </button>
           </div>
 
+          <div className="flex justify-center mt-6 gap-4 flex-wrap">
+            <button className="px-5 py-2 rounded-full border border-gray-300 text-sm bg-white hover:bg-gray-100 shadow">
+              Ordenar por precio
+            </button>
+            <button className="px-5 py-2 rounded-full border border-gray-300 text-sm bg-white hover:bg-gray-100 shadow">
+              Ordenar por distancia
+            </button>
+          </div>
+
           {resultadosFiltrados.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto px-4">
               {resultadosFiltrados.map((negocio, index) => {
@@ -170,9 +178,11 @@ export default function Resultados() {
                       <span>{icono}</span>
                       {negocio.nombre}
                     </h2>
-                    <p className="text-sm text-gray-500 mt-1">{negocio.direccion || "Dirección no disponible"}</p>
+                    <p className="text-sm text-gray-500 mt-1">
+                      {negocio.direccion || <span className="text-gray-400">Dirección no disponible</span>}
+                    </p>
                     <p className="mt-3 text-lg text-pink-600 font-semibold">
-                      ${negocio.precio?.toLocaleString() || "N/A"}
+                      {negocio.precio ? `$${negocio.precio.toLocaleString()}` : <span className="text-gray-400">Precio no disponible</span>}
                     </p>
                     <button
                       onClick={() => alternarFavorito(negocio.nombre)}
