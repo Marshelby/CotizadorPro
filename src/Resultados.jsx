@@ -36,21 +36,15 @@ export default function Resultados() {
       setMostrarMapa(true);
       setBusquedaHecha(true);
 
-      console.log("Buscando:", busqueda);
-      console.log("Negocios cargados:", negociosSimulados.length);
-
       const respuesta = await fetch("https://cotizadorpro.cl/clasificar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ busqueda, negocios: negociosSimulados }),
       });
 
-      if (!respuesta.ok) {
-        throw new Error("Error al clasificar la búsqueda");
-      }
+      if (!respuesta.ok) throw new Error("Error al clasificar la búsqueda");
 
       const datos = await respuesta.json();
-      console.log("Resultados recibidos:", datos.resultados);
       setResultados(datos.resultados || []);
     } catch (error) {
       console.error("Error al buscar lugares:", error);
@@ -86,6 +80,7 @@ export default function Resultados() {
       <p className="text-gray-700 mt-2 text-lg">
         Encuentra lo que buscas cerca de ti — comida, bebida o lo que necesites ✨
       </p>
+
       <div className="flex justify-center items-center gap-2 mt-6">
         <input
           value={busqueda}
@@ -139,6 +134,25 @@ export default function Resultados() {
             >
               Ver favoritos
             </button>
+          </div>
+
+          {/* 🚀 Tarjetas de resultados */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 max-w-5xl mx-auto">
+            {resultadosFiltrados.map((negocio, index) => (
+              <div key={index} className="bg-white border rounded-2xl shadow-lg p-5 text-left">
+                <h2 className="text-xl font-semibold text-gray-900">{negocio.nombre}</h2>
+                <p className="text-sm text-gray-600">{negocio.direccion || "Dirección no disponible"}</p>
+                <p className="mt-2 text-md text-gray-800">
+                  Precio estimado: <span className="font-bold">${negocio.precio?.toLocaleString() || "N/A"}</span>
+                </p>
+                <button
+                  onClick={() => alternarFavorito(negocio.nombre)}
+                  className="mt-4 text-sm px-4 py-2 bg-pink-100 hover:bg-pink-200 rounded-full"
+                >
+                  {favoritos.includes(negocio.nombre) ? "💗 Quitar de favoritos" : "🤍 Agregar a favoritos"}
+                </button>
+              </div>
+            ))}
           </div>
 
           {resultadosFiltrados.length === 0 && (
