@@ -32,7 +32,7 @@ export default function MapaConUsuarioYTiendas({ ubicacionUsuario, negocios, fav
     const mapa = L.map("mapa").setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
 
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-      attribution: '&copy; OpenStreetMap',
+      attribution: '&copy; OpenStreetMap contributors',
     }).addTo(mapa);
 
     L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], { icon: iconoUsuario })
@@ -50,7 +50,7 @@ export default function MapaConUsuarioYTiendas({ ubicacionUsuario, negocios, fav
       const icono = esFavorito ? iconoFavorito : iconoNegocio;
 
       const marker = L.marker([lat, lng], { icon: icono })
-        .bindPopup(`<strong>${negocio.nombre}</strong><br/>Tipo: ${negocio.tipoDetectado}`);
+        .bindPopup(`<strong>${negocio.nombre}</strong><br/>Tipo: ${negocio.tipoDetectado || "Sin clasificar"}`);
       marker.addTo(grupo);
     });
 
@@ -66,12 +66,13 @@ export default function MapaConUsuarioYTiendas({ ubicacionUsuario, negocios, fav
   return (
     <div
       id="mapa"
+      className="w-full transition-all duration-500"
       style={{
-        height: "500px",
-        marginTop: "60px",
-        borderRadius: "20px",
+        height: window.innerWidth < 768 ? "300px" : "500px",
+        marginTop: "40px",
+        borderRadius: "1rem",
         overflow: "hidden",
-        boxShadow: "0 0 20px rgba(0,0,0,0.3)",
+        boxShadow: "0 4px 30px rgba(0,0,0,0.1)",
       }}
     />
   );
