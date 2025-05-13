@@ -154,9 +154,9 @@ export default function Resultados() {
     <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
   </svg>
   <p className="text-gray-500 text-base">
-    No se encontraron resultados para tu búsqueda. Intenta con otras palabras o prueba escribir por ejemplo: <strong>"Quiero sushi"</strong>, <strong>"Busco completos"</strong> o <strong>"Dónde venden pizza"</strong>.
+    
   </p>
 </div>
-              No se encontraron resultados para tu búsqueda. Intenta con otras palabras o prueba escribir por ejemplo: <strong>"Quiero sushi"</strong>, <strong>"Busco completos"</strong> o <strong>"Dónde venden pizza"</strong>.
+              
             </p>
           )}
