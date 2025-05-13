@@ -65,16 +65,9 @@ export default function Resultados() {
       setMostrarMapa(true);
       setBusquedaHecha(true);
 
-      const respuesta = await fetch("https://cotizadorpro.cl/clasificar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ busqueda, negocios: negociosSimulados }),
-      });
-
-      if (!respuesta.ok) throw new Error("Error al clasificar la búsqueda");
-
-      const datos = await respuesta.json();
-      setResultados(datos.resultados || []);
+      const tipoDetectado = detectarTipoBusqueda(busqueda);
+      const negociosFiltrados = filtrarPorTipo(tipoDetectado, negociosSimulados);
+      setResultados(negociosFiltrados);
     } catch (error) {
       console.error("Error al buscar lugares:", error);
       setResultados([]);
