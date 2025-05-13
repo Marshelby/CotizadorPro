@@ -47,8 +47,4 @@ function filtrarPorTipo(tipo, negocios) {
   );
 }
 
-module.exports = {
-  detectarTipoBusqueda,
-  filtrarPorTipo,
-  DICCIONARIO
-};
+export { detectarTipoBusqueda, filtrarPorTipo, DICCIONARIO };
