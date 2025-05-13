@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import negociosSimulados from "../public/data/pedidosya_datos_quilpue.json";
+import { detectarTipoBusqueda, filtrarPorTipo } from "./motorBusqueda";
 
 const iconoPorTipo = {
   panadería: "🍞",
@@ -47,7 +48,19 @@ export default function Resultados() {
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
+      const tipoDetectado = detectarTipoBusqueda(busqueda);
+      const negociosFiltrados = filtrarPorTipo(tipoDetectado, negociosSimulados);
+
       const ubicacion = await obtenerUbicacion();
+      setUbicacionUsuario(ubicacion);
+      setMostrarMapa(true);
+      setBusquedaHecha(true);
+      setResultados(negociosFiltrados);
+    } catch (error) {
+      console.error("Error al procesar la búsqueda:", error);
+      setResultados([]);
+    }
+  };
       setUbicacionUsuario(ubicacion);
       setMostrarMapa(true);
       setBusquedaHecha(true);
@@ -140,3 +153,17 @@ export default function Resultados() {
 
       {busquedaHecha && (
         <>
+{resultadosFiltrados.length === 0 && (
+            <div className="flex flex-col items-center mt-10 animate-fadeIn">
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-gray-400 mb-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75h.008v.008H9.75V9.75zM14.25 9.75h.008v.008h-.008V9.75z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.25c1.25 0 2.25-.625 2.25-1.5s-1-1.5-2.25-1.5-2.25.625-2.25 1.5 1 1.5 2.25 1.5z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+  </svg>
+  <p className="text-gray-500 text-base">
+    No se encontraron resultados para tu búsqueda. Intenta con otras palabras o prueba escribir por ejemplo: <strong>"Quiero sushi"</strong>, <strong>"Busco completos"</strong> o <strong>"Dónde venden pizza"</strong>.
+  </p>
+</div>
+              No se encontraron resultados para tu búsqueda. Intenta con otras palabras o prueba escribir por ejemplo: <strong>"Quiero sushi"</strong>, <strong>"Busco completos"</strong> o <strong>"Dónde venden pizza"</strong>.
+            </p>
+          )}
