@@ -1,5 +1,3 @@
-// utils/motorBusqueda.js
-
 const DICCIONARIO = {
   completos: ["completo", "italiano", "vienesa", "hot dog"],
   hamburguesas: ["hamburguesa", "burger", "cheeseburger"],
@@ -44,7 +42,7 @@ function filtrarPorTipo(tipo, negocios) {
   if (!tipo) return [];
   return negocios.filter(neg =>
     (neg.categorias_principales || []).some(cat =>
-      cat.toLowerCase().includes(tipo.replace("_", " "))
+      normalizar(cat).includes(tipo.replace("_", ""))
     )
   );
 }
