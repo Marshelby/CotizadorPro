@@ -1,0 +1,2415 @@
+[
+  {
+    "id": 138819,
+    "nombre": "El Clandestino - Gastronomía Peruana",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Peruana"
+    ],
+    "tags": [],
+    "rating": 4.68,
+    "numero_evaluaciones": 297,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/el-clandestino-gastronomia-peruana-b16585c0-4b29-4356-a0db-22ad9d9aea05-menu"
+  },
+  {
+    "id": 480293,
+    "nombre": "KFC Paseo Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pollo Frito"
+    ],
+    "tags": [],
+    "rating": 4.49,
+    "numero_evaluaciones": 182,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/kfc-paseo-quilpue-2d5edf6a-8e05-458b-b15b-73d7c9c0bcde-menu"
+  },
+  {
+    "id": 374303,
+    "nombre": "Doggis Paseo Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 3.96,
+    "numero_evaluaciones": 91,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/doggis-paseo-quilpue-1468aac9-cf32-4f06-9c47-bffff8fb3494-menu"
+  },
+  {
+    "id": 521645,
+    "nombre": "Happy Days Waffles - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Postres y Tortas",
+      "Cafetería"
+    ],
+    "tags": [],
+    "rating": 4.58,
+    "numero_evaluaciones": 53,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/happy-days-waffles--quilpue-fc5133d8-3480-458b-9834-0055ee7ee7ca-menu"
+  },
+  {
+    "id": 529645,
+    "nombre": "Happy Gelato - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Helados"
+    ],
+    "tags": [],
+    "rating": 4.52,
+    "numero_evaluaciones": 21,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/happy-gelato--quilpue-18953b99-f31d-443c-b763-ae1314b94b6b-menu"
+  },
+  {
+    "id": 340882,
+    "nombre": "Gostoso Sushi",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.42,
+    "numero_evaluaciones": 60,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/gostoso-sushi-menu"
+  },
+  {
+    "id": 119430,
+    "nombre": "Café Miranda Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Postres y Tortas"
+    ],
+    "tags": [],
+    "rating": 4.74,
+    "numero_evaluaciones": 62,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "5-20 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/cafe-miranda-quilpue-menu"
+  },
+  {
+    "id": 310286,
+    "nombre": "Buen Gusto - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 3.62,
+    "numero_evaluaciones": 13,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "5-20 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/buen-gusto-quilpue-menu"
+  },
+  {
+    "id": 547831,
+    "nombre": "Clandestino Mall De Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Peruana"
+    ],
+    "tags": [],
+    "rating": 4.14,
+    "numero_evaluaciones": 21,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/clandestino-mall-de-quilpue-14287a2a-4df2-4c10-9d8a-b4ffb1887f29-menu"
+  },
+  {
+    "id": 302097,
+    "nombre": "Pau San Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida China"
+    ],
+    "tags": [],
+    "rating": 4.51,
+    "numero_evaluaciones": 35,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/pau-san-quilpue-menu"
+  },
+  {
+    "id": 118159,
+    "nombre": "Emir Kebab, Shawarma",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Árabe"
+    ],
+    "tags": [],
+    "rating": 4.6,
+    "numero_evaluaciones": 30,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/emir-kebab-shawarma-menu"
+  },
+  {
+    "id": 479663,
+    "nombre": "Burgery - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": 4.25,
+    "numero_evaluaciones": 57,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/burgery--quilpue-7f394968-a22f-42fd-aad6-66e5c2b6cc38-menu"
+  },
+  {
+    "id": 520042,
+    "nombre": "Jirén Sushi Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.57,
+    "numero_evaluaciones": 366,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/jiren-sushi-quilpue-454e9263-6a90-4932-b653-0fc96faad330-menu"
+  },
+  {
+    "id": 542300,
+    "nombre": "Club Del Poke - Quilpué 2",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Poke"
+    ],
+    "tags": [],
+    "rating": 3.55,
+    "numero_evaluaciones": 11,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/club-del-poke-quilpue-2-830e62a7-c12a-45cb-b794-2c1386df7822-menu"
+  },
+  {
+    "id": 522951,
+    "nombre": "Sabor  Caribeño.",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Empanadas",
+      "Comida Venezolana"
+    ],
+    "tags": [],
+    "rating": 4.86,
+    "numero_evaluaciones": 74,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sabor-caribeno-0c8763ad-fac0-4caf-b748-cf0c439c4d09-menu"
+  },
+  {
+    "id": 492148,
+    "nombre": "Sikdorak - Comida Coreana",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida China",
+      "Comida Asiática"
+    ],
+    "tags": [],
+    "rating": 4.83,
+    "numero_evaluaciones": 58,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Spreedly CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sikdorak-comida-coreana-6f6feb83-995f-41bf-80ec-d64c99432297-menu"
+  },
+  {
+    "id": 530600,
+    "nombre": "Vika Pokewraps",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Poke",
+      "Wraps"
+    ],
+    "tags": [],
+    "rating": 4.58,
+    "numero_evaluaciones": 64,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/vika-pokewraps-b4532316-4cee-49ea-9a37-99d03b833aef-menu"
+  },
+  {
+    "id": 529106,
+    "nombre": "Gordos - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": 4.36,
+    "numero_evaluaciones": 157,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/gordos--quilpue-17d558dd-28fc-4d7a-9771-e721ffa7f621-menu"
+  },
+  {
+    "id": 431296,
+    "nombre": "Locos X Food Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.48,
+    "numero_evaluaciones": 61,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/locos-x-food-quilpue-9e6b4268-4170-47fd-93e7-9a656cf93d62-menu"
+  },
+  {
+    "id": 375870,
+    "nombre": "Juan Maestro Paseo Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 3.96,
+    "numero_evaluaciones": 90,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/juan-maestro-paseo-quilpue-4151438f-d849-4d5f-89ca-58ef4b8dc446-menu"
+  },
+  {
+    "id": 370130,
+    "nombre": "Tommy Beans Paseo Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Mexicana"
+    ],
+    "tags": [],
+    "rating": 4.01,
+    "numero_evaluaciones": 90,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/tommy-beans-paseo-quilpue-18d979d1-73cc-4b36-a58e-665d9bc532c1-menu"
+  },
+  {
+    "id": 334534,
+    "nombre": "Tarragona Mall Paseo Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 4.41,
+    "numero_evaluaciones": 199,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/tarragona-mall-paseo-quilpue-menu"
+  },
+  {
+    "id": 388534,
+    "nombre": "Seiko Sushi - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.32,
+    "numero_evaluaciones": 123,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/seiko-sushi--quilpue-0fd617be-295d-4c2d-8984-728d5712cc5b-menu"
+  },
+  {
+    "id": 306719,
+    "nombre": "Dunkin’ Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Cafetería"
+    ],
+    "tags": [],
+    "rating": 4.24,
+    "numero_evaluaciones": 116,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/dunkin-quilpue-menu"
+  },
+  {
+    "id": 118130,
+    "nombre": "Sazón Veintiuno De Mayo",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.46,
+    "numero_evaluaciones": 91,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sazon-veintiuno-de-mayo-945-menu"
+  },
+  {
+    "id": 101970,
+    "nombre": "El Guatón - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Completos",
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 4.47,
+    "numero_evaluaciones": 206,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/el-guaton-quilpue-889680dd-0b28-463d-837b-d684ad3363e8-menu"
+  },
+  {
+    "id": 52467,
+    "nombre": "Subway Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 4.21,
+    "numero_evaluaciones": 68,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "5-20 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/subway-quilpue-menu"
+  },
+  {
+    "id": 437124,
+    "nombre": "Roof Burger - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": 4.56,
+    "numero_evaluaciones": 510,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/roof-burger-quilpue-db0a6cc5-12b5-41dc-ad2c-ee3c0a88e338-menu"
+  },
+  {
+    "id": 226122,
+    "nombre": "Tribeca - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.48,
+    "numero_evaluaciones": 141,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "30-45 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/tribeca-quilpue-menu"
+  },
+  {
+    "id": 410910,
+    "nombre": "Poked - Quilpué.",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Poke"
+    ],
+    "tags": [],
+    "rating": 4.25,
+    "numero_evaluaciones": 100,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/poked-quilpue-213f36a9-341c-4151-96d1-89c67a0573f9-menu"
+  },
+  {
+    "id": 133325,
+    "nombre": "Donde La Veci",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.61,
+    "numero_evaluaciones": 228,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "5-20 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/donde-la-veci-menu"
+  },
+  {
+    "id": 182715,
+    "nombre": "Wakame Sushi - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.5,
+    "numero_evaluaciones": 115,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/wakame-sushi---quilpue-menu"
+  },
+  {
+    "id": 434707,
+    "nombre": "Toros Food",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.76,
+    "numero_evaluaciones": 90,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/toros-food-6caedd7f-5b05-4ff6-9943-1383d80263bd-menu"
+  },
+  {
+    "id": 135160,
+    "nombre": "Melt Pizzas - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas"
+    ],
+    "tags": [],
+    "rating": 4.68,
+    "numero_evaluaciones": 614,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/melt-pizzas---quilpue-menu"
+  },
+  {
+    "id": 456646,
+    "nombre": "La Turrunta",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas"
+    ],
+    "tags": [],
+    "rating": 4.5,
+    "numero_evaluaciones": 133,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/la-turrunta-525ba227-817f-4950-b247-22d020e467e2-menu"
+  },
+  {
+    "id": 484341,
+    "nombre": "Coccolino Pastelería Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Postres y Tortas"
+    ],
+    "tags": [],
+    "rating": 4.81,
+    "numero_evaluaciones": 80,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "5-20 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/coccolino-pasteleria-quilpue-3951dfd2-24b4-4812-8e6f-f1293af09974-menu"
+  },
+  {
+    "id": 190818,
+    "nombre": "Gorilas Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": 4.58,
+    "numero_evaluaciones": 300,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/gorilas-quilpue-menu"
+  },
+  {
+    "id": 133639,
+    "nombre": "Papa John's Pizza - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas"
+    ],
+    "tags": [],
+    "rating": 4.73,
+    "numero_evaluaciones": 179,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/papa-john-s-pizza--quilpue-menu"
+  },
+  {
+    "id": 196549,
+    "nombre": "Fajiroll's",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Mexicana",
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.38,
+    "numero_evaluaciones": 78,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/fajirolls-menu"
+  },
+  {
+    "id": 526447,
+    "nombre": "Empanadas El Escandalo",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Empanadas"
+    ],
+    "tags": [],
+    "rating": 4.68,
+    "numero_evaluaciones": 19,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/empanadas-el-escandalo-8715c632-e34a-450c-9a91-ddbff12d14e3-menu"
+  },
+  {
+    "id": 113389,
+    "nombre": "La Estación Limeña",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Peruana"
+    ],
+    "tags": [],
+    "rating": 4.71,
+    "numero_evaluaciones": 49,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/la-estacion-limena-b96c1e85-cb4c-4c18-9627-2d28d38d2625-menu"
+  },
+  {
+    "id": 472314,
+    "nombre": "Valfun Sushi Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.16,
+    "numero_evaluaciones": 31,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/valfun-sushi-quilpue-62ee7e60-37c1-4601-8a29-a1e480a2829e-menu"
+  },
+  {
+    "id": 536871,
+    "nombre": "Pan Ceres",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Cafetería",
+      "Panadería"
+    ],
+    "tags": [],
+    "rating": 4.92,
+    "numero_evaluaciones": 13,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/pan-ceres-0caf7629-24fb-46dd-8a46-a10751b8e82b-menu"
+  },
+  {
+    "id": 138470,
+    "nombre": "Las Mil Y Una Empanadas",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Empanadas"
+    ],
+    "tags": [],
+    "rating": 4.62,
+    "numero_evaluaciones": 58,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/las-mil-y-una-empanadas-631adb23-2f55-4c88-b80e-5a89fc87fe2a-menu"
+  },
+  {
+    "id": 324981,
+    "nombre": "Burger King® - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas",
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 4.27,
+    "numero_evaluaciones": 290,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/burger-king-quilpue-menu"
+  },
+  {
+    "id": 178708,
+    "nombre": "Panadería Elimar",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Panadería"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/panaderia-elimar-menu"
+  },
+  {
+    "id": 119615,
+    "nombre": "Pizza Pasta Mall Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas"
+    ],
+    "tags": [],
+    "rating": 3.91,
+    "numero_evaluaciones": 11,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/pizza-pasta-mall-quilpue-menu"
+  },
+  {
+    "id": 232466,
+    "nombre": "Pollo Campo Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pollo Asado",
+      "Pollo Frito"
+    ],
+    "tags": [],
+    "rating": 4.0,
+    "numero_evaluaciones": 9,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/pollo-campo-quilpue-menu"
+  },
+  {
+    "id": 432859,
+    "nombre": "Coffee Day´s",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Cafetería"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/coffee-days-98fa091b-859a-45ec-a701-c456df0621dd-menu"
+  },
+  {
+    "id": 499911,
+    "nombre": "Dim’s Cafe - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Licuados y Jugos"
+    ],
+    "tags": [],
+    "rating": 4.69,
+    "numero_evaluaciones": 16,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/dims-cafe--quilpue-09d776a6-bcff-4017-bd87-f0caf79140e7-menu"
+  },
+  {
+    "id": 474218,
+    "nombre": "Sibaritas 184",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Casera"
+    ],
+    "tags": [],
+    "rating": 3.88,
+    "numero_evaluaciones": 8,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sibaritas-d4bc030e-f8c7-4ab8-ab4e-9f83374bcf4d-menu"
+  },
+  {
+    "id": 66106,
+    "nombre": "Mandala Quilpué Shawarmas",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Árabe"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/mandala-quilpue-shawarmas-fe9a38de-6b58-46b7-b07d-beef0b71c670-menu"
+  },
+  {
+    "id": 373498,
+    "nombre": "Empanadas Y Colaciones Sabrosas",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Casera"
+    ],
+    "tags": [],
+    "rating": 5.0,
+    "numero_evaluaciones": 5,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/empanadas-y-colaciones-sabrosas-6e5eaa82-c58e-41a7-a39f-2433c5f3a3c4-menu"
+  },
+  {
+    "id": 538143,
+    "nombre": "Delicias Fusión Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Ensaladas"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/delicias-fusion-quilpue-305cbe1c-ed92-4495-a425-1445f7c45c02-menu"
+  },
+  {
+    "id": 533101,
+    "nombre": "Rhino Bite",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Completos",
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/rhino-bite-ef0b5c39-a5f0-4eaf-b344-6e68ff4e4866-menu"
+  },
+  {
+    "id": 202635,
+    "nombre": "Casino De Bomberos La Primera",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Casera",
+      "Pollo Asado"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/casino-de-bomberos-la-primera-menu"
+  },
+  {
+    "id": 154521,
+    "nombre": "Cositas Ricas Café Y Sandwichería",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.43,
+    "numero_evaluaciones": 14,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/cositas-ricas-cafe-y-sandwicheria-4b2a13e5-2068-4dd5-ba81-c5258b42814b-menu"
+  },
+  {
+    "id": 500265,
+    "nombre": "Encanto De Mi Tierra",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pescados y Mariscos"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/encanto-de-mi-tierra-a19f3de3-375a-4791-b6ff-98c836e36c1f-menu"
+  },
+  {
+    "id": 528535,
+    "nombre": "Sol De Mar",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Casera",
+      "Pescados y Mariscos"
+    ],
+    "tags": [],
+    "rating": 4.63,
+    "numero_evaluaciones": 8,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sol-de-mar-1ad92cb3-dd7d-4354-ab6a-08d6055e1387-menu"
+  },
+  {
+    "id": 550264,
+    "nombre": "Del Perito, Coffee  Brunch 181",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Cafetería"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/del-perito-coffee-brunch-b91900b5-10fa-4b1c-a4d6-3b864c9154c6-menu"
+  },
+  {
+    "id": 366299,
+    "nombre": "Papal Bajon Delivery",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas",
+      "Picadas"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/papal-bajon-delivery-f30af99b-5b8a-4839-b7ab-21b4e9fbbef3-menu"
+  },
+  {
+    "id": 466126,
+    "nombre": "Sashimi 747",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sashimi-36dde1a9-df4c-4e6f-bf78-a68298a5507b-menu"
+  },
+  {
+    "id": 361431,
+    "nombre": "Starbucks Mall Paseo Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Cafetería"
+    ],
+    "tags": [],
+    "rating": 4.16,
+    "numero_evaluaciones": 63,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/starbucks-mall-paseo-quilpue-b3ea4291-dd87-4622-8792-e0cdf85088dd-menu"
+  },
+  {
+    "id": 545708,
+    "nombre": "Mediterráneo Café Kebap",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Árabe"
+    ],
+    "tags": [],
+    "rating": 4.38,
+    "numero_evaluaciones": 8,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/mediterraneo-cafe-kebap-ca1b9c6b-01b3-42ff-bb09-a2e1b9aa46c3-menu"
+  },
+  {
+    "id": 243166,
+    "nombre": "Rhino Bite Burger",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.4,
+    "numero_evaluaciones": 40,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/rhino-bite-burger-ace501a6-4c56-4a5a-9849-bc986311497e-menu"
+  },
+  {
+    "id": 29754,
+    "nombre": "Il Capo Di Tutti",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas",
+      "Pastas"
+    ],
+    "tags": [],
+    "rating": 4.55,
+    "numero_evaluaciones": 11,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/il-capo-di-tutti-c92ce7c9-8036-4566-8cc4-491cbbe7a4d5-menu"
+  },
+  {
+    "id": 451273,
+    "nombre": "Mako Sushi Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.49,
+    "numero_evaluaciones": 47,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/mako-sushi-quilpue-4367b61b-ca81-4f5e-8118-c9236c0ba294-menu"
+  },
+  {
+    "id": 157814,
+    "nombre": "Sazón 1",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 3.8,
+    "numero_evaluaciones": 61,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sazon-1-160b731f-e284-4dec-9814-dc03d65b58d8-menu"
+  },
+  {
+    "id": 484847,
+    "nombre": "Pequeña Venezia Panadería Y Pastelería",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Postres y Tortas",
+      "Empanadas"
+    ],
+    "tags": [],
+    "rating": 4.96,
+    "numero_evaluaciones": 25,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/pequena-venezia-panaderia-y-pasteleria-3f2d68e5-1736-4aac-bd03-d13283f73e4b-menu"
+  },
+  {
+    "id": 392514,
+    "nombre": "Enchurrado - Churrería Artesanal",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Postres y Tortas",
+      "Helados"
+    ],
+    "tags": [],
+    "rating": 4.29,
+    "numero_evaluaciones": 48,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/enchurrado-churreria-artesanal-185626cb-6d62-4ec0-b08e-dfc550edc6ba-menu"
+  },
+  {
+    "id": 161875,
+    "nombre": "Panaderia Montalva",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Panadería"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "5-20 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/panaderia-montalva-menu"
+  },
+  {
+    "id": 181303,
+    "nombre": "Ali Kebab Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida Árabe"
+    ],
+    "tags": [],
+    "rating": 3.93,
+    "numero_evaluaciones": 15,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "45-75 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/ali-kebab-quilpue-menu"
+  },
+  {
+    "id": 57508,
+    "nombre": "Delicia Divina Sushi Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 3.6,
+    "numero_evaluaciones": 5,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "45-75 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/delicia-divina-sushi-quilpue-menu"
+  },
+  {
+    "id": 193488,
+    "nombre": "Domino's Pizza - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas"
+    ],
+    "tags": [],
+    "rating": 3.67,
+    "numero_evaluaciones": 49,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "50-80 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Red Compra",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/dominos-pizza-quilpue-menu"
+  },
+  {
+    "id": 542400,
+    "nombre": "Sushiwarma Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi",
+      "Comida Árabe"
+    ],
+    "tags": [],
+    "rating": 4.65,
+    "numero_evaluaciones": 31,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sushiwarma-quilpue-b5ab67c5-4ee2-4aa3-bcf0-f19a68a27759-menu"
+  },
+  {
+    "id": 507736,
+    "nombre": "Roasty",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pollo Asado"
+    ],
+    "tags": [],
+    "rating": 4.87,
+    "numero_evaluaciones": 15,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/roasty-6535543a-b39e-42c8-92cb-b20ea6107875-menu"
+  },
+  {
+    "id": 328797,
+    "nombre": "Panadería Brasil",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Panadería"
+    ],
+    "tags": [],
+    "rating": 4.6,
+    "numero_evaluaciones": 52,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/panaderia-brasil-menu"
+  },
+  {
+    "id": 340395,
+    "nombre": "La Picá Del Canalla",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Completos",
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 4.4,
+    "numero_evaluaciones": 35,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/la-pica-del-canalla-menu"
+  },
+  {
+    "id": 491918,
+    "nombre": "Da Salvatore",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pastas",
+      "Pizzas"
+    ],
+    "tags": [],
+    "rating": 4.42,
+    "numero_evaluaciones": 45,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/da-salvatore-dfe4c8fd-0a75-4463-a968-795ee5f464d4-menu"
+  },
+  {
+    "id": 514118,
+    "nombre": "Patio 511 - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.19,
+    "numero_evaluaciones": 16,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/patio-511--quilpue-fd64b72c-719d-454b-866b-2cf3599a3a3d-menu"
+  },
+  {
+    "id": 329557,
+    "nombre": "Buenaventura Los Pinos",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas",
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": 4.38,
+    "numero_evaluaciones": 13,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/buenaventura-los-pinos-menu"
+  },
+  {
+    "id": 427142,
+    "nombre": "Papa Pollo - Quilpué",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pollo Asado"
+    ],
+    "tags": [],
+    "rating": 4.44,
+    "numero_evaluaciones": 16,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/papa-pollo-quilpue-d4706729-4e32-4a3f-8cd2-04a3f8ce5c86-menu"
+  },
+  {
+    "id": 105938,
+    "nombre": "Pedro, Juan Y Diego El Belloto",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": 4.39,
+    "numero_evaluaciones": 250,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/pedro-juan-y-diego-el-belloto-4af2d571-a6a0-44a9-ba5c-1dbe83854244-menu"
+  },
+  {
+    "id": 472319,
+    "nombre": "Grido Los Pinos",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Helados"
+    ],
+    "tags": [],
+    "rating": 4.88,
+    "numero_evaluaciones": 43,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "10-25 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/grido-los-pinos-15dbcf66-7437-4bab-8894-e514284c498a-menu"
+  },
+  {
+    "id": 144315,
+    "nombre": "Master Wok",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida China",
+      "Comida Asiática"
+    ],
+    "tags": [],
+    "rating": 4.13,
+    "numero_evaluaciones": 16,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "35-55 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/master-wok-menu"
+  },
+  {
+    "id": 250992,
+    "nombre": "Panipollo",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pollo Asado"
+    ],
+    "tags": [],
+    "rating": 4.62,
+    "numero_evaluaciones": 53,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/panipollo-da1d0366-7fca-4611-b7e6-34ff74cbf10c-menu"
+  },
+  {
+    "id": 290354,
+    "nombre": "Sandwicheria Churraskon",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.35,
+    "numero_evaluaciones": 124,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "30-45 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sandwicheria-churraskon-menu"
+  },
+  {
+    "id": 532002,
+    "nombre": "Burger  Sandwich Tk - Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas",
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/burger-sandwich-tk-quilpue-e90b2129-acb8-4b53-a9d1-75ef59930e9d-menu"
+  },
+  {
+    "id": 220260,
+    "nombre": "Mokavad Pizzas",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Pizzas",
+      "Sándwiches"
+    ],
+    "tags": [],
+    "rating": null,
+    "numero_evaluaciones": null,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/mokavad-pizzas-menu"
+  },
+  {
+    "id": 178520,
+    "nombre": "Yogen Fruz - Belloto",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Helados"
+    ],
+    "tags": [],
+    "rating": 4.2,
+    "numero_evaluaciones": 5,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/yogen-fruz---belloto-menu"
+  },
+  {
+    "id": 524731,
+    "nombre": "City Burger.",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Hamburguesas"
+    ],
+    "tags": [],
+    "rating": 4.91,
+    "numero_evaluaciones": 22,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/city-burger-206f6916-3e79-4e03-bc45-eaaaf5b103ac-menu"
+  },
+  {
+    "id": 534821,
+    "nombre": "Starbucks Belloto",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Cafetería"
+    ],
+    "tags": [],
+    "rating": 4.44,
+    "numero_evaluaciones": 16,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "25-40 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/starbucks-belloto-5813cc70-f7cc-40c6-8771-3c24990b2c49-menu"
+  },
+  {
+    "id": 138628,
+    "nombre": "Donde Cielo Gourmet",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Empanadas"
+    ],
+    "tags": [],
+    "rating": 3.42,
+    "numero_evaluaciones": 12,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/donde-cielo-gourmet-menu"
+  },
+  {
+    "id": 130207,
+    "nombre": "Sandwichería Mis Delicias",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.13,
+    "numero_evaluaciones": 70,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sandwicheria-mis-delicias-menu"
+  },
+  {
+    "id": 540459,
+    "nombre": "Restaurant Sol - Comida China",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Comida China"
+    ],
+    "tags": [],
+    "rating": 4.33,
+    "numero_evaluaciones": 15,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/restaurant-sol--comida-china-4972e0fe-3534-4cc2-b6a1-f5ef5354cb69-menu"
+  },
+  {
+    "id": 107293,
+    "nombre": "Poh Che- Villa Alemana",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Empanadas",
+      "Pollo Asado"
+    ],
+    "tags": [],
+    "rating": 4.55,
+    "numero_evaluaciones": 29,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/villa-alemana/poh-che--villa-alemana-menu"
+  },
+  {
+    "id": 316805,
+    "nombre": "Sushitsu Delivery P32",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sushi"
+    ],
+    "tags": [],
+    "rating": 4.62,
+    "numero_evaluaciones": 66,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "20-35 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sushitsu-delivery-p32-a9e27f1f-e0eb-41b5-a1c4-3bbd0f689c0a-menu"
+  },
+  {
+    "id": 529432,
+    "nombre": "Cevasco Quilpue",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.32,
+    "numero_evaluaciones": 399,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/cevasco-quilpue-d9ba99ec-1f79-4534-b188-c2cc102bc357-menu"
+  },
+  {
+    "id": 110939,
+    "nombre": "Sandwichería Manavai",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 4.58,
+    "numero_evaluaciones": 647,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Efectivo",
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/sandwicheria-manavai-menu"
+  },
+  {
+    "id": 120983,
+    "nombre": "La Gran Mechada",
+    "descripcion": "",
+    "categorias": [],
+    "categorias_principales": [
+      "Sándwiches",
+      "Completos"
+    ],
+    "tags": [],
+    "rating": 3.69,
+    "numero_evaluaciones": 55,
+    "tiempo_envio_minutos": null,
+    "tiempo_entrega_estimado": "15-30 min",
+    "metodos_pago": [
+      "Spreedly CL",
+      "MachPay CL"
+    ],
+    "delivery": true,
+    "ciudad": "quilpue",
+    "fuente": "pedidosya",
+    "tipoDetectado": "",
+    "url_pedidosya": "https://www.pedidosya.cl/restaurantes/quilpue/la-gran-mechada-menu"
+  }
+]
