@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
-import negociosSimulados from "./data/pedidosya_datos_quilpue.json";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { detectarTipoBusqueda, filtrarPorTipo } from "./utils/motorBusqueda";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
+  const [negociosSimulados, setNegociosSimulados] = useState([]);
   const [resultados, setResultados] = useState([]);
   const [mostrarMapa, setMostrarMapa] = useState(false);
   const [ubicacionUsuario, setUbicacionUsuario] = useState(null);
   const [favoritos, setFavoritos] = useState([]);
   const [verFavoritos, setVerFavoritos] = useState(false);
   const [busquedaHecha, setBusquedaHecha] = useState(false);
+
+  useEffect(() => {
+    fetch("/data/pedidosya_datos_quilpue.json")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("📦 Datos cargados:", data);
+        setNegociosSimulados(data);
+      })
+      .catch((err) => console.error("Error cargando JSON:", err));
+  }, []);
 
   const obtenerUbicacion = () => {
     return new Promise((resolve, reject) => {
@@ -39,7 +49,6 @@ export default function Resultados() {
       setUbicacionUsuario(ubicacion);
       setMostrarMapa(true);
       setBusquedaHecha(true);
-      console.log("NEGOCIOS DISPONIBLES:", negociosSimulados);
       setResultados(negociosFiltrados);
     } catch (error) {
       console.error("Error al procesar la búsqueda:", error);
@@ -67,7 +76,6 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen px-4">
-      {/* UI omitida para foco en lógica */}
       {mostrarMapa && (
         <MapaConUsuarioYTiendas
           negocios={resultadosFiltrados}
