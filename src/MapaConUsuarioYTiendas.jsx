@@ -15,39 +15,31 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = ({
-  negocios = [],
-  ubicacionUsuario,
-  favoritos = [],
-  alternarFavorito = () => {},
-}) => {
+const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario, favoritos = [], alternarFavorito = () => {} }) => {
   useEffect(() => {
+    if (!ubicacionUsuario) return;
+
     const contenedor = document.getElementById("mapa");
     if (contenedor && contenedor._leaflet_id) {
-      contenedor._leaflet_id = null;  // Reiniciar el contenedor si ya fue usado
+      contenedor._leaflet_id = null;
     }
 
-    const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
+    const map = L.map("mapa").setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
 
-    if (ubicacionUsuario) {
-      const { lat, lng } = ubicacionUsuario;
-      L.marker([lat, lng], { icon: iconoUsuario }).addTo(map)
-        .bindPopup("Estás aquí").openPopup();
-      map.setView([lat, lng], 14);
-    }
+    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], { icon: iconoUsuario })
+      .addTo(map)
+      .bindPopup("Estás aquí").openPopup();
 
     negocios.forEach((negocio) => {
       if (negocio.latitud && negocio.longitud) {
         const popupContent =
           "<strong>" + negocio.nombre + "</strong><br/>" +
           (negocio.direccion || "Dirección no disponible") +
-          "<br/>" + (favoritos.includes(negocio.nombre)
-            ? "❤️ Favorito"
-            : "");
+          (favoritos.includes(negocio.nombre) ? "<br/>❤️ Favorito" : "");
 
         L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
           .addTo(map)
@@ -58,7 +50,7 @@ const MapaConUsuarioYTiendas = ({
     return () => {
       map.remove();
     };
-  }, [negocios, ubicacionUsuario]);
+  }, [negocios, ubicacionUsuario, favoritos]);
 
   return (
     <div id="mapa" className="w-full h-[500px] rounded-xl shadow my-4" />
