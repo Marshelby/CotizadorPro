@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -40,7 +41,7 @@ const MapaConUsuarioYTiendas = ({ negocios, ubicacionUsuario }) => {
         }).addTo(map);
 
         marker.bindPopup(
-          \`<strong>\${negocio.nombre}</strong><br/>\${negocio.direccion || "Sin dirección"}\`
+          `<strong>${negocio.nombre}</strong><br/>${negocio.direccion || "Sin dirección"}`
         );
       }
     });
