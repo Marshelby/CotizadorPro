@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import negocios from "./data/locales_google.json";
 
 const iconoUsuario = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
@@ -16,41 +15,48 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = () => {
+const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario, favoritos = [], alternarFavorito = () => {} }) => {
   useEffect(() => {
-    const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
+    if (!ubicacionUsuario || negocios.length === 0) return;
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(map);
+    const timeout = setTimeout(() => {
+      const contenedor = document.getElementById("mapa");
+      if (!contenedor) return;
+      if (contenedor._leaflet_id) contenedor._leaflet_id = null;
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
+      const map = L.map("mapa").setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
 
-        L.marker([lat, lng], { icon: iconoUsuario }).addTo(map)
-          .bindPopup("Estás aquí").openPopup();
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; OpenStreetMap contributors',
+      }).addTo(map);
 
-        map.setView([lat, lng], 14);
+      L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], { icon: iconoUsuario })
+        .addTo(map)
+        .bindPopup("Estás aquí").openPopup();
+
+      negocios.forEach((negocio) => {
+        if (negocio.latitud && negocio.longitud) {
+          const popupContent = `<strong>${negocio.nombre}</strong><br/>${negocio.direccion || "Dirección no disponible"}<br/>
+          <a href="https://www.google.com/maps?q=${negocio.latitud},${negocio.longitud}" target="_blank">Ver en Google Maps</a>`;
+
+          L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+            .addTo(map)
+            .bindPopup(popupContent);
+        }
       });
-    }
 
-    negocios.forEach((negocio) => {
-      if (negocio.latitud && negocio.longitud) {
-        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
-          .addTo(map)
-          .bindPopup(\`<strong>\${negocio.nombre}</strong><br/>\${negocio.direccion || "Dirección no disponible"}\`);
-      }
-    });
+      return () => map.remove();
+    }, 100);
 
-    return () => {
-      map.remove();
-    };
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [negocios, ubicacionUsuario, favoritos]);
 
   return (
-    <div id="mapa" className="w-full h-[500px] rounded-xl shadow my-4" />
+    <div
+      id="mapa"
+      style={{ width: "50%", height: "500px", margin: "1rem auto" }}
+      className="rounded-xl shadow"
+    />
   );
 };
 
