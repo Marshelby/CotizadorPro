@@ -137,13 +137,13 @@ export default function Resultados() {
           <div className="flex justify-center gap-4 mt-4">
   <button
     onClick={() => setVerFavoritos(false)}
-    className="px-4 py-2 bg-blue-500 text-white rounded-full shadow hover:bg-blue-600 flex items-center gap-2"
+    className="px-4 py-2 bg-slate-500 text-white rounded-full shadow hover:bg-slate-600 flex items-center gap-2"
   >
     📋 Ver todos
   </button>
   <button
     onClick={() => setVerFavoritos(true)}
-    className="px-4 py-2 bg-red-500 text-white rounded-full shadow hover:bg-red-600 flex items-center gap-2"
+    className="px-4 py-2 bg-rose-400 text-white rounded-full shadow hover:bg-rose-500 flex items-center gap-2"
   >
     ❤️ Ver favoritos
   </button>
