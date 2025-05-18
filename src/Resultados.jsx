@@ -98,10 +98,10 @@ export default function Resultados() {
     <div className="min-h-screen px-4">
       <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl">
   <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1" />
-  <h1 className="text-3xl font-extrabold text-gray-800 font-[Rubik] mb-1">
+  <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
     Cotizador<span className="text-sky-500">Pro</span>
   </h1>
-  <p className="text-sm text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
+  <p className="text-xs text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
 </div>
 
       <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
@@ -114,7 +114,7 @@ export default function Resultados() {
         />
         <button
           onClick={manejarBusqueda}
-          className="px-5 py-2 bg-pink-500 text-white rounded-full shadow hover:bg-pink-600"
+          className="px-5 py-2 bg-sky-500 text-white rounded-full shadow hover:bg-sky-600"
         >
           Buscar
         </button>
