@@ -19,9 +19,23 @@ const NegocioModal = ({ negocio, favoritos, alternarFavorito, onClose }) => {
         />
         <h2 className="text-xl font-bold mb-2">{negocio.nombre}</h2>
         <p className="text-sm text-gray-600">📍 {negocio.direccion}</p>
-        <p className="text-sm text-gray-500">💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)</p>
+
+        {/* Mostrar distancia si existe */}
+        {negocio.distancia_km && (
+          <p className="text-sm text-gray-500">🧭 A {negocio.distancia_km} km de ti</p>
+        )}
+
+        <p className="text-sm text-gray-500">
+          💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)
+        </p>
         <p className="text-sm text-gray-500">{negocio.rangoPrecio}</p>
         <p className="text-sm text-gray-500">{negocio.categoria}</p>
+
+        {/* Mostrar teléfono si existe */}
+        {negocio.telefono && (
+          <p className="text-sm text-gray-500">📞 {negocio.telefono}</p>
+        )}
+
         <a
           href={negocio.url}
           target="_blank"
@@ -30,6 +44,7 @@ const NegocioModal = ({ negocio, favoritos, alternarFavorito, onClose }) => {
         >
           Ver en Google Maps
         </a>
+
         <button
           onClick={() => alternarFavorito(negocio.nombre)}
           className={`mt-2 text-sm px-3 py-1 rounded-full ${
