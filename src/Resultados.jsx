@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
-import { detectarTipoBusqueda, filtrarPorTipo } from "./utils/motorBusqueda";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
