@@ -28,7 +28,8 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
         },
         (err) => {
           console.error("Ubicación denegada o error:", err);
-        }
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
     }
   }, [ubicacionUsuario]);
@@ -75,7 +76,7 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
   return (
     <div
       id="mapa-tiendas"
-      className="mx-auto my-4 w-1/2 rounded-xl border border-gray-300 shadow-md"
+      className="mx-auto my-4 w-full max-w-4xl rounded-xl border border-gray-300 shadow-md"
       style={{ height: "400px", minHeight: "400px" }}
     ></div>
   );
