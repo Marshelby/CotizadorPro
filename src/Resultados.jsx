@@ -23,7 +23,6 @@ export default function Resultados() {
         const locales = await resLocales.json();
         const coordenadas = await resCoords.json();
 
-        // Vincular coordenadas por nombre exacto
         const fusionados = locales.map((local) => {
           const match = coordenadas.find(c => c.nombre === local.nombre);
           if (match) {
@@ -120,12 +119,6 @@ export default function Resultados() {
           Buscar
         </button>
         <button
-          onClick={() => setVerFavoritos((prev) => !prev)}
-          className="px-4 py-2 border rounded-full shadow"
-        >
-          {verFavoritos ? "Ver todos" : "Ver favoritos"}
-        </button>
-        <button
           onClick={() => setMostrarMapa((prev) => !prev)}
           className="px-4 py-2 border rounded-full shadow"
         >
@@ -134,15 +127,31 @@ export default function Resultados() {
       </div>
 
       {resultadosFiltrados.length > 0 && mostrarMapa && (
-        <MapaConUsuarioYTiendas
-          negocios={resultadosFiltrados}
-          favoritos={favoritos}
-          ubicacionUsuario={ubicacionUsuario}
-          alternarFavorito={alternarFavorito}
-        />
+        <>
+          <MapaConUsuarioYTiendas
+            negocios={resultadosFiltrados}
+            favoritos={favoritos}
+            ubicacionUsuario={ubicacionUsuario}
+            alternarFavorito={alternarFavorito}
+          />
+          <div className="flex justify-center gap-4 mt-4">
+            <button
+              onClick={() => setVerFavoritos(false)}
+              className="px-4 py-2 bg-gray-200 rounded-full shadow hover:bg-gray-300"
+            >
+              Ver todos
+            </button>
+            <button
+              onClick={() => setVerFavoritos(true)}
+              className="px-4 py-2 bg-red-100 text-red-600 rounded-full shadow hover:bg-red-200"
+            >
+              Ver favoritos
+            </button>
+          </div>
+        </>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-6">
         {resultadosFiltrados.map((negocio, index) => (
           <div
             key={index}
