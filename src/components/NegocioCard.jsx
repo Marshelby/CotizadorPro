@@ -14,10 +14,25 @@ const NegocioCard = ({ negocio, favoritos, alternarFavorito, onClick }) => {
         />
       )}
       <h3 className="font-semibold text-lg">{negocio.nombre}</h3>
+
       <p className="text-sm text-gray-600">📍 {negocio.direccion || "Dirección no disponible"}</p>
-      <p className="text-sm text-gray-500">💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)</p>
+
+      {/* Mostrar distancia si existe */}
+      {negocio.distancia_km && (
+        <p className="text-sm text-gray-500">🧭 A {negocio.distancia_km} km de ti</p>
+      )}
+
+      <p className="text-sm text-gray-500">
+        💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)
+      </p>
       <p className="text-sm text-gray-500">{negocio.rangoPrecio}</p>
       <p className="text-sm text-gray-500">{negocio.categoria}</p>
+
+      {/* Mostrar teléfono si existe */}
+      {negocio.telefono && (
+        <p className="text-sm text-gray-500">📞 {negocio.telefono}</p>
+      )}
+
       <a
         href={negocio.url}
         target="_blank"
@@ -26,6 +41,7 @@ const NegocioCard = ({ negocio, favoritos, alternarFavorito, onClick }) => {
       >
         Ver en Google Maps
       </a>
+
       <button
         onClick={(e) => {
           e.stopPropagation();
