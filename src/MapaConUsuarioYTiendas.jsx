@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -15,12 +14,30 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = ({ negocios, ubicacionUsuario }) => {
+const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
+  const [ubicacionInterna, setUbicacionInterna] = useState(null);
+
   useEffect(() => {
-    if (!ubicacionUsuario || negocios.length === 0) return;
+    if (!ubicacionUsuario && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) =>
+          setUbicacionInterna({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          }),
+        (err) => {
+          console.error("Ubicación denegada o error:", err);
+        }
+      );
+    }
+  }, [ubicacionUsuario]);
+
+  useEffect(() => {
+    const ubicacionFinal = ubicacionUsuario || ubicacionInterna;
+    if (!ubicacionFinal || negocios.length === 0) return;
 
     const map = L.map("mapa-tiendas").setView(
-      [ubicacionUsuario.lat, ubicacionUsuario.lng],
+      [ubicacionFinal.lat, ubicacionFinal.lng],
       14
     );
 
@@ -28,7 +45,7 @@ const MapaConUsuarioYTiendas = ({ negocios, ubicacionUsuario }) => {
       attribution: "© OpenStreetMap contributors",
     }).addTo(map);
 
-    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], {
+    L.marker([ubicacionFinal.lat, ubicacionFinal.lng], {
       icon: iconoUsuario,
     })
       .addTo(map)
@@ -36,28 +53,28 @@ const MapaConUsuarioYTiendas = ({ negocios, ubicacionUsuario }) => {
 
     negocios.forEach((negocio) => {
       if (negocio.latitud && negocio.longitud) {
-        const marker = L.marker([negocio.latitud, negocio.longitud], {
-          icon: iconoNegocio,
-        }).addTo(map);
-
-        marker.bindPopup(
-          `<strong>${negocio.nombre}</strong><br/>${negocio.direccion || "Sin dirección"}`
-        );
+        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+          .addTo(map)
+          .bindPopup(
+            `<strong>${negocio.nombre}</strong><br/>${
+              negocio.direccion || "Sin dirección"
+            }`
+          );
       }
     });
 
     return () => {
       map.remove();
     };
-  }, [negocios, ubicacionUsuario]);
+  }, [negocios, ubicacionUsuario, ubicacionInterna]);
 
   return (
     <div
       id="mapa-tiendas"
       style={{
         height: "400px",
-        width: "100%",
-        marginTop: "1rem",
+        width: "50%",
+        margin: "1rem auto",
         borderRadius: "1rem",
         overflow: "hidden",
       }}
