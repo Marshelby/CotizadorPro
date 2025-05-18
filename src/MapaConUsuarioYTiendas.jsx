@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -16,16 +16,16 @@ const iconoNegocio = new L.Icon({
 
 const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
   const [ubicacionInterna, setUbicacionInterna] = useState(null);
-  const mapaRef = useRef(null);
 
   useEffect(() => {
     if (!ubicacionUsuario && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (pos) =>
+        (pos) => {
           setUbicacionInterna({
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
-          }),
+          });
+        },
         (err) => {
           console.error("Ubicación denegada o error:", err);
         }
@@ -39,18 +39,18 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
 
     const map = L.map("mapa-tiendas").setView(
       [ubicacionFinal.lat, ubicacionFinal.lng],
-      14
+      15
     );
-    mapaRef.current = map;
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors",
     }).addTo(map);
 
-    const marcadorUsuario = L.marker([ubicacionFinal.lat, ubicacionFinal.lng], {
+    L.marker([ubicacionFinal.lat, ubicacionFinal.lng], {
       icon: iconoUsuario,
-    }).addTo(map);
-    marcadorUsuario.bindPopup("Estás aquí");
+    })
+      .addTo(map)
+      .bindPopup("Estás aquí");
 
     negocios.forEach((negocio) => {
       if (negocio.latitud && negocio.longitud) {
@@ -69,22 +69,10 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
     };
   }, [negocios, ubicacionUsuario, ubicacionInterna]);
 
-  useEffect(() => {
-    if (mapaRef.current && ubicacionUsuario) {
-      mapaRef.current.flyTo([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
-    }
-  }, [ubicacionUsuario]);
-
   return (
     <div
       id="mapa-tiendas"
-      style={{
-        height: "400px",
-        width: "50%",
-        margin: "1rem auto",
-        borderRadius: "1rem",
-        overflow: "hidden",
-      }}
+      className="h-[400px] w-1/2 mx-auto my-4 rounded-xl border border-gray-300 shadow-md"
     ></div>
   );
 };
