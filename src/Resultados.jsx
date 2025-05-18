@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -16,10 +15,7 @@ export default function Resultados() {
   useEffect(() => {
     fetch("/data/locales_google.json")
       .then((res) => res.json())
-      .then((data) => {
-        console.log("📦 Datos cargados:", data);
-        setNegocios(data);
-      })
+      .then((data) => setNegocios(data))
       .catch((err) => console.error("Error cargando JSON:", err));
   }, []);
 
@@ -102,26 +98,36 @@ export default function Resultados() {
           Buscar
         </button>
         <button
-          onClick={() => setVerFavoritos((prev) => !prev)}
-          className="px-4 py-2 border rounded-full shadow"
-        >
-          {verFavoritos ? "Ver todos" : "Ver favoritos"}
-        </button>
-        <button
           onClick={() => setMostrarMapa((prev) => !prev)}
-          className="px-4 py-2 border rounded-full shadow"
+          className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full shadow hover:bg-blue-200"
         >
           {mostrarMapa ? "Ocultar mapa" : "Mostrar mapa"}
         </button>
       </div>
 
       {resultadosFiltrados.length > 0 && mostrarMapa && (
-        <MapaConUsuarioYTiendas
-          negocios={resultadosFiltrados}
-          favoritos={favoritos}
-          ubicacionUsuario={ubicacionUsuario}
-          alternarFavorito={alternarFavorito}
-        />
+        <>
+          <MapaConUsuarioYTiendas
+            negocios={resultadosFiltrados}
+            favoritos={favoritos}
+            ubicacionUsuario={ubicacionUsuario}
+            alternarFavorito={alternarFavorito}
+          />
+          <div className="flex justify-center gap-4 mt-2">
+            <button
+              onClick={() => setVerFavoritos(false)}
+              className="px-4 py-2 bg-gray-200 rounded-full shadow hover:bg-gray-300"
+            >
+              Ver todos
+            </button>
+            <button
+              onClick={() => setVerFavoritos(true)}
+              className="px-4 py-2 bg-red-100 text-red-600 rounded-full shadow hover:bg-red-200"
+            >
+              Ver favoritos
+            </button>
+          </div>
+        </>
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
