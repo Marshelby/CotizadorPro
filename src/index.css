@@ -23,3 +23,18 @@ body {
 .animate-fade-in {
   animation: fade-in 0.6s ease-out both;
 }
+
+input:focus,
+input:hover {
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3); /* sky-400 */
+  transition: box-shadow 0.3s ease;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
