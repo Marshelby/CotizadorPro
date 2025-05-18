@@ -11,6 +11,7 @@ export default function Resultados() {
   const [favoritos, setFavoritos] = useState([]);
   const [verFavoritos, setVerFavoritos] = useState(false);
   const [busquedaHecha, setBusquedaHecha] = useState(false);
+  const [negocioSeleccionado, setNegocioSeleccionado] = useState(null);
 
   useEffect(() => {
     const cargarDatos = async () => {
@@ -19,16 +20,12 @@ export default function Resultados() {
           fetch("/data/locales_google.json"),
           fetch("/data/coordenadas_por_url.json"),
         ]);
-
         const locales = await resLocales.json();
         const coordenadas = await resCoords.json();
 
         const fusionados = locales.map((local) => {
-          const match = coordenadas.find(c => c.nombre === local.nombre);
-          if (match) {
-            return { ...local, latitud: match.lat, longitud: match.lng };
-          }
-          return local;
+          const match = coordenadas.find((c) => c.nombre === local.nombre);
+          return match ? { ...local, latitud: match.lat, longitud: match.lng } : local;
         });
 
         setNegocios(fusionados);
@@ -36,7 +33,6 @@ export default function Resultados() {
         console.error("❌ Error al cargar datos:", err);
       }
     };
-
     cargarDatos();
   }, []);
 
@@ -44,10 +40,7 @@ export default function Resultados() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          resolve({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
+          resolve({ lat: position.coords.latitude, lng: position.coords.longitude });
         },
         (error) => {
           console.error("Error obteniendo ubicación:", error);
@@ -61,15 +54,12 @@ export default function Resultados() {
     if (!busqueda.trim()) return;
     try {
       const categorias = clasificarBusqueda(busqueda);
-      const negociosFiltrados = negocios.filter((n) =>
-        categorias.includes(n.categoria)
-      );
-
+      const filtrados = negocios.filter((n) => categorias.includes(n.categoria));
       const ubicacion = await obtenerUbicacion();
       setUbicacionUsuario(ubicacion);
+      setResultados(filtrados);
       setMostrarMapa(true);
       setBusquedaHecha(true);
-      setResultados(negociosFiltrados);
     } catch (error) {
       console.error("Error al procesar la búsqueda:", error);
       setResultados([]);
@@ -83,7 +73,7 @@ export default function Resultados() {
   };
 
   const resultadosFiltrados = verFavoritos
-    ? resultados.filter((neg) => favoritos.includes(neg.nombre))
+    ? resultados.filter((n) => favoritos.includes(n.nombre))
     : resultados;
 
   useEffect(() => {
@@ -97,20 +87,20 @@ export default function Resultados() {
   return (
     <div className="min-h-screen px-4">
       <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl animate-fade-up">
-  <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1 animate-fade-in" />
-  <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
-    Cotizador<span className="text-sky-500">Pro</span>
-  </h1>
-  <p className="text-xs text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
-</div>
+        <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1 animate-fade-in" />
+        <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
+          Cotizador<span className="text-sky-500">Pro</span>
+        </h1>
+        <p className="text-xs text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
+      </div>
 
-      
-<hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
-<div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
+      <hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
+
+      <div className="max-w-4xl mx-auto mb-2 flex items-center justify-between gap-4">
         <input
           type="text"
           placeholder="Ej: quiero pan, sushi, completos..."
-          className="w-full p-3 rounded-full border border-gray-300 shadow-md shadow"
+          className="w-full p-3 rounded-2xl border border-gray-300 shadow-md hover:shadow-lg transition duration-300"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
         />
@@ -128,6 +118,10 @@ export default function Resultados() {
         </button>
       </div>
 
+      <p className="text-xs text-gray-400 text-center mt-1">
+        Puedes buscar por productos, locales o categorías.
+      </p>
+
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <>
           <MapaConUsuarioYTiendas
@@ -137,19 +131,19 @@ export default function Resultados() {
             alternarFavorito={alternarFavorito}
           />
           <div className="flex justify-center gap-4 mt-4">
-  <button
-    onClick={() => setVerFavoritos(false)}
-    className="px-4 py-2 bg-slate-500 text-white rounded-full shadow hover:bg-slate-600 flex items-center gap-2"
-  >
-    📋 Ver todos
-  </button>
-  <button
-    onClick={() => setVerFavoritos(true)}
-    className="px-4 py-2 bg-rose-400 text-white rounded-full shadow hover:bg-rose-500 flex items-center gap-2"
-  >
-    ❤️ Ver favoritos
-  </button>
-</div>
+            <button
+              onClick={() => setVerFavoritos(false)}
+              className="px-4 py-2 bg-slate-500 text-white rounded-full shadow hover:bg-slate-600 flex items-center gap-2"
+            >
+              📋 Ver todos
+            </button>
+            <button
+              onClick={() => setVerFavoritos(true)}
+              className="px-4 py-2 bg-rose-400 text-white rounded-full shadow hover:bg-rose-500 flex items-center gap-2"
+            >
+              ❤️ Ver favoritos
+            </button>
+          </div>
         </>
       )}
 
@@ -157,7 +151,8 @@ export default function Resultados() {
         {resultadosFiltrados.map((negocio, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow p-4 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            onClick={() => setNegocioSeleccionado(negocio)}
+            className="bg-white rounded-xl shadow p-4 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           >
             {negocio.imagen && (
               <img
@@ -167,13 +162,8 @@ export default function Resultados() {
               />
             )}
             <h3 className="font-semibold text-lg">{negocio.nombre}</h3>
-            <p className="text-sm text-gray-600">📍 
-              {negocio.direccion || "Dirección no disponible"}
-            </p>
-            <p className="text-sm text-gray-500">💰 
-              ⭐ {negocio.rating || "Sin calificación"} (
-              {negocio.reseñas || 0} reseñas)
-            </p>
+            <p className="text-sm text-gray-600">📍 {negocio.direccion || "Dirección no disponible"}</p>
+            <p className="text-sm text-gray-500">💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)</p>
             <p className="text-sm text-gray-500">{negocio.rangoPrecio}</p>
             <p className="text-sm text-gray-500">{negocio.categoria}</p>
             <a
@@ -185,7 +175,10 @@ export default function Resultados() {
               Ver en Google Maps
             </a>
             <button
-              onClick={() => alternarFavorito(negocio.nombre)}
+              onClick={(e) => {
+                e.stopPropagation();
+                alternarFavorito(negocio.nombre);
+              }}
               className={`mt-2 text-sm px-3 py-1 rounded-full ${
                 favoritos.includes(negocio.nombre)
                   ? "bg-red-100 text-red-500"
@@ -199,6 +192,40 @@ export default function Resultados() {
           </div>
         ))}
       </div>
+
+      {negocioSeleccionado && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={() => setNegocioSeleccionado(null)}
+        >
+          <div
+            className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full animate-scale-fade"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img src={negocioSeleccionado.imagen} alt={negocioSeleccionado.nombre} className="w-full h-40 object-cover rounded-lg mb-4" />
+            <h2 className="text-xl font-bold mb-2">{negocioSeleccionado.nombre}</h2>
+            <p className="text-sm text-gray-600">📍 {negocioSeleccionado.direccion}</p>
+            <p className="text-sm text-gray-500">💰 ⭐ {negocioSeleccionado.rating || "Sin calificación"} ({negocioSeleccionado.reseñas || 0} reseñas)</p>
+            <p className="text-sm text-gray-500">{negocioSeleccionado.rangoPrecio}</p>
+            <p className="text-sm text-gray-500">{negocioSeleccionado.categoria}</p>
+            <a href={negocioSeleccionado.url} target="_blank" rel="noopener noreferrer" className="text-sky-600 text-sm inline-block mt-2 hover:underline">
+              Ver en Google Maps
+            </a>
+            <button
+              onClick={() => alternarFavorito(negocioSeleccionado.nombre)}
+              className={`mt-2 text-sm px-3 py-1 rounded-full ${
+                favoritos.includes(negocioSeleccionado.nombre)
+                  ? "bg-red-100 text-red-500"
+                  : "bg-rose-100 text-rose-500 hover:bg-rose-200"
+              }`}
+            >
+              {favoritos.includes(negocioSeleccionado.nombre)
+                ? "❤️ Favorito"
+                : "🤍 Agregar a favoritos"}
+            </button>
+          </div>
+        </div>
+      )}
 
       {busquedaHecha && resultadosFiltrados.length === 0 && (
         <div className="text-center text-gray-500 mt-10">
