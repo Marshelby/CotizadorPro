@@ -40,7 +40,7 @@ const MapaConUsuarioYTiendas = () => {
       if (negocio.latitud && negocio.longitud) {
         L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
           .addTo(map)
-          .bindPopup(\`<strong>\${negocio.nombre}</strong><br/>\${negocio.direccion || "Dirección no disponible"}\`);
+.bindPopup("<strong>" + negocio.nombre + "</strong><br/>" + (negocio.direccion || "Dirección no disponible"));
       }
     });
 
