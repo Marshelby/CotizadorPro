@@ -127,6 +127,9 @@ export default function Resultados() {
           {mostrarMapa ? "Ocultar mapa" : "Mostrar mapa"}
         </button>
       </div>
+<p className="text-xs text-gray-400 text-center mt-1">Puedes buscar por productos, locales o categorías.</p>
+
+</div>
 
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <>
