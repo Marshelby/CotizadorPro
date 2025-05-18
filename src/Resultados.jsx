@@ -104,7 +104,9 @@ export default function Resultados() {
   <p className="text-xs text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
 </div>
 
-      <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
+      
+<hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
+<div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
         <input
           type="text"
           placeholder="Ej: quiero pan, sushi, completos..."
