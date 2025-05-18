@@ -37,6 +37,9 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
     const ubicacionFinal = ubicacionUsuario || ubicacionInterna;
     if (!ubicacionFinal || negocios.length === 0) return;
 
+    const contenedor = document.getElementById("mapa-tiendas");
+    if (!contenedor) return;
+
     const map = L.map("mapa-tiendas").setView(
       [ubicacionFinal.lat, ubicacionFinal.lng],
       15
@@ -72,7 +75,8 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
   return (
     <div
       id="mapa-tiendas"
-      className="h-[400px] w-1/2 mx-auto my-4 rounded-xl border border-gray-300 shadow-md"
+      className="mx-auto my-4 w-1/2 rounded-xl border border-gray-300 shadow-md"
+      style={{ height: "400px", minHeight: "400px" }}
     ></div>
   );
 };
