@@ -96,7 +96,7 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen px-4">
-      <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl">
+      <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl animate-fade-up">
   <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1 animate-fade-in" />
   <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
     Cotizador<span className="text-sky-500">Pro</span>
