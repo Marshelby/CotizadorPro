@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -180,11 +179,9 @@ export default function Resultados() {
             </a>
             <button
               onClick={() => alternarFavorito(negocio.nombre)}
-              className={`mt-2 text-sm px-3 py-1 rounded-full ${
-                favoritos.includes(negocio.nombre)
-                  ? "bg-red-100 text-red-500"
-                  : "bg-gray-100 text-gray-600"
-              }`}
+              className={\`mt-2 text-sm px-3 py-1 rounded-full \${favoritos.includes(negocio.nombre)
+                ? "bg-red-100 text-red-500"
+                : "bg-gray-100 text-gray-600"}\`}
             >
               {favoritos.includes(negocio.nombre)
                 ? "❤️ Favorito"
@@ -222,11 +219,9 @@ export default function Resultados() {
             </a>
             <button
               onClick={() => alternarFavorito(negocioSeleccionado.nombre)}
-              className={`mt-2 text-sm px-3 py-1 rounded-full ${
-                favoritos.includes(negocioSeleccionado.nombre)
-                  ? "bg-red-100 text-red-500"
-                  : "bg-gray-100 text-gray-600"
-              }`}
+              className={\`mt-2 text-sm px-3 py-1 rounded-full \${favoritos.includes(negocioSeleccionado.nombre)
+                ? "bg-red-100 text-red-500"
+                : "bg-gray-100 text-gray-600"}\`}
             >
               {favoritos.includes(negocioSeleccionado.nombre)
                 ? "❤️ Favorito"
