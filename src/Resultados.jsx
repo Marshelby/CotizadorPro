@@ -98,7 +98,7 @@ export default function Resultados() {
     <div className="min-h-screen px-4">
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" alt="bot" className="w-8 h-8" />
+          <img src="/icons/bot.svg" alt="bot" className="w-6 h-6 mr-1" />
           <h1 className="text-3xl font-extrabold text-gray-800 font-[Rubik]">
   Cotizador<span className="text-sky-500">Pro</span>
 </h1>
