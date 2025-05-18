@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -11,6 +12,7 @@ export default function Resultados() {
   const [favoritos, setFavoritos] = useState([]);
   const [verFavoritos, setVerFavoritos] = useState(false);
   const [busquedaHecha, setBusquedaHecha] = useState(false);
+  const [negocioSeleccionado, setNegocioSeleccionado] = useState(null);
 
   useEffect(() => {
     fetch("/data/locales_google.json")
@@ -48,7 +50,7 @@ export default function Resultados() {
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
-      const ubicacion = await obtenerUbicacion(); // primero obtener ubicación
+      const ubicacion = await obtenerUbicacion();
       setUbicacionUsuario(ubicacion);
 
       const categorias = clasificarBusqueda(busqueda);
@@ -85,6 +87,7 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen px-4">
+      {/* Cabecera */}
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" alt="bot" className="w-8 h-8" />
@@ -93,6 +96,7 @@ export default function Resultados() {
         <p className="text-sm text-gray-500">Busca y compara negocios según tu necesidad</p>
       </div>
 
+      {/* Barra de búsqueda */}
       <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
         <input
           type="text"
@@ -115,6 +119,7 @@ export default function Resultados() {
         </button>
       </div>
 
+      {/* Mapa y botones */}
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <>
           <MapaConUsuarioYTiendas
@@ -122,6 +127,7 @@ export default function Resultados() {
             favoritos={favoritos}
             ubicacionUsuario={ubicacionUsuario}
             alternarFavorito={alternarFavorito}
+            onSeleccionarNegocio={setNegocioSeleccionado}
           />
           <div className="flex justify-center gap-4 mt-2">
             <button
@@ -140,6 +146,7 @@ export default function Resultados() {
         </>
       )}
 
+      {/* Tarjetas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
         {resultadosFiltrados.map((negocio, index) => (
           <div
@@ -186,6 +193,48 @@ export default function Resultados() {
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      {negocioSeleccionado && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={() => setNegocioSeleccionado(null)}
+        >
+          <div
+            className="bg-white p-6 rounded-xl shadow-lg max-w-md w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-xl font-bold mb-2">{negocioSeleccionado.nombre}</h2>
+            <p className="text-sm text-gray-600">{negocioSeleccionado.direccion}</p>
+            <p className="text-sm text-gray-500">
+              ⭐ {negocioSeleccionado.rating || "Sin calificación"} (
+              {negocioSeleccionado.reseñas || 0} reseñas)
+            </p>
+            <p className="text-sm text-gray-500">{negocioSeleccionado.rangoPrecio}</p>
+            <p className="text-sm text-gray-500">{negocioSeleccionado.categoria}</p>
+            <a
+              href={negocioSeleccionado.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 text-sm mt-2 inline-block"
+            >
+              Ver en Google Maps
+            </a>
+            <button
+              onClick={() => alternarFavorito(negocioSeleccionado.nombre)}
+              className={`mt-2 text-sm px-3 py-1 rounded-full ${
+                favoritos.includes(negocioSeleccionado.nombre)
+                  ? "bg-red-100 text-red-500"
+                  : "bg-gray-100 text-gray-600"
+              }`}
+            >
+              {favoritos.includes(negocioSeleccionado.nombre)
+                ? "❤️ Favorito"
+                : "🤍 Agregar a favoritos"}
+            </button>
+          </div>
+        </div>
+      )}
 
       {busquedaHecha && resultadosFiltrados.length === 0 && (
         <div className="text-center text-gray-500 mt-10">
