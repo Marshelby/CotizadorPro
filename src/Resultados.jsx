@@ -12,7 +12,7 @@ export default function Resultados() {
   const [busquedaHecha, setBusquedaHecha] = useState(false);
 
   useEffect(() => {
-    fetch("/data/pedidosya_datos_quilpue.json")
+    fetch("/data/locales_google.json")
       .then((res) => res.json())
       .then((data) => {
         console.log("📦 Datos cargados:", data);
