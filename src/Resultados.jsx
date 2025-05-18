@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
+import NegocioCard from "./components/NegocioCard";
+import NegocioModal from "./components/NegocioModal";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -149,82 +151,23 @@ export default function Resultados() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-6">
         {resultadosFiltrados.map((negocio, index) => (
-          <div
+          <NegocioCard
             key={index}
+            negocio={negocio}
+            favoritos={favoritos}
+            alternarFavorito={alternarFavorito}
             onClick={() => setNegocioSeleccionado(negocio)}
-            className="bg-white rounded-xl shadow p-4 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-          >
-            {negocio.imagen && (
-              <img
-                src={negocio.imagen}
-                alt={negocio.nombre}
-                className="w-full h-32 object-cover rounded-lg mb-2"
-              />
-            )}
-            <h3 className="font-semibold text-lg">{negocio.nombre}</h3>
-            <p className="text-sm text-gray-600">📍 {negocio.direccion || "Dirección no disponible"}</p>
-            <p className="text-sm text-gray-500">💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)</p>
-            <p className="text-sm text-gray-500">{negocio.rangoPrecio}</p>
-            <p className="text-sm text-gray-500">{negocio.categoria}</p>
-            <a
-              href={negocio.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sky-600 text-sm mt-2 inline-block hover:underline"
-            >
-              Ver en Google Maps
-            </a>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                alternarFavorito(negocio.nombre);
-              }}
-              className={`mt-2 text-sm px-3 py-1 rounded-full ${
-                favoritos.includes(negocio.nombre)
-                  ? "bg-red-100 text-red-500"
-                  : "bg-rose-100 text-rose-500 hover:bg-rose-200"
-              }`}
-            >
-              {favoritos.includes(negocio.nombre)
-                ? "❤️ Favorito"
-                : "🤍 Agregar a favoritos"}
-            </button>
-          </div>
+          />
         ))}
       </div>
 
       {negocioSeleccionado && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          onClick={() => setNegocioSeleccionado(null)}
-        >
-          <div
-            className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full animate-scale-fade"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img src={negocioSeleccionado.imagen} alt={negocioSeleccionado.nombre} className="w-full h-40 object-cover rounded-lg mb-4" />
-            <h2 className="text-xl font-bold mb-2">{negocioSeleccionado.nombre}</h2>
-            <p className="text-sm text-gray-600">📍 {negocioSeleccionado.direccion}</p>
-            <p className="text-sm text-gray-500">💰 ⭐ {negocioSeleccionado.rating || "Sin calificación"} ({negocioSeleccionado.reseñas || 0} reseñas)</p>
-            <p className="text-sm text-gray-500">{negocioSeleccionado.rangoPrecio}</p>
-            <p className="text-sm text-gray-500">{negocioSeleccionado.categoria}</p>
-            <a href={negocioSeleccionado.url} target="_blank" rel="noopener noreferrer" className="text-sky-600 text-sm inline-block mt-2 hover:underline">
-              Ver en Google Maps
-            </a>
-            <button
-              onClick={() => alternarFavorito(negocioSeleccionado.nombre)}
-              className={`mt-2 text-sm px-3 py-1 rounded-full ${
-                favoritos.includes(negocioSeleccionado.nombre)
-                  ? "bg-red-100 text-red-500"
-                  : "bg-rose-100 text-rose-500 hover:bg-rose-200"
-              }`}
-            >
-              {favoritos.includes(negocioSeleccionado.nombre)
-                ? "❤️ Favorito"
-                : "🤍 Agregar a favoritos"}
-            </button>
-          </div>
-        </div>
+        <NegocioModal
+          negocio={negocioSeleccionado}
+          favoritos={favoritos}
+          alternarFavorito={alternarFavorito}
+          onClose={() => setNegocioSeleccionado(null)}
+        />
       )}
 
       {busquedaHecha && resultadosFiltrados.length === 0 && (
