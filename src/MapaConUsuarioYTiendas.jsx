@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -24,7 +23,7 @@ const MapaConUsuarioYTiendas = ({
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
     if (contenedor && contenedor._leaflet_id) {
-      contenedor._leaflet_id = null;  // Reiniciar el contenedor si ya fue usado
+      contenedor._leaflet_id = null;
     }
 
     const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
@@ -61,7 +60,16 @@ const MapaConUsuarioYTiendas = ({
   }, [negocios, ubicacionUsuario]);
 
   return (
-    <div id="mapa" className="w-full h-[500px] rounded-xl shadow my-4" />
+    <div
+      id="mapa"
+      style={{
+        width: "500px",
+        height: "300px",
+        borderRadius: "12px",
+        boxShadow: "0 0 10px rgba(0,0,0,0.3)",
+        margin: "0 auto",
+      }}
+    />
   );
 };
 
