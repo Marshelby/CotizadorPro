@@ -19,37 +19,41 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario, favoritos = [
   useEffect(() => {
     if (!ubicacionUsuario) return;
 
-    const contenedor = document.getElementById("mapa");
-    if (contenedor && contenedor._leaflet_id) {
-      contenedor._leaflet_id = null;
-    }
+    const timeout = setTimeout(() => {
+      const contenedor = document.getElementById("mapa");
+      if (!contenedor) return;
 
-    const map = L.map("mapa").setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(map);
-
-    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], { icon: iconoUsuario })
-      .addTo(map)
-      .bindPopup("Estás aquí").openPopup();
-
-    negocios.forEach((negocio) => {
-      if (negocio.latitud && negocio.longitud) {
-        const popupContent =
-          "<strong>" + negocio.nombre + "</strong><br/>" +
-          (negocio.direccion || "Dirección no disponible") +
-          (favoritos.includes(negocio.nombre) ? "<br/>❤️ Favorito" : "");
-
-        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
-          .addTo(map)
-          .bindPopup(popupContent);
+      if (contenedor._leaflet_id) {
+        contenedor._leaflet_id = null;
       }
-    });
 
-    return () => {
-      map.remove();
-    };
+      const map = L.map("mapa").setView([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; OpenStreetMap contributors',
+      }).addTo(map);
+
+      L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], { icon: iconoUsuario })
+        .addTo(map)
+        .bindPopup("Estás aquí").openPopup();
+
+      negocios.forEach((negocio) => {
+        if (negocio.latitud && negocio.longitud) {
+          const popupContent =
+            "<strong>" + negocio.nombre + "</strong><br/>" +
+            (negocio.direccion || "Dirección no disponible") +
+            (favoritos.includes(negocio.nombre) ? "<br/>❤️ Favorito" : "");
+
+          L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+            .addTo(map)
+            .bindPopup(popupContent);
+        }
+      });
+
+      return () => map.remove();
+    }, 100); // Esperamos 100ms para asegurar el render del div
+
+    return () => clearTimeout(timeout);
   }, [negocios, ubicacionUsuario, favoritos]);
 
   return (
