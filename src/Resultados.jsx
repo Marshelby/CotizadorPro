@@ -19,20 +19,24 @@ export default function Resultados() {
           fetch("/data/locales_google.json"),
           fetch("/data/coordenadas_por_url.json"),
         ]);
+
         const locales = await resLocales.json();
         const coordenadas = await resCoords.json();
+
         const fusionados = locales.map((local) => {
-          const match = coordenadas.find((c) => c.nombre === local.nombre);
+          const match = coordenadas.find(c => c.nombre === local.nombre);
           if (match) {
             return { ...local, latitud: match.lat, longitud: match.lng };
           }
           return local;
         });
+
         setNegocios(fusionados);
       } catch (err) {
         console.error("❌ Error al cargar datos:", err);
       }
     };
+
     cargarDatos();
   }, []);
 
@@ -60,6 +64,7 @@ export default function Resultados() {
       const negociosFiltrados = negocios.filter((n) =>
         categorias.includes(n.categoria)
       );
+
       const ubicacion = await obtenerUbicacion();
       setUbicacionUsuario(ubicacion);
       setMostrarMapa(true);
@@ -73,9 +78,7 @@ export default function Resultados() {
 
   const alternarFavorito = (nombre) => {
     setFavoritos((prev) =>
-      prev.includes(nombre)
-        ? prev.filter((n) => n !== nombre)
-        : [...prev, nombre]
+      prev.includes(nombre) ? prev.filter((n) => n !== nombre) : [...prev, nombre]
     );
   };
 
@@ -94,26 +97,20 @@ export default function Resultados() {
   return (
     <div className="min-h-screen px-4">
       <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl">
-        <img
-          src="/icons/bot.svg"
-          alt="bot"
-          className="w-20 h-20 mx-auto mb-1 animate-fade-in"
-        />
-        <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
-          Cotizador<span className="text-sky-500">Pro</span>
-        </h1>
-        <p className="text-xs text-gray-500 italic tracking-wide">
-          Cotiza, compara y encuentra lo que necesitas.
-        </p>
-      </div>
+  <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1 animate-fade-in" />
+  <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
+    Cotizador<span className="text-sky-500">Pro</span>
+  </h1>
+  <p className="text-xs text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
+</div>
 
-      <hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
-
-      <div className="max-w-4xl mx-auto mb-1 flex items-center justify-between gap-4">
+      
+<hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
+<div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
         <input
           type="text"
           placeholder="Ej: quiero pan, sushi, completos..."
-          className="w-full p-3 rounded-2xl border border-gray-300 shadow-md transition-shadow duration-300 focus:shadow-[0_0_0_3px_rgba(56,189,248,0.3)] hover:shadow-[0_0_0_3px_rgba(56,189,248,0.3)]"
+          className="w-full p-3 rounded-full border border-gray-300 shadow-md shadow"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
         />
@@ -131,10 +128,6 @@ export default function Resultados() {
         </button>
       </div>
 
-      <p className="text-xs text-gray-400 text-center mt-1">
-        Puedes buscar por productos, locales o categorías.
-      </p>
-
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <>
           <MapaConUsuarioYTiendas
@@ -144,19 +137,19 @@ export default function Resultados() {
             alternarFavorito={alternarFavorito}
           />
           <div className="flex justify-center gap-4 mt-4">
-            <button
-              onClick={() => setVerFavoritos(false)}
-              className="px-4 py-2 bg-slate-500 text-white rounded-full shadow hover:bg-slate-600 flex items-center gap-2"
-            >
-              📋 Ver todos
-            </button>
-            <button
-              onClick={() => setVerFavoritos(true)}
-              className="px-4 py-2 bg-rose-400 text-white rounded-full shadow hover:bg-rose-500 flex items-center gap-2"
-            >
-              ❤️ Ver favoritos
-            </button>
-          </div>
+  <button
+    onClick={() => setVerFavoritos(false)}
+    className="px-4 py-2 bg-slate-500 text-white rounded-full shadow hover:bg-slate-600 flex items-center gap-2"
+  >
+    📋 Ver todos
+  </button>
+  <button
+    onClick={() => setVerFavoritos(true)}
+    className="px-4 py-2 bg-rose-400 text-white rounded-full shadow hover:bg-rose-500 flex items-center gap-2"
+  >
+    ❤️ Ver favoritos
+  </button>
+</div>
         </>
       )}
 
