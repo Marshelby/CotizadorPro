@@ -156,7 +156,8 @@ export default function Resultados() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-6">
         {resultadosFiltrados.map((negocio, index) => (
           <div
-            <div
+            key={index}
+            className="bg-white rounded-xl shadow p-4 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             {negocio.imagen && (
               <img
