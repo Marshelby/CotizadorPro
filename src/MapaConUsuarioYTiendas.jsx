@@ -42,7 +42,7 @@ const MapaConUsuarioYTiendas = ({
           (negocio.direccion || "Dirección no disponible") +
           "<br/>" + (favoritos.includes(negocio.nombre)
             ? "❤️ Favorito"
-            : "<button onclick='alert("Usa el botón de la tarjeta para agregar a favoritos")'>🤍 Agregar a favoritos</button>");
+            : "<button onclick=\"alert('Usa el botón de la tarjeta para agregar a favoritos')\">🤍 Agregar a favoritos</button>");
 
         L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
           .addTo(map)
