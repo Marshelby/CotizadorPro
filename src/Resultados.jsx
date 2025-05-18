@@ -167,10 +167,10 @@ export default function Resultados() {
               />
             )}
             <h3 className="font-semibold text-lg">{negocio.nombre}</h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600">📍 
               {negocio.direccion || "Dirección no disponible"}
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500">💰 
               ⭐ {negocio.rating || "Sin calificación"} (
               {negocio.reseñas || 0} reseñas)
             </p>
@@ -180,7 +180,7 @@ export default function Resultados() {
               href={negocio.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 text-sm mt-2 inline-block"
+              className="text-sky-600 text-sm mt-2 inline-block hover:underline"
             >
               Ver en Google Maps
             </a>
@@ -189,7 +189,7 @@ export default function Resultados() {
               className={`mt-2 text-sm px-3 py-1 rounded-full ${
                 favoritos.includes(negocio.nombre)
                   ? "bg-red-100 text-red-500"
-                  : "bg-gray-100 text-gray-600"
+                  : "bg-rose-100 text-rose-500 hover:bg-rose-200"
               }`}
             >
               {favoritos.includes(negocio.nombre)
