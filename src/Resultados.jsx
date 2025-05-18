@@ -98,12 +98,12 @@ export default function Resultados() {
     <div className="min-h-screen px-4">
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
-          <img src="/icons/bot.svg" alt="bot" className="w-6 h-6 mr-1" />
+          <img src="/icons/bot.svg" alt="bot" className="w-10 h-10 mr-2" />
           <h1 className="text-3xl font-extrabold text-gray-800 font-[Rubik]">
   Cotizador<span className="text-sky-500">Pro</span>
 </h1>
         </div>
-        <p className="text-sm text-gray-500">Busca y compara negocios según tu necesidad</p>
+        <p className="text-sm text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
       </div>
 
       <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
