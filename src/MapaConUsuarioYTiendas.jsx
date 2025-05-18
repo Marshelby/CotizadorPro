@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import negocios from "./data/locales_google.json";
 
 const iconoUsuario = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
@@ -36,13 +35,20 @@ const MapaConUsuarioYTiendas = () => {
       });
     }
 
-    negocios.forEach((negocio) => {
-      if (negocio.latitud && negocio.longitud) {
-        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
-          .addTo(map)
-.bindPopup("<strong>" + negocio.nombre + "</strong><br/>" + (negocio.direccion || "Dirección no disponible"));
-      }
-    });
+    fetch("/data/locales_google.json")
+      .then((res) => res.json())
+      .then((negocios) => {
+        negocios.forEach((negocio) => {
+          if (negocio.latitud && negocio.longitud) {
+            L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+              .addTo(map)
+              .bindPopup("<strong>" + negocio.nombre + "</strong><br/>" + (negocio.direccion || "Dirección no disponible"));
+          }
+        });
+      })
+      .catch((error) => {
+        console.error("Error cargando negocios:", error);
+      });
 
     return () => {
       map.remove();
