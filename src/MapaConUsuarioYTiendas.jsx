@@ -15,7 +15,12 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = () => {
+const MapaConUsuarioYTiendas = ({
+  negocios = [],
+  ubicacionUsuario,
+  favoritos = [],
+  alternarFavorito = () => {},
+}) => {
   useEffect(() => {
     const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
 
@@ -23,37 +28,32 @@ const MapaConUsuarioYTiendas = () => {
       attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-
-        L.marker([lat, lng], { icon: iconoUsuario }).addTo(map)
-          .bindPopup("Estás aquí").openPopup();
-
-        map.setView([lat, lng], 14);
-      });
+    if (ubicacionUsuario) {
+      const { lat, lng } = ubicacionUsuario;
+      L.marker([lat, lng], { icon: iconoUsuario }).addTo(map)
+        .bindPopup("Estás aquí").openPopup();
+      map.setView([lat, lng], 14);
     }
 
-    fetch("/data/locales_google.json")
-      .then((res) => res.json())
-      .then((negocios) => {
-        negocios.forEach((negocio) => {
-          if (negocio.latitud && negocio.longitud) {
-            L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
-              .addTo(map)
-              .bindPopup("<strong>" + negocio.nombre + "</strong><br/>" + (negocio.direccion || "Dirección no disponible"));
-          }
-        });
-      })
-      .catch((error) => {
-        console.error("Error cargando negocios:", error);
-      });
+    negocios.forEach((negocio) => {
+      if (negocio.latitud && negocio.longitud) {
+        const popupContent =
+          "<strong>" + negocio.nombre + "</strong><br/>" +
+          (negocio.direccion || "Dirección no disponible") +
+          "<br/>" + (favoritos.includes(negocio.nombre)
+            ? "❤️ Favorito"
+            : "<button onclick='alert("Usa el botón de la tarjeta para agregar a favoritos")'>🤍 Agregar a favoritos</button>");
+
+        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+          .addTo(map)
+          .bindPopup(popupContent);
+      }
+    });
 
     return () => {
       map.remove();
     };
-  }, []);
+  }, [negocios, ubicacionUsuario]);
 
   return (
     <div id="mapa" className="w-full h-[500px] rounded-xl shadow my-4" />
