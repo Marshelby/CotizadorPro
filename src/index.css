@@ -46,3 +46,11 @@ button:hover {
 .animate-fade-up {
   animation: fade-up 0.7s ease-out both;
 }
+
+@keyframes scale-fade {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.animate-scale-fade {
+  animation: scale-fade 0.3s ease-out both;
+}

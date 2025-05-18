@@ -157,7 +157,7 @@ export default function Resultados() {
         {resultadosFiltrados.map((negocio, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition-all"
+            className="bg-white rounded-xl shadow p-4 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             {negocio.imagen && (
               <img
