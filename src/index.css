@@ -12,6 +12,7 @@
 }
 
 body {
+  background: linear-gradient(to bottom, #f9fbfc, #ffffff);
   font-family: 'Rubik', sans-serif;
 }
 
