@@ -51,13 +51,17 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario, favoritos = [
       });
 
       return () => map.remove();
-    }, 100); // Esperamos 100ms para asegurar el render del div
+    }, 100);
 
     return () => clearTimeout(timeout);
   }, [negocios, ubicacionUsuario, favoritos]);
 
   return (
-    <div id="mapa" className="w-full h-[500px] rounded-xl shadow my-4" />
+    <div
+      id="mapa"
+      style={{ width: "100%", height: "500px" }}
+      className="rounded-xl shadow my-4"
+    />
   );
 };
 
