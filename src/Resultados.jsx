@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
+import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
-  const [negociosSimulados, setNegociosSimulados] = useState([]);
+  const [negocios, setNegocios] = useState([]);
   const [resultados, setResultados] = useState([]);
   const [mostrarMapa, setMostrarMapa] = useState(false);
   const [ubicacionUsuario, setUbicacionUsuario] = useState(null);
@@ -16,7 +18,7 @@ export default function Resultados() {
       .then((res) => res.json())
       .then((data) => {
         console.log("📦 Datos cargados:", data);
-        setNegociosSimulados(data);
+        setNegocios(data);
       })
       .catch((err) => console.error("Error cargando JSON:", err));
   }, []);
@@ -41,8 +43,10 @@ export default function Resultados() {
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
-      const tipoDetectado = detectarTipoBusqueda(busqueda);
-      const negociosFiltrados = filtrarPorTipo(tipoDetectado, negociosSimulados);
+      const categorias = clasificarBusqueda(busqueda);
+      const negociosFiltrados = negocios.filter((n) =>
+        categorias.includes(n.categoria)
+      );
 
       const ubicacion = await obtenerUbicacion();
       setUbicacionUsuario(ubicacion);
@@ -74,12 +78,43 @@ export default function Resultados() {
   }, [busqueda]);
 
   return (
-    <div className="min-h-screen">
-      <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold text-gray-800">CotizadorPro</h1>
-        <p className="text-sm text-gray-500">Busca y compara negocios cerca de ti</p>
+    <div className="min-h-screen px-4">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-2">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" alt="bot" className="w-8 h-8" />
+          <h1 className="text-3xl font-bold text-gray-800">CotizadorPro</h1>
+        </div>
+        <p className="text-sm text-gray-500">Busca y compara negocios según tu necesidad</p>
       </div>
- px-4">
+
+      <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
+        <input
+          type="text"
+          placeholder="Ej: quiero pan, sushi, completos..."
+          className="w-full p-3 rounded-full border border-gray-300 shadow"
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+        />
+        <button
+          onClick={manejarBusqueda}
+          className="px-5 py-2 bg-pink-500 text-white rounded-full shadow hover:bg-pink-600"
+        >
+          Buscar
+        </button>
+        <button
+          onClick={() => setVerFavoritos((prev) => !prev)}
+          className="px-4 py-2 border rounded-full shadow"
+        >
+          {verFavoritos ? "Ver todos" : "Ver favoritos"}
+        </button>
+        <button
+          onClick={() => setMostrarMapa((prev) => !prev)}
+          className="px-4 py-2 border rounded-full shadow"
+        >
+          {mostrarMapa ? "Ocultar mapa" : "Mostrar mapa"}
+        </button>
+      </div>
+
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <MapaConUsuarioYTiendas
           negocios={resultadosFiltrados}
@@ -88,21 +123,58 @@ export default function Resultados() {
           alternarFavorito={alternarFavorito}
         />
       )}
-      {busquedaHecha && (
-        <>
-          {resultadosFiltrados.length === 0 && (
-            <div className="flex flex-col items-center mt-10 animate-fadeIn">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-gray-400 mb-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75h.008v.008H9.75V9.75zM14.25 9.75h.008v.008h-.008V9.75z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 17.25c1.25 0 2.25-.625 2.25-1.5s-1-1.5-2.25-1.5-2.25.625-2.25 1.5 1 1.5 2.25 1.5z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
-              </svg>
-              <p className="text-gray-500 text-base">
-                No se encontraron resultados para tu búsqueda. Intenta con otras palabras como <strong>"sushi"</strong>, <strong>"pan"</strong> o <strong>"pizza"</strong>.
-              </p>
-            </div>
-          )}
-        </>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
+        {resultadosFiltrados.map((negocio, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition-all"
+          >
+            {negocio.imagen && (
+              <img
+                src={negocio.imagen}
+                alt={negocio.nombre}
+                className="w-full h-32 object-cover rounded-lg mb-2"
+              />
+            )}
+            <h3 className="font-semibold text-lg">{negocio.nombre}</h3>
+            <p className="text-sm text-gray-600">
+              {negocio.direccion || "Dirección no disponible"}
+            </p>
+            <p className="text-sm text-gray-500">
+              ⭐ {negocio.rating || "Sin calificación"} (
+              {negocio.reseñas || 0} reseñas)
+            </p>
+            <p className="text-sm text-gray-500">{negocio.rangoPrecio}</p>
+            <p className="text-sm text-gray-500">{negocio.categoria}</p>
+            <a
+              href={negocio.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 text-sm mt-2 inline-block"
+            >
+              Ver en Google Maps
+            </a>
+            <button
+              onClick={() => alternarFavorito(negocio.nombre)}
+              className={`mt-2 text-sm px-3 py-1 rounded-full ${
+                favoritos.includes(negocio.nombre)
+                  ? "bg-red-100 text-red-500"
+                  : "bg-gray-100 text-gray-600"
+              }`}
+            >
+              {favoritos.includes(negocio.nombre)
+                ? "❤️ Favorito"
+                : "🤍 Agregar a favoritos"}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {busquedaHecha && resultadosFiltrados.length === 0 && (
+        <div className="text-center text-gray-500 mt-10">
+          No se encontraron resultados para tu búsqueda.
+        </div>
       )}
     </div>
   );
