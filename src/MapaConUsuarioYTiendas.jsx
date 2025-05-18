@@ -63,9 +63,10 @@ const MapaConUsuarioYTiendas = ({
     <div
       id="mapa"
       style={{
-        width: "500px",
+        width: "700px",
         height: "300px",
         borderRadius: "12px",
+        border: "2px solid black",
         boxShadow: "0 0 10px rgba(0,0,0,0.3)",
         margin: "0 auto",
       }}
