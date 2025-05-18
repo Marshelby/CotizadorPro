@@ -1,7 +1,6 @@
-import React from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import React, { useEffect } from "react";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const iconoUsuario = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
@@ -10,56 +9,59 @@ const iconoUsuario = new L.Icon({
 });
 
 const iconoNegocio = new L.Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/252/252025.png",
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
   iconSize: [30, 30],
   iconAnchor: [15, 30],
 });
 
-function VolarAMiUbicacion({ ubicacion }) {
-  const map = useMap();
-  if (ubicacion) {
-    map.setView(ubicacion, 15);
-  }
-  return null;
-}
+const MapaConUsuarioYTiendas = ({ negocios, ubicacionUsuario }) => {
+  useEffect(() => {
+    if (!ubicacionUsuario || negocios.length === 0) return;
 
-export default function MapaConUsuarioYTiendas({ ubicacion, negocios }) {
+    const map = L.map("mapa-tiendas").setView(
+      [ubicacionUsuario.lat, ubicacionUsuario.lng],
+      14
+    );
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors",
+    }).addTo(map);
+
+    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], {
+      icon: iconoUsuario,
+    })
+      .addTo(map)
+      .bindPopup("Estás aquí");
+
+    negocios.forEach((negocio) => {
+      if (negocio.latitud && negocio.longitud) {
+        const marker = L.marker([negocio.latitud, negocio.longitud], {
+          icon: iconoNegocio,
+        }).addTo(map);
+
+        marker.bindPopup(
+          \`<strong>\${negocio.nombre}</strong><br/>\${negocio.direccion || "Sin dirección"}\`
+        );
+      }
+    });
+
+    return () => {
+      map.remove();
+    };
+  }, [negocios, ubicacionUsuario]);
+
   return (
-    <div className="flex justify-center mt-4 mb-4">
-      <MapContainer
-        center={ubicacion || [-33.0472, -71.6127]}
-        zoom={15}
-        style={{ height: "300px", width: "90%", maxWidth: "700px", borderRadius: "12px", zIndex: 1 }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {ubicacion && <Marker position={ubicacion} icon={iconoUsuario}>
-          <Popup>Estás aquí</Popup>
-        </Marker>}
-        {negocios.map((negocio, index) => {
-          const { latitud, longitud } = negocio;
-          if (latitud && longitud) {
-            const popupContent = `
-              <strong>${negocio.nombre || "Negocio sin nombre"}</strong><br/>
-              ${negocio.direccion || "Sin dirección"}<br/>
-              Categoría: ${negocio.categoria || "Desconocida"}<br/>
-              ${negocio.telefono ? `Teléfono: ${negocio.telefono}<br/>` : ""}
-              ${negocio.rating ? `⭐ ${negocio.rating} (${negocio.reseñas || "sin reseñas"})<br/>` : ""}
-            `;
-            return (
-              <Marker key={index} position={[latitud, longitud]} icon={iconoNegocio}>
-                <Popup>
-                  <div dangerouslySetInnerHTML={{ __html: popupContent }} />
-                </Popup>
-              </Marker>
-            );
-          }
-          return null;
-        })}
-        <VolarAMiUbicacion ubicacion={ubicacion} />
-      </MapContainer>
-    </div>
+    <div
+      id="mapa-tiendas"
+      style={{
+        height: "400px",
+        width: "100%",
+        marginTop: "1rem",
+        borderRadius: "1rem",
+        overflow: "hidden",
+      }}
+    ></div>
   );
-}
+};
+
+export default MapaConUsuarioYTiendas;
