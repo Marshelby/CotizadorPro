@@ -21,17 +21,26 @@ export default function Resultados() {
 
   const obtenerUbicacion = () => {
     return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        alert("Tu navegador no permite geolocalización.");
+        return reject("Geolocalización no soportada");
+      }
+
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          resolve({
+          const coords = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-          });
+          };
+          console.log("📍 Ubicación obtenida:", coords);
+          resolve(coords);
         },
         (error) => {
-          console.error("Error obteniendo ubicación:", error);
+          alert("No se pudo obtener tu ubicación. Asegúrate de haber dado permiso.");
+          console.error("Error al obtener ubicación:", error);
           reject(error);
-        }
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
     });
   };
@@ -39,13 +48,14 @@ export default function Resultados() {
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
+      const ubicacion = await obtenerUbicacion(); // primero obtener ubicación
+      setUbicacionUsuario(ubicacion);
+
       const categorias = clasificarBusqueda(busqueda);
       const negociosFiltrados = negocios.filter((n) =>
         categorias.includes(n.categoria)
       );
 
-      const ubicacion = await obtenerUbicacion();
-      setUbicacionUsuario(ubicacion);
       setMostrarMapa(true);
       setBusquedaHecha(true);
       setResultados(negociosFiltrados);

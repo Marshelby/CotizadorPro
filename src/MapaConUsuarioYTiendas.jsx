@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -15,34 +15,14 @@ const iconoNegocio = new L.Icon({
 });
 
 const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
-  const [ubicacionInterna, setUbicacionInterna] = useState(null);
-
   useEffect(() => {
-    if (!ubicacionUsuario && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          setUbicacionInterna({
-            lat: pos.coords.latitude,
-            lng: pos.coords.longitude,
-          });
-        },
-        (err) => {
-          console.error("Ubicación denegada o error:", err);
-        },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-      );
-    }
-  }, [ubicacionUsuario]);
-
-  useEffect(() => {
-    const ubicacionFinal = ubicacionUsuario || ubicacionInterna;
-    if (!ubicacionFinal || negocios.length === 0) return;
+    if (!ubicacionUsuario || negocios.length === 0) return;
 
     const contenedor = document.getElementById("mapa-tiendas");
     if (!contenedor) return;
 
     const map = L.map("mapa-tiendas").setView(
-      [ubicacionFinal.lat, ubicacionFinal.lng],
+      [ubicacionUsuario.lat, ubicacionUsuario.lng],
       15
     );
 
@@ -50,7 +30,7 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
       attribution: "© OpenStreetMap contributors",
     }).addTo(map);
 
-    L.marker([ubicacionFinal.lat, ubicacionFinal.lng], {
+    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], {
       icon: iconoUsuario,
     })
       .addTo(map)
@@ -71,7 +51,7 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
     return () => {
       map.remove();
     };
-  }, [negocios, ubicacionUsuario, ubicacionInterna]);
+  }, [negocios, ubicacionUsuario]);
 
   return (
     <div
