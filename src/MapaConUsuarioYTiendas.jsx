@@ -59,8 +59,8 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario, favoritos = [
   return (
     <div
       id="mapa"
-      style={{ width: "100%", height: "500px" }}
-      className="rounded-xl shadow my-4"
+      style={{ width: "50%", height: "500px", margin: "1rem auto" }}
+      className="rounded-xl shadow"
     />
   );
 };
