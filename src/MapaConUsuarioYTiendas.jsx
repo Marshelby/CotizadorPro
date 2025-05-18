@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -16,6 +16,7 @@ const iconoNegocio = new L.Icon({
 
 const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
   const [ubicacionInterna, setUbicacionInterna] = useState(null);
+  const mapaRef = useRef(null);
 
   useEffect(() => {
     if (!ubicacionUsuario && navigator.geolocation) {
@@ -40,16 +41,16 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
       [ubicacionFinal.lat, ubicacionFinal.lng],
       14
     );
+    mapaRef.current = map;
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors",
     }).addTo(map);
 
-    L.marker([ubicacionFinal.lat, ubicacionFinal.lng], {
+    const marcadorUsuario = L.marker([ubicacionFinal.lat, ubicacionFinal.lng], {
       icon: iconoUsuario,
-    })
-      .addTo(map)
-      .bindPopup("Estás aquí");
+    }).addTo(map);
+    marcadorUsuario.bindPopup("Estás aquí");
 
     negocios.forEach((negocio) => {
       if (negocio.latitud && negocio.longitud) {
@@ -67,6 +68,12 @@ const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario }) => {
       map.remove();
     };
   }, [negocios, ubicacionUsuario, ubicacionInterna]);
+
+  useEffect(() => {
+    if (mapaRef.current && ubicacionUsuario) {
+      mapaRef.current.flyTo([ubicacionUsuario.lat, ubicacionUsuario.lng], 14);
+    }
+  }, [ubicacionUsuario]);
 
   return (
     <div
