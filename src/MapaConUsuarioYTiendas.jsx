@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -14,49 +15,53 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = ({ negocios = [], ubicacionUsuario, onSeleccionarNegocio }) => {
+const MapaConUsuarioYTiendas = ({
+  negocios = [],
+  ubicacionUsuario,
+  favoritos = [],
+  alternarFavorito = () => {},
+}) => {
   useEffect(() => {
-    if (!ubicacionUsuario || negocios.length === 0) return;
+    const contenedor = document.getElementById("mapa");
+    if (contenedor && contenedor._leaflet_id) {
+      contenedor._leaflet_id = null;  // Reiniciar el contenedor si ya fue usado
+    }
 
-    const contenedor = document.getElementById("mapa-tiendas");
-    if (!contenedor) return;
-
-    const map = L.map("mapa-tiendas").setView(
-      [ubicacionUsuario.lat, ubicacionUsuario.lng],
-      15
-    );
+    const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
+      attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
 
-    L.marker([ubicacionUsuario.lat, ubicacionUsuario.lng], {
-      icon: iconoUsuario,
-    })
-      .addTo(map)
-      .bindPopup("Estás aquí");
+    if (ubicacionUsuario) {
+      const { lat, lng } = ubicacionUsuario;
+      L.marker([lat, lng], { icon: iconoUsuario }).addTo(map)
+        .bindPopup("Estás aquí").openPopup();
+      map.setView([lat, lng], 14);
+    }
 
     negocios.forEach((negocio) => {
       if (negocio.latitud && negocio.longitud) {
-        const marker = L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
-          .addTo(map)
-          .on("click", () => onSeleccionarNegocio(negocio));
+        const popupContent =
+          "<strong>" + negocio.nombre + "</strong><br/>" +
+          (negocio.direccion || "Dirección no disponible") +
+          "<br/>" + (favoritos.includes(negocio.nombre)
+            ? "❤️ Favorito"
+            : "");
 
-        marker.bindPopup(`<strong>${negocio.nombre}</strong><br/>${negocio.direccion || "Sin dirección"}`);
+        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+          .addTo(map)
+          .bindPopup(popupContent);
       }
     });
 
     return () => {
       map.remove();
     };
-  }, [negocios, ubicacionUsuario, onSeleccionarNegocio]);
+  }, [negocios, ubicacionUsuario]);
 
   return (
-    <div
-      id="mapa-tiendas"
-      className="mx-auto my-4 w-full max-w-4xl rounded-xl border border-gray-300 shadow-md"
-      style={{ height: "400px", minHeight: "400px" }}
-    ></div>
+    <div id="mapa" className="w-full h-[500px] rounded-xl shadow my-4" />
   );
 };
 

@@ -1,3 +1,4 @@
+
 import { DICCIONARIO_BUSQUEDAS } from './diccionario_busquedas_completo.js'
 
 /**

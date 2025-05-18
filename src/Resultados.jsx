@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -11,37 +12,30 @@ export default function Resultados() {
   const [favoritos, setFavoritos] = useState([]);
   const [verFavoritos, setVerFavoritos] = useState(false);
   const [busquedaHecha, setBusquedaHecha] = useState(false);
-  const [negocioSeleccionado, setNegocioSeleccionado] = useState(null);
 
   useEffect(() => {
     fetch("/data/locales_google.json")
       .then((res) => res.json())
-      .then((data) => setNegocios(data))
+      .then((data) => {
+        console.log("📦 Datos cargados:", data);
+        setNegocios(data);
+      })
       .catch((err) => console.error("Error cargando JSON:", err));
   }, []);
 
   const obtenerUbicacion = () => {
     return new Promise((resolve, reject) => {
-      if (!navigator.geolocation) {
-        alert("Tu navegador no permite geolocalización.");
-        return reject("Geolocalización no soportada");
-      }
-
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const coords = {
+          resolve({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-          };
-          console.log("📍 Ubicación obtenida:", coords);
-          resolve(coords);
+          });
         },
         (error) => {
-          alert("No se pudo obtener tu ubicación. Asegúrate de haber dado permiso.");
-          console.error("Error al obtener ubicación:", error);
+          console.error("Error obteniendo ubicación:", error);
           reject(error);
-        },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        }
       );
     });
   };
@@ -49,14 +43,13 @@ export default function Resultados() {
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
-      const ubicacion = await obtenerUbicacion();
-      setUbicacionUsuario(ubicacion);
-
       const categorias = clasificarBusqueda(busqueda);
       const negociosFiltrados = negocios.filter((n) =>
         categorias.includes(n.categoria)
       );
 
+      const ubicacion = await obtenerUbicacion();
+      setUbicacionUsuario(ubicacion);
       setMostrarMapa(true);
       setBusquedaHecha(true);
       setResultados(negociosFiltrados);
@@ -109,37 +102,26 @@ export default function Resultados() {
           Buscar
         </button>
         <button
+          onClick={() => setVerFavoritos((prev) => !prev)}
+          className="px-4 py-2 border rounded-full shadow"
+        >
+          {verFavoritos ? "Ver todos" : "Ver favoritos"}
+        </button>
+        <button
           onClick={() => setMostrarMapa((prev) => !prev)}
-          className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full shadow hover:bg-blue-200"
+          className="px-4 py-2 border rounded-full shadow"
         >
           {mostrarMapa ? "Ocultar mapa" : "Mostrar mapa"}
         </button>
       </div>
 
       {resultadosFiltrados.length > 0 && mostrarMapa && (
-        <>
-          <MapaConUsuarioYTiendas
-            negocios={resultadosFiltrados}
-            favoritos={favoritos}
-            ubicacionUsuario={ubicacionUsuario}
-            alternarFavorito={alternarFavorito}
-            onSeleccionarNegocio={setNegocioSeleccionado}
-          />
-          <div className="flex justify-center gap-4 mt-2">
-            <button
-              onClick={() => setVerFavoritos(false)}
-              className="px-4 py-2 bg-gray-200 rounded-full shadow hover:bg-gray-300"
-            >
-              Ver todos
-            </button>
-            <button
-              onClick={() => setVerFavoritos(true)}
-              className="px-4 py-2 bg-red-100 text-red-600 rounded-full shadow hover:bg-red-200"
-            >
-              Ver favoritos
-            </button>
-          </div>
-        </>
+        <MapaConUsuarioYTiendas
+          negocios={resultadosFiltrados}
+          favoritos={favoritos}
+          ubicacionUsuario={ubicacionUsuario}
+          alternarFavorito={alternarFavorito}
+        />
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
@@ -175,12 +157,11 @@ export default function Resultados() {
             </a>
             <button
               onClick={() => alternarFavorito(negocio.nombre)}
-              className={
-                "mt-2 text-sm px-3 py-1 rounded-full " +
-                (favoritos.includes(negocio.nombre)
+              className={`mt-2 text-sm px-3 py-1 rounded-full ${
+                favoritos.includes(negocio.nombre)
                   ? "bg-red-100 text-red-500"
-                  : "bg-gray-100 text-gray-600")
-              }
+                  : "bg-gray-100 text-gray-600"
+              }`}
             >
               {favoritos.includes(negocio.nombre)
                 ? "❤️ Favorito"
@@ -189,48 +170,6 @@ export default function Resultados() {
           </div>
         ))}
       </div>
-
-      {negocioSeleccionado && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          onClick={() => setNegocioSeleccionado(null)}
-        >
-          <div
-            className="bg-white p-6 rounded-xl shadow-lg max-w-md w-full"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2 className="text-xl font-bold mb-2">{negocioSeleccionado.nombre}</h2>
-            <p className="text-sm text-gray-600">{negocioSeleccionado.direccion}</p>
-            <p className="text-sm text-gray-500">
-              ⭐ {negocioSeleccionado.rating || "Sin calificación"} (
-              {negocioSeleccionado.reseñas || 0} reseñas)
-            </p>
-            <p className="text-sm text-gray-500">{negocioSeleccionado.rangoPrecio}</p>
-            <p className="text-sm text-gray-500">{negocioSeleccionado.categoria}</p>
-            <a
-              href={negocioSeleccionado.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 text-sm mt-2 inline-block"
-            >
-              Ver en Google Maps
-            </a>
-            <button
-              onClick={() => alternarFavorito(negocioSeleccionado.nombre)}
-              className={
-                "mt-2 text-sm px-3 py-1 rounded-full " +
-                (favoritos.includes(negocioSeleccionado.nombre)
-                  ? "bg-red-100 text-red-500"
-                  : "bg-gray-100 text-gray-600")
-              }
-            >
-              {favoritos.includes(negocioSeleccionado.nombre)
-                ? "❤️ Favorito"
-                : "🤍 Agregar a favoritos"}
-            </button>
-          </div>
-        </div>
-      )}
 
       {busquedaHecha && resultadosFiltrados.length === 0 && (
         <div className="text-center text-gray-500 mt-10">
