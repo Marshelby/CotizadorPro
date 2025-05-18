@@ -86,7 +86,6 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen px-4">
-      {/* Cabecera */}
       <div className="text-center mb-6">
         <div className="flex items-center justify-center gap-2">
           <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" alt="bot" className="w-8 h-8" />
@@ -95,7 +94,6 @@ export default function Resultados() {
         <p className="text-sm text-gray-500">Busca y compara negocios según tu necesidad</p>
       </div>
 
-      {/* Barra de búsqueda */}
       <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between gap-4">
         <input
           type="text"
@@ -118,7 +116,6 @@ export default function Resultados() {
         </button>
       </div>
 
-      {/* Mapa y botones */}
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <>
           <MapaConUsuarioYTiendas
@@ -145,7 +142,6 @@ export default function Resultados() {
         </>
       )}
 
-      {/* Tarjetas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
         {resultadosFiltrados.map((negocio, index) => (
           <div
@@ -179,9 +175,12 @@ export default function Resultados() {
             </a>
             <button
               onClick={() => alternarFavorito(negocio.nombre)}
-              className={\`mt-2 text-sm px-3 py-1 rounded-full \${favoritos.includes(negocio.nombre)
-                ? "bg-red-100 text-red-500"
-                : "bg-gray-100 text-gray-600"}\`}
+              className={
+                "mt-2 text-sm px-3 py-1 rounded-full " +
+                (favoritos.includes(negocio.nombre)
+                  ? "bg-red-100 text-red-500"
+                  : "bg-gray-100 text-gray-600")
+              }
             >
               {favoritos.includes(negocio.nombre)
                 ? "❤️ Favorito"
@@ -191,7 +190,6 @@ export default function Resultados() {
         ))}
       </div>
 
-      {/* Modal */}
       {negocioSeleccionado && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
@@ -219,9 +217,12 @@ export default function Resultados() {
             </a>
             <button
               onClick={() => alternarFavorito(negocioSeleccionado.nombre)}
-              className={\`mt-2 text-sm px-3 py-1 rounded-full \${favoritos.includes(negocioSeleccionado.nombre)
-                ? "bg-red-100 text-red-500"
-                : "bg-gray-100 text-gray-600"}\`}
+              className={
+                "mt-2 text-sm px-3 py-1 rounded-full " +
+                (favoritos.includes(negocioSeleccionado.nombre)
+                  ? "bg-red-100 text-red-500"
+                  : "bg-gray-100 text-gray-600")
+              }
             >
               {favoritos.includes(negocioSeleccionado.nombre)
                 ? "❤️ Favorito"
