@@ -96,7 +96,7 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen px-4">
-      <div className="text-center mb-6 mt-[100px] bg-gradient-to-b from-[#f9fafb] to-white shadow-md shadow-gray-100 py-6 rounded-xl">
+      <div className="text-center mb-6 mt-[100px] bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl">
   <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1" />
   <h1 className="text-3xl font-extrabold text-gray-800 font-[Rubik] mb-1">
     Cotizador<span className="text-sky-500">Pro</span>
@@ -108,7 +108,7 @@ export default function Resultados() {
         <input
           type="text"
           placeholder="Ej: quiero pan, sushi, completos..."
-          className="w-full p-3 rounded-full border border-gray-300 shadow"
+          className="w-full p-3 rounded-full border border-gray-300 shadow-md shadow"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
         />
