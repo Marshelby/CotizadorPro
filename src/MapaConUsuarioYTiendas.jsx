@@ -22,6 +22,11 @@ const MapaConUsuarioYTiendas = ({
   alternarFavorito = () => {},
 }) => {
   useEffect(() => {
+    const contenedor = document.getElementById("mapa");
+    if (contenedor && contenedor._leaflet_id) {
+      contenedor._leaflet_id = null;  // Reiniciar el contenedor si ya fue usado
+    }
+
     const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -42,7 +47,7 @@ const MapaConUsuarioYTiendas = ({
           (negocio.direccion || "Dirección no disponible") +
           "<br/>" + (favoritos.includes(negocio.nombre)
             ? "❤️ Favorito"
-            : "<button onclick=\"alert('Usa el botón de la tarjeta para agregar a favoritos')\">🤍 Agregar a favoritos</button>");
+            : "");
 
         L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
           .addTo(map)
