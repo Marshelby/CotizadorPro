@@ -12,7 +12,7 @@ export default function Resultados() {
   const [busquedaHecha, setBusquedaHecha] = useState(false);
 
   useEffect(() => {
-    fetch("/data/locales_google.json")
+    fetch("/data/pedidosya_datos_quilpue.json")
       .then((res) => res.json())
       .then((data) => {
         console.log("📦 Datos cargados:", data);
@@ -74,7 +74,12 @@ export default function Resultados() {
   }, [busqueda]);
 
   return (
-    <div className="min-h-screen px-4">
+    <div className="min-h-screen">
+      <div className="text-center mt-8">
+        <h1 className="text-3xl font-bold text-gray-800">CotizadorPro</h1>
+        <p className="text-sm text-gray-500">Busca y compara negocios cerca de ti</p>
+      </div>
+ px-4">
       {resultadosFiltrados.length > 0 && mostrarMapa && (
         <MapaConUsuarioYTiendas
           negocios={resultadosFiltrados}
