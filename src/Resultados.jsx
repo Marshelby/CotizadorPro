@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -14,13 +13,32 @@ export default function Resultados() {
   const [busquedaHecha, setBusquedaHecha] = useState(false);
 
   useEffect(() => {
-    fetch("/data/locales_google.json")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("📦 Datos cargados:", data);
-        setNegocios(data);
-      })
-      .catch((err) => console.error("Error cargando JSON:", err));
+    const cargarDatos = async () => {
+      try {
+        const [resLocales, resCoords] = await Promise.all([
+          fetch("/data/locales_google.json"),
+          fetch("/data/coordenadas_por_url.json"),
+        ]);
+
+        const locales = await resLocales.json();
+        const coordenadas = await resCoords.json();
+
+        // Vincular coordenadas por nombre exacto
+        const fusionados = locales.map((local) => {
+          const match = coordenadas.find(c => c.nombre === local.nombre);
+          if (match) {
+            return { ...local, latitud: match.lat, longitud: match.lng };
+          }
+          return local;
+        });
+
+        setNegocios(fusionados);
+      } catch (err) {
+        console.error("❌ Error al cargar datos:", err);
+      }
+    };
+
+    cargarDatos();
   }, []);
 
   const obtenerUbicacion = () => {
