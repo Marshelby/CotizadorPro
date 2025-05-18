@@ -97,12 +97,10 @@ export default function Resultados() {
   return (
     <div className="min-h-screen px-4">
       <div className="text-center mb-6 mt-[100px]">
-  <div className="flex items-center justify-center gap-2 mb-2">
-    <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mr-2" />
-    <h1 className="text-3xl font-extrabold text-gray-800 font-[Rubik]">
-      Cotizador<span className="text-sky-500">Pro</span>
-    </h1>
-  </div>
+  <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1" />
+  <h1 className="text-3xl font-extrabold text-gray-800 font-[Rubik] mb-1">
+    Cotizador<span className="text-sky-500">Pro</span>
+  </h1>
   <p className="text-sm text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
 </div>
 
