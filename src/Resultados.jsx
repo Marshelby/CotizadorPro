@@ -76,18 +76,14 @@ export default function Resultados() {
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
-      // OMITIMOS FILTRO PARA MOSTRAR TODO
-      const filtrados = negocios; // <- mostrar todos sin filtro
+      const categorias = clasificarBusqueda(busqueda);
+      const filtrados = negocios.filter((n) => categorias.includes(n.categoria));
       const ubicacion = await obtenerUbicacion();
       setUbicacionUsuario(ubicacion);
       setResultados(filtrados);
       setMostrarMapa(true);
       setBusquedaHecha(true);
     } catch (error) {
-      console.error("Error al procesar la búsqueda:", error);
-      setResultados([]);
-    }
-  }; catch (error) {
       console.error("Error al procesar la búsqueda:", error);
       setResultados([]);
     }
