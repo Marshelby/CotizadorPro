@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -39,20 +40,22 @@ const MapaConUsuarioYTiendas = ({
       map.setView([lat, lng], 14);
     }
 
-    negocios.forEach((negocio) => {
-      if (negocio.latitud && negocio.longitud) {
-        const popupContent =
-          "<strong>" + negocio.nombre + "</strong><br/>" +
-          (negocio.direccion || "Dirección no disponible") +
-          "<br/>" + (favoritos.includes(negocio.nombre)
-            ? "❤️ Favorito"
-            : "");
+    if (Array.isArray(negocios) && negocios.length > 0) {
+      negocios.forEach((negocio) => {
+        if (negocio.latitud && negocio.longitud) {
+          const popupContent =
+            "<strong>" + negocio.nombre + "</strong><br/>" +
+            (negocio.direccion || "Dirección no disponible") +
+            "<br/>" + (favoritos.includes(negocio.nombre)
+              ? "❤️ Favorito"
+              : "");
 
-        L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
-          .addTo(map)
-          .bindPopup(popupContent);
-      }
-    });
+          L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+            .addTo(map)
+            .bindPopup(popupContent);
+        }
+      });
+    }
 
     return () => {
       map.remove();
