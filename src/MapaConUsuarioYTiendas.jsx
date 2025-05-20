@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -21,6 +21,9 @@ const MapaConUsuarioYTiendas = ({
   alternarFavorito = () => {},
   negocioSeleccionado = null,
 }) => {
+  const mapRef = useRef(null);
+  const markerMapRef = useRef({});
+
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
     if (contenedor && contenedor._leaflet_id) {
@@ -28,6 +31,7 @@ const MapaConUsuarioYTiendas = ({
     }
 
     const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
+    mapRef.current = map;
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; OpenStreetMap contributors',
@@ -63,8 +67,7 @@ const MapaConUsuarioYTiendas = ({
       });
     }
 
-    map._markerMap = markerMap;
-    contenedor._leaflet_map = map;
+    markerMapRef.current = markerMap;
 
     return () => {
       map.remove();
@@ -72,18 +75,17 @@ const MapaConUsuarioYTiendas = ({
   }, [negocios, ubicacionUsuario]);
 
   useEffect(() => {
-    const mapElement = document.getElementById("mapa");
-    const mapInstance = mapElement && mapElement._leaflet_map;
+    const map = mapRef.current;
+    const markerMap = markerMapRef.current;
 
     if (
-      mapInstance &&
+      map &&
       negocioSeleccionado &&
-      mapInstance._markerMap &&
-      mapInstance._markerMap[negocioSeleccionado.nombre]
+      markerMap[negocioSeleccionado.nombre]
     ) {
-      const marker = mapInstance._markerMap[negocioSeleccionado.nombre];
+      const marker = markerMap[negocioSeleccionado.nombre];
       marker.openPopup();
-      mapInstance.setView(marker.getLatLng(), 16);
+      map.setView(marker.getLatLng(), 16);
     }
   }, [negocioSeleccionado]);
 
