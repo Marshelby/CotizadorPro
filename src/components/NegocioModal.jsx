@@ -23,7 +23,7 @@ const NegocioModal = ({ negocio, onClose, favoritos, alternarFavorito }) => {
   const esFavorito = favoritos.includes(nombre);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-4 relative">
         <button
           onClick={onClose}
