@@ -18,7 +18,7 @@ const iconoNegocio = new L.Icon({
 const MapaConUsuarioYTiendas = ({ negocios = [],
   ubicacionUsuario,
   favoritos = [],
-  alternarFavorito = () => {}, negocioSeleccionado = null, negocioSeleccionado = null,
+  alternarFavorito = () => {}, negocioSeleccionado = null,
 }) => {
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
@@ -64,7 +64,8 @@ const MapaConUsuarioYTiendas = ({ negocios = [],
       map.setView(marker.getLatLng(), 16);
     }
 
-    map.remove();
+    return () => {
+      map.remove();
     };
   }, [negocios, ubicacionUsuario]);
 
