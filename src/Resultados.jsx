@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -86,6 +87,9 @@ export default function Resultados() {
     return () => window.removeEventListener("keydown", manejarEnter);
   }, [busqueda]);
 
+  const mostrarSinResultados =
+    verFavoritos && resultadosFiltrados.length === 0;
+
   return (
     <div className="min-h-screen px-4">
       <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl animate-fade-up">
@@ -124,7 +128,7 @@ export default function Resultados() {
         Puedes buscar por productos, locales o categorías.
       </p>
 
-      {resultadosFiltrados.length > 0 && mostrarMapa && (
+      {mostrarMapa && (
         <>
           <MapaConUsuarioYTiendas
             negocios={resultadosFiltrados}
@@ -149,6 +153,12 @@ export default function Resultados() {
         </>
       )}
 
+      {mostrarSinResultados && (
+        <div className="text-center text-gray-500 mt-10">
+          No tienes favoritos aún. ¡Marca tus locales preferidos!
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-6">
         {resultadosFiltrados.map((negocio, index) => (
           <NegocioCard
@@ -170,7 +180,7 @@ export default function Resultados() {
         />
       )}
 
-      {busquedaHecha && resultadosFiltrados.length === 0 && (
+      {busquedaHecha && resultadosFiltrados.length === 0 && !verFavoritos && (
         <div className="text-center text-gray-500 mt-10">
           No se encontraron resultados para tu búsqueda.
         </div>
