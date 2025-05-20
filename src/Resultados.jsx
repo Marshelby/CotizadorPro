@@ -171,6 +171,7 @@ export default function Resultados() {
             favoritos={favoritos}
             ubicacionUsuario={ubicacionUsuario}
             alternarFavorito={alternarFavorito}
+            negocioSeleccionado={negocioSeleccionado}
           />
           <div className="flex justify-center gap-4 mt-4">
             <button
@@ -202,6 +203,7 @@ export default function Resultados() {
             negocio={negocio}
             favoritos={favoritos}
             alternarFavorito={alternarFavorito}
+            negocioSeleccionado={negocioSeleccionado}
             onClick={() => setNegocioSeleccionado(negocio)}
           />
         ))}
@@ -212,6 +214,7 @@ export default function Resultados() {
           negocio={negocioSeleccionado}
           favoritos={favoritos}
           alternarFavorito={alternarFavorito}
+            negocioSeleccionado={negocioSeleccionado}
           onClose={() => setNegocioSeleccionado(null)}
         />
       )}
