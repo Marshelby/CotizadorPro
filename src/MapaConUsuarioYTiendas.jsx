@@ -15,11 +15,10 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = ({
-  negocios = [],
+const MapaConUsuarioYTiendas = ({ negocios = [],
   ubicacionUsuario,
   favoritos = [],
-  alternarFavorito = () => {},
+  alternarFavorito = () => {}, negocioSeleccionado = null,
 }) => {
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
