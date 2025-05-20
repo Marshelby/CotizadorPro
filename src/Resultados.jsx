@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import MapaConUsuarioYTiendas from "./MapaConUsuarioYTiendas";
+import MapaReactLeaflet from "./components/MapaReactLeaflet";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
 import NegocioCard from "./components/NegocioCard";
 import NegocioModal from "./components/NegocioModal";
@@ -28,9 +27,10 @@ export default function Resultados() {
 
         const fusionados = locales.map((local, i) => {
           const match = coordenadas.find((c) => c.nombre === local.nombre);
-          const base = match ? { ...local, latitud: match.lat, longitud: match.lng } : local;
+          const base = match
+            ? { ...local, latitud: match.lat, longitud: match.lng }
+            : local;
 
-          // Inyectar datos falsos a los primeros 3 locales
           if (i < 3) {
             return {
               ...base,
@@ -44,7 +44,7 @@ export default function Resultados() {
               url_pedidosya: "https://www.pedidosya.cl/",
               url_googlemaps: "https://maps.google.com/",
               horarios: "Lunes a sábado de 9:00 a 21:00",
-              imagen: "/imgs/panaderia.jpg"
+              imagen: "/imgs/panaderia.jpg",
             };
           }
 
@@ -63,7 +63,10 @@ export default function Resultados() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          resolve({ lat: position.coords.latitude, lng: position.coords.longitude });
+          resolve({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
         },
         (error) => {
           console.error("Error obteniendo ubicación:", error);
@@ -73,11 +76,11 @@ export default function Resultados() {
     });
   };
 
-  
-
   const alternarFavorito = (nombre) => {
     setFavoritos((prev) =>
-      prev.includes(nombre) ? prev.filter((n) => n !== nombre) : [...prev, nombre]
+      prev.includes(nombre)
+        ? prev.filter((n) => n !== nombre)
+        : [...prev, nombre]
     );
   };
 
@@ -90,31 +93,13 @@ export default function Resultados() {
       if (e.key === "Enter") manejarBusqueda();
     };
     window.addEventListener("keydown", manejarEnter);
-    const manejarBusqueda = async () => {
-    if (!busqueda.trim()) return;
-    try {
-      const filtrados = negocios; // ← mostrar todos sin filtro
-      const ubicacion = await obtenerUbicacion();
-      setUbicacionUsuario(ubicacion);
-      setResultados(filtrados);
-      setMostrarMapa(true);
-      setBusquedaHecha(true);
-    } catch (error) {
-      console.error("Error al procesar la búsqueda:", error);
-      setResultados([]);
-    }
-  };
-
-  return () => window.removeEventListener("keydown", manejarEnter);
+    return () => window.removeEventListener("keydown", manejarEnter);
   }, [busqueda]);
-
-  const mostrarSinResultados =
-    verFavoritos && resultadosFiltrados.length === 0;
 
   const manejarBusqueda = async () => {
     if (!busqueda.trim()) return;
     try {
-      const filtrados = negocios; // ← mostrar todos sin filtro
+      const filtrados = negocios;
       const ubicacion = await obtenerUbicacion();
       setUbicacionUsuario(ubicacion);
       setResultados(filtrados);
@@ -126,14 +111,23 @@ export default function Resultados() {
     }
   };
 
+  const mostrarSinResultados =
+    verFavoritos && resultadosFiltrados.length === 0;
+
   return (
     <div className="min-h-screen px-4">
       <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl animate-fade-up">
-        <img src="/icons/bot.svg" alt="bot" className="w-20 h-20 mx-auto mb-1 animate-fade-in" />
+        <img
+          src="/icons/bot.svg"
+          alt="bot"
+          className="w-20 h-20 mx-auto mb-1 animate-fade-in"
+        />
         <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
           Cotizador<span className="text-sky-500">Pro</span>
         </h1>
-        <p className="text-xs text-gray-500 italic tracking-wide">Cotiza, compara y encuentra lo que necesitas.</p>
+        <p className="text-xs text-gray-500 italic tracking-wide">
+          Cotiza, compara y encuentra lo que necesitas.
+        </p>
       </div>
 
       <hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
@@ -166,11 +160,10 @@ export default function Resultados() {
 
       {mostrarMapa && (
         <>
-          <MapaConUsuarioYTiendas
+          <MapaReactLeaflet
             negocios={resultadosFiltrados}
             favoritos={favoritos}
             ubicacionUsuario={ubicacionUsuario}
-            alternarFavorito={alternarFavorito}
             negocioSeleccionado={negocioSeleccionado}
           />
           <div className="flex justify-center gap-4 mt-4">
@@ -214,7 +207,7 @@ export default function Resultados() {
           negocio={negocioSeleccionado}
           favoritos={favoritos}
           alternarFavorito={alternarFavorito}
-            negocioSeleccionado={negocioSeleccionado}
+          negocioSeleccionado={negocioSeleccionado}
           onClose={() => setNegocioSeleccionado(null)}
         />
       )}
