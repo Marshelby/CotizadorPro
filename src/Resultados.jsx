@@ -26,9 +26,29 @@ export default function Resultados() {
         const locales = await resLocales.json();
         const coordenadas = await resCoords.json();
 
-        const fusionados = locales.map((local) => {
+        const fusionados = locales.map((local, i) => {
           const match = coordenadas.find((c) => c.nombre === local.nombre);
-          return match ? { ...local, latitud: match.lat, longitud: match.lng } : local;
+          const base = match ? { ...local, latitud: match.lat, longitud: match.lng } : local;
+
+          // Inyectar datos falsos a los primeros 3 locales
+          if (i < 3) {
+            return {
+              ...base,
+              direccion: base.direccion || "Av. Siempre Viva 123",
+              categoria: base.categoria || "Panadería",
+              rating: 4.5,
+              reseñas: 120,
+              precio: "$1.000 - $5.000",
+              metodos_pago: ["Efectivo", "Débito", "Crédito"],
+              delivery: "PedidosYa",
+              url_pedidosya: "https://www.pedidosya.cl/",
+              url_googlemaps: "https://maps.google.com/",
+              horarios: "Lunes a sábado de 9:00 a 21:00",
+              imagen: "/imgs/panaderia.jpg"
+            };
+          }
+
+          return base;
         });
 
         setNegocios(fusionados);
