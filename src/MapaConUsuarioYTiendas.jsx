@@ -20,7 +20,7 @@ const MapaConUsuarioYTiendas = ({
   ubicacionUsuario,
   favoritos = [],
   alternarFavorito = () => {},
-, negocioSeleccionado = null }) => {
+}) => {
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
     if (contenedor && contenedor._leaflet_id) {
@@ -55,15 +55,6 @@ const MapaConUsuarioYTiendas = ({
             .bindPopup(popupContent);
         }
       });
-    }
-
-    if (negocioSeleccionado && negocioSeleccionado.latitud && negocioSeleccionado.longitud) {
-      const marker = L.marker(
-        [negocioSeleccionado.latitud, negocioSeleccionado.longitud],
-        { icon: iconoNegocio }
-      ).addTo(map);
-      marker.bindPopup(`<strong>${negocioSeleccionado.nombre}</strong>`).openPopup();
-      map.setView([negocioSeleccionado.latitud, negocioSeleccionado.longitud], 16);
     }
 
     return () => {
