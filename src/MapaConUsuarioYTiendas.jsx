@@ -23,19 +23,20 @@ const MapaConUsuarioYTiendas = ({
 }) => {
   const mapRef = useRef(null);
   const markerMapRef = useRef({});
+  const markersLayerRef = useRef(null);
 
+  // Inicializar el mapa una sola vez
   useEffect(() => {
-    const contenedor = document.getElementById("mapa");
-    if (contenedor && contenedor._leaflet_id) {
-      contenedor._leaflet_id = null;
+    if (!mapRef.current) {
+      const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
+      mapRef.current = map;
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; OpenStreetMap contributors',
+      }).addTo(map);
     }
 
-    const map = L.map("mapa").setView([-33.0472, -71.6127], 13);
-    mapRef.current = map;
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(map);
+    const map = mapRef.current;
 
     if (ubicacionUsuario) {
       const { lat, lng } = ubicacionUsuario;
@@ -44,36 +45,44 @@ const MapaConUsuarioYTiendas = ({
         .bindPopup("Estás aquí").openPopup();
       map.setView([lat, lng], 14);
     }
+  }, [ubicacionUsuario]);
 
-    const markerMap = {};
+  // Cargar o actualizar marcadores de negocios
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
 
-    if (Array.isArray(negocios) && negocios.length > 0) {
-      negocios.forEach((negocio) => {
-        if (negocio.latitud && negocio.longitud) {
-          const popupContent =
-            "<strong>" + negocio.nombre + "</strong><br/>" +
-            (negocio.direccion || "Dirección no disponible") +
-            "<br/>" +
-            (favoritos.includes(negocio.nombre) ? "❤️ Favorito" : "");
-
-          const marker = L.marker([negocio.latitud, negocio.longitud], {
-            icon: iconoNegocio,
-          })
-            .addTo(map)
-            .bindPopup(popupContent);
-
-          markerMap[negocio.nombre] = marker;
-        }
-      });
+    if (markersLayerRef.current) {
+      map.removeLayer(markersLayerRef.current);
     }
 
+    const markerMap = {};
+    const layerGroup = L.layerGroup();
+
+    negocios.forEach((negocio) => {
+      if (negocio.latitud && negocio.longitud) {
+        const popupContent =
+          "<strong>" + negocio.nombre + "</strong><br/>" +
+          (negocio.direccion || "Dirección no disponible") +
+          "<br/>" +
+          (favoritos.includes(negocio.nombre) ? "❤️ Favorito" : "");
+
+        const marker = L.marker([negocio.latitud, negocio.longitud], {
+          icon: iconoNegocio,
+        })
+          .bindPopup(popupContent)
+          .addTo(layerGroup);
+
+        markerMap[negocio.nombre] = marker;
+      }
+    });
+
     markerMapRef.current = markerMap;
+    markersLayerRef.current = layerGroup;
+    layerGroup.addTo(map);
+  }, [negocios, favoritos]);
 
-    return () => {
-      map.remove();
-    };
-  }, [negocios, ubicacionUsuario]);
-
+  // Centrar en negocio seleccionado
   useEffect(() => {
     const map = mapRef.current;
     const markerMap = markerMapRef.current;
