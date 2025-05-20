@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -15,10 +14,12 @@ const iconoNegocio = new L.Icon({
   iconAnchor: [15, 30],
 });
 
-const MapaConUsuarioYTiendas = ({ negocios = [],
+const MapaConUsuarioYTiendas = ({
+  negocios = [],
   ubicacionUsuario,
   favoritos = [],
-  alternarFavorito = () => {}, negocioSeleccionado = null,
+  alternarFavorito = () => {},
+  negocioSeleccionado = null,
 }) => {
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
@@ -34,7 +35,8 @@ const MapaConUsuarioYTiendas = ({ negocios = [],
 
     if (ubicacionUsuario) {
       const { lat, lng } = ubicacionUsuario;
-      L.marker([lat, lng], { icon: iconoUsuario }).addTo(map)
+      L.marker([lat, lng], { icon: iconoUsuario })
+        .addTo(map)
         .bindPopup("Estás aquí").openPopup();
       map.setView([lat, lng], 14);
     }
@@ -47,9 +49,12 @@ const MapaConUsuarioYTiendas = ({ negocios = [],
           const popupContent =
             "<strong>" + negocio.nombre + "</strong><br/>" +
             (negocio.direccion || "Dirección no disponible") +
-            "<br/>" + (favoritos.includes(negocio.nombre) ? "❤️ Favorito" : "");
+            "<br/>" +
+            (favoritos.includes(negocio.nombre) ? "❤️ Favorito" : "");
 
-          const marker = L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+          const marker = L.marker([negocio.latitud, negocio.longitud], {
+            icon: iconoNegocio,
+          })
             .addTo(map)
             .bindPopup(popupContent);
 
@@ -58,16 +63,29 @@ const MapaConUsuarioYTiendas = ({ negocios = [],
       });
     }
 
-    if (negocioSeleccionado && markerMap[negocioSeleccionado.nombre]) {
-      const marker = markerMap[negocioSeleccionado.nombre];
-      marker.openPopup();
-      map.setView(marker.getLatLng(), 16);
-    }
+    map._markerMap = markerMap;
+    contenedor._leaflet_map = map;
 
     return () => {
       map.remove();
     };
   }, [negocios, ubicacionUsuario]);
+
+  useEffect(() => {
+    const mapElement = document.getElementById("mapa");
+    const mapInstance = mapElement && mapElement._leaflet_map;
+
+    if (
+      mapInstance &&
+      negocioSeleccionado &&
+      mapInstance._markerMap &&
+      mapInstance._markerMap[negocioSeleccionado.nombre]
+    ) {
+      const marker = mapInstance._markerMap[negocioSeleccionado.nombre];
+      marker.openPopup();
+      mapInstance.setView(marker.getLatLng(), 16);
+    }
+  }, [negocioSeleccionado]);
 
   return (
     <div
