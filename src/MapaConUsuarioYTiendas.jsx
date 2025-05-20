@@ -18,7 +18,7 @@ const iconoNegocio = new L.Icon({
 const MapaConUsuarioYTiendas = ({ negocios = [],
   ubicacionUsuario,
   favoritos = [],
-  alternarFavorito = () => {}, negocioSeleccionado = null,
+  alternarFavorito = () => {}, negocioSeleccionado = null, negocioSeleccionado = null,
 }) => {
   useEffect(() => {
     const contenedor = document.getElementById("mapa");
@@ -39,25 +39,32 @@ const MapaConUsuarioYTiendas = ({ negocios = [],
       map.setView([lat, lng], 14);
     }
 
+    const markerMap = {};
+
     if (Array.isArray(negocios) && negocios.length > 0) {
       negocios.forEach((negocio) => {
         if (negocio.latitud && negocio.longitud) {
           const popupContent =
             "<strong>" + negocio.nombre + "</strong><br/>" +
             (negocio.direccion || "Dirección no disponible") +
-            "<br/>" + (favoritos.includes(negocio.nombre)
-              ? "❤️ Favorito"
-              : "");
+            "<br/>" + (favoritos.includes(negocio.nombre) ? "❤️ Favorito" : "");
 
-          L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
+          const marker = L.marker([negocio.latitud, negocio.longitud], { icon: iconoNegocio })
             .addTo(map)
             .bindPopup(popupContent);
+
+          markerMap[negocio.nombre] = marker;
         }
       });
     }
 
-    return () => {
-      map.remove();
+    if (negocioSeleccionado && markerMap[negocioSeleccionado.nombre]) {
+      const marker = markerMap[negocioSeleccionado.nombre];
+      marker.openPopup();
+      map.setView(marker.getLatLng(), 16);
+    }
+
+    map.remove();
     };
   }, [negocios, ubicacionUsuario]);
 
