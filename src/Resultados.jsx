@@ -73,21 +73,7 @@ export default function Resultados() {
     });
   };
 
-  const manejarBusqueda = async () => {
-    if (!busqueda.trim()) return;
-    try {
-      const categorias = clasificarBusqueda(busqueda);
-      const filtrados = negocios.filter((n) => categorias.includes(n.categoria));
-      const ubicacion = await obtenerUbicacion();
-      setUbicacionUsuario(ubicacion);
-      setResultados(filtrados);
-      setMostrarMapa(true);
-      setBusquedaHecha(true);
-    } catch (error) {
-      console.error("Error al procesar la búsqueda:", error);
-      setResultados([]);
-    }
-  };
+  
 
   const alternarFavorito = (nombre) => {
     setFavoritos((prev) =>
@@ -104,11 +90,41 @@ export default function Resultados() {
       if (e.key === "Enter") manejarBusqueda();
     };
     window.addEventListener("keydown", manejarEnter);
-    return () => window.removeEventListener("keydown", manejarEnter);
+    const manejarBusqueda = async () => {
+    if (!busqueda.trim()) return;
+    try {
+      const filtrados = negocios; // ← mostrar todos sin filtro
+      const ubicacion = await obtenerUbicacion();
+      setUbicacionUsuario(ubicacion);
+      setResultados(filtrados);
+      setMostrarMapa(true);
+      setBusquedaHecha(true);
+    } catch (error) {
+      console.error("Error al procesar la búsqueda:", error);
+      setResultados([]);
+    }
+  };
+
+  return () => window.removeEventListener("keydown", manejarEnter);
   }, [busqueda]);
 
   const mostrarSinResultados =
     verFavoritos && resultadosFiltrados.length === 0;
+
+  const manejarBusqueda = async () => {
+    if (!busqueda.trim()) return;
+    try {
+      const filtrados = negocios; // ← mostrar todos sin filtro
+      const ubicacion = await obtenerUbicacion();
+      setUbicacionUsuario(ubicacion);
+      setResultados(filtrados);
+      setMostrarMapa(true);
+      setBusquedaHecha(true);
+    } catch (error) {
+      console.error("Error al procesar la búsqueda:", error);
+      setResultados([]);
+    }
+  };
 
   return (
     <div className="min-h-screen px-4">
