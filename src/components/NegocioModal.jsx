@@ -1,62 +1,104 @@
+
 import React from "react";
 
-const NegocioModal = ({ negocio, favoritos, alternarFavorito, onClose }) => {
+const NegocioModal = ({ negocio, onClose, favoritos, alternarFavorito }) => {
   if (!negocio) return null;
 
+  const {
+    nombre,
+    direccion,
+    categoria,
+    rating,
+    reseñas,
+    precio,
+    distancia,
+    metodos_pago,
+    delivery,
+    url_pedidosya,
+    url_googlemaps,
+    horarios,
+    imagen,
+  } = negocio;
+
+  const esFavorito = favoritos.includes(nombre);
+
   return (
-    <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-      onClick={onClose}
-    >
-      <div
-        className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full animate-scale-fade"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={negocio.imagen}
-          alt={negocio.nombre}
-          className="w-full h-40 object-cover rounded-lg mb-4"
-        />
-        <h2 className="text-xl font-bold mb-2">{negocio.nombre}</h2>
-        <p className="text-sm text-gray-600">📍 {negocio.direccion}</p>
-
-        {/* Mostrar distancia si existe */}
-        {negocio.distancia_km && (
-          <p className="text-sm text-gray-500">🧭 A {negocio.distancia_km} km de ti</p>
-        )}
-
-        <p className="text-sm text-gray-500">
-          💰 ⭐ {negocio.rating || "Sin calificación"} ({negocio.reseñas || 0} reseñas)
-        </p>
-        <p className="text-sm text-gray-500">{negocio.rangoPrecio}</p>
-        <p className="text-sm text-gray-500">{negocio.categoria}</p>
-
-        {/* Mostrar teléfono si existe */}
-        {negocio.telefono && (
-          <p className="text-sm text-gray-500">📞 {negocio.telefono}</p>
-        )}
-
-        <a
-          href={negocio.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sky-600 text-sm inline-block mt-2 hover:underline"
-        >
-          Ver en Google Maps
-        </a>
-
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-4">
+      <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-4 relative">
         <button
-          onClick={() => alternarFavorito(negocio.nombre)}
-          className={`mt-2 text-sm px-3 py-1 rounded-full ${
-            favoritos.includes(negocio.nombre)
-              ? "bg-red-100 text-red-500"
-              : "bg-rose-100 text-rose-500 hover:bg-rose-200"
-          }`}
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl"
         >
-          {favoritos.includes(negocio.nombre)
-            ? "❤️ Favorito"
-            : "🤍 Agregar a favoritos"}
+          ✖
         </button>
+
+        <img
+          src={imagen || "/icons/shop_placeholder.png"}
+          alt={nombre}
+          className="w-full h-40 object-cover rounded-xl mb-3"
+        />
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">{nombre}</h2>
+
+        <p className="text-sm text-gray-600 mb-1">📍 {direccion || "Dirección no disponible"}</p>
+        {distancia && (
+          <p className="text-sm text-gray-500 mb-1">📏 Distancia: {distancia.toFixed(1)} km</p>
+        )}
+        {horarios && (
+          <p className="text-sm text-gray-600 mb-1">🕐 Horarios: {horarios}</p>
+        )}
+        {precio && (
+          <p className="text-sm text-green-600 mb-1">💸 {precio}</p>
+        )}
+        {rating && (
+          <p className="text-sm text-yellow-600 mb-1">
+            ⭐ {rating} ({reseñas || 0} reseñas)
+          </p>
+        )}
+        {metodos_pago && metodos_pago.length > 0 && (
+          <p className="text-sm text-gray-500 mb-1">
+            💳 Métodos de pago: {metodos_pago.join(", ")}
+          </p>
+        )}
+        <p className="text-sm text-gray-600 mb-1">🏷️ Categoría: {categoria}</p>
+        {delivery && (
+          <p className="text-sm text-blue-500 mb-1">🚚 Disponible en {delivery}</p>
+        )}
+
+        <div className="mt-4 flex justify-between items-center">
+          {url_googlemaps && (
+            <a
+              href={url_googlemaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 text-sm underline"
+            >
+              Ver en Google Maps
+            </a>
+          )}
+          {url_pedidosya && (
+            <a
+              href={url_pedidosya}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 text-sm underline"
+            >
+              Ver en PedidosYa
+            </a>
+          )}
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <button
+            className="text-sm text-rose-500"
+            onClick={(e) => {
+              e.stopPropagation();
+              alternarFavorito(nombre);
+            }}
+          >
+            {esFavorito ? "❤️ Quitar de favoritos" : "🤍 Agregar a favoritos"}
+          </button>
+        </div>
       </div>
     </div>
   );
