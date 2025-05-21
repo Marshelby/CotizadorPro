@@ -11,6 +11,10 @@ import MensajeEstado from "./components/MensajeEstado";
 
 import { useNegocios } from "./hooks/useNegocios";
 import { useUbicacion } from "./hooks/useUbicacion";
+import IconoFavorito from "./components/IconoFavorito";
+import Loader from "./components/Loader";
+import TarjetaPlaceholder from "./components/TarjetaPlaceholder";
+
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -122,6 +126,11 @@ export default function Resultados() {
         mostrarMapa={mostrarMapa}
         setMostrarMapa={setMostrarMapa}
       />
+
+      
+      {!negocios.length && (
+        <Loader mensaje="Cargando negocios cercanos..." />
+      )}
 
       <p className="text-xs text-gray-400 text-center mt-1">
         Puedes buscar por productos, locales o categorías.
