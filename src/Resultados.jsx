@@ -2,16 +2,19 @@
 import React, { useState, useEffect } from "react";
 import MapaReactLeaflet from "./components/MapaReactLeaflet";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
-import NegocioCard from "./components/NegocioCard";
+import GridNegocios from "./components/GridNegocios";
 import NegocioModal from "./components/NegocioModal";
 import BuscadorBarra from "./components/BuscadorBarra";
 import HeaderCotizador from "./components/HeaderCotizador";
 import BotoneraFiltros from "./components/BotoneraFiltros";
 import MensajeEstado from "./components/MensajeEstado";
 
+import { useNegocios } from "./hooks/useNegocios";
+import { useUbicacion } from "./hooks/useUbicacion";
+
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
-  const [negocios, setNegocios] = useState([]);
+  const negocios = useNegocios();
   const [resultados, setResultados] = useState([]);
   const [mostrarMapa, setMostrarMapa] = useState(false);
   const [ubicacionUsuario, setUbicacionUsuario] = useState(null);
@@ -21,7 +24,8 @@ export default function Resultados() {
   const [negocioSeleccionado, setNegocioSeleccionado] = useState(null);
 
   useEffect(() => {
-    const cargarDatos = async () => {
+    // Eliminado: hook useNegocios se encarga de cargar los datos
+    /* const cargarDatos = async () => {
       try {
         const [resLocales, resCoords] = await Promise.all([
           fetch("/data/locales_google.json"),
@@ -61,12 +65,13 @@ export default function Resultados() {
         console.error("❌ Error al cargar datos:", err);
       }
     };
-    cargarDatos();
+    */ // cargarDatos();
   }, []);
 
-  const obtenerUbicacion = () => {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
+  const obtenerUbicacion = () => useUbicacion();
+
+  /* Eliminado geolocation inline */
+  // navigator.geolocation.getCurrentPosition(
         (position) => {
           resolve({
             lat: position.coords.latitude,
@@ -153,18 +158,12 @@ export default function Resultados() {
         <MensajeEstado tipo="empty" mensaje="No tienes favoritos aún. ¡Marca tus locales preferidos!" />
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-6">
-        {resultadosFiltrados.map((negocio, index) => (
-          <NegocioCard
-            key={index}
-            negocio={negocio}
-            favoritos={favoritos}
-            alternarFavorito={alternarFavorito}
-            negocioSeleccionado={negocioSeleccionado}
-            onClick={() => setNegocioSeleccionado(negocio)}
-          />
-        ))}
-      </div>
+      <GridNegocios
+        negocios={resultadosFiltrados}
+        favoritos={favoritos}
+        alternarFavorito={alternarFavorito}
+        setNegocioSeleccionado={setNegocioSeleccionado}
+      />
 
       {negocioSeleccionado && (
         <NegocioModal
