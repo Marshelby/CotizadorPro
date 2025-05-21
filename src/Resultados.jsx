@@ -7,6 +7,7 @@ import NegocioModal from "./components/NegocioModal";
 import BuscadorBarra from "./components/BuscadorBarra";
 import HeaderCotizador from "./components/HeaderCotizador";
 import BotoneraFiltros from "./components/BotoneraFiltros";
+import MensajeEstado from "./components/MensajeEstado";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -149,9 +150,7 @@ export default function Resultados() {
       )}
 
       {mostrarSinResultados && (
-        <div className="text-center text-gray-500 mt-10">
-          No tienes favoritos aún. ¡Marca tus locales preferidos!
-        </div>
+        <MensajeEstado tipo="empty" mensaje="No tienes favoritos aún. ¡Marca tus locales preferidos!" />
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 mt-6">
@@ -178,9 +177,7 @@ export default function Resultados() {
       )}
 
       {busquedaHecha && resultadosFiltrados.length === 0 && !verFavoritos && (
-        <div className="text-center text-gray-500 mt-10">
-          No se encontraron resultados para tu búsqueda.
-        </div>
+        <MensajeEstado tipo="empty" mensaje="No se encontraron resultados para tu búsqueda." />
       )}
     </div>
   );
