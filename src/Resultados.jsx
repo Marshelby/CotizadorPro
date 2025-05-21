@@ -5,6 +5,7 @@ import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
 import NegocioCard from "./components/NegocioCard";
 import NegocioModal from "./components/NegocioModal";
 import BuscadorBarra from "./components/BuscadorBarra";
+import HeaderCotizador from "./components/HeaderCotizador";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -118,19 +119,7 @@ export default function Resultados() {
 
   return (
     <div className="min-h-screen px-4">
-      <div className="text-center mb-6 mt-[100px] max-w-2xl mx-auto bg-gradient-to-b from-[#f9fafb] to-white shadow-lg shadow-gray-300 py-6 rounded-xl animate-fade-up">
-        <img
-          src="/icons/bot.svg"
-          alt="bot"
-          className="w-20 h-20 mx-auto mb-1 animate-fade-in"
-        />
-        <h1 className="text-4xl font-extrabold text-gray-800 font-[Rubik] mb-1">
-          Cotizador<span className="text-sky-500">Pro</span>
-        </h1>
-        <p className="text-xs text-gray-500 italic tracking-wide">
-          Cotiza, compara y encuentra lo que necesitas.
-        </p>
-      </div>
+      <HeaderCotizador />
 
       <hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
 
