@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import MapaReactLeaflet from "./components/MapaReactLeaflet";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
