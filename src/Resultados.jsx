@@ -25,7 +25,8 @@ export default function Resultados() {
 
   useEffect(() => {
     // Eliminado: hook useNegocios se encarga de cargar los datos
-    /* const cargarDatos = async () => {
+    /* // Hook useNegocios reemplaza esta función
+// const cargarDatos = async () => {
       try {
         const [resLocales, resCoords] = await Promise.all([
           fetch("/data/locales_google.json"),
@@ -65,13 +66,10 @@ export default function Resultados() {
         console.error("❌ Error al cargar datos:", err);
       }
     };
-    */ // cargarDatos();
+    */ // // cargarDatos();
   }, []);
 
   const obtenerUbicacion = () => useUbicacion();
-
-  /* Eliminado geolocation inline */
-  // navigator.geolocation.getCurrentPosition(
         (position) => {
           resolve({
             lat: position.coords.latitude,
