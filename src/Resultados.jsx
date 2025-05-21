@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import MapaReactLeaflet from "./components/MapaReactLeaflet";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
@@ -68,20 +69,7 @@ export default function Resultados() {
     */ // // cargarDatos();
   }, []);
 
-  const obtenerUbicacion = () => useUbicacion();
-        (position) => {
-          resolve({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error("Error obteniendo ubicación:", error);
-          reject(error);
-        }
-      );
-    });
-  };
+  const obtenerUbicacion = async () => await useUbicacion();
 
   const alternarFavorito = (nombre) => {
     setFavoritos((prev) =>
