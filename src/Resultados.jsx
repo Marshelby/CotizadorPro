@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from "react";
 import MapaReactLeaflet from "./components/MapaReactLeaflet";
 import { clasificarBusqueda } from "./utils/clasificadorBusqueda";
 import NegocioCard from "./components/NegocioCard";
 import NegocioModal from "./components/NegocioModal";
+import BuscadorBarra from "./components/BuscadorBarra";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -132,27 +134,13 @@ export default function Resultados() {
 
       <hr className="my-8 w-1/2 mx-auto border-t border-gray-300 opacity-60 transition-all duration-500" />
 
-      <div className="max-w-4xl mx-auto mb-2 flex items-center justify-between gap-4">
-        <input
-          type="text"
-          placeholder="Ej: quiero pan, sushi, completos..."
-          className="w-full p-3 rounded-2xl border border-gray-300 shadow-md hover:shadow-lg transition duration-300"
-          value={busqueda}
-          onChange={(e) => setBusqueda(e.target.value)}
-        />
-        <button
-          onClick={manejarBusqueda}
-          className="px-5 py-2 bg-sky-500 text-white rounded-full shadow hover:bg-sky-600"
-        >
-          Buscar
-        </button>
-        <button
-          onClick={() => setMostrarMapa((prev) => !prev)}
-          className="px-4 py-2 border rounded-full shadow"
-        >
-          {mostrarMapa ? "Ocultar mapa" : "Mostrar mapa"}
-        </button>
-      </div>
+      <BuscadorBarra
+        busqueda={busqueda}
+        setBusqueda={setBusqueda}
+        onBuscar={manejarBusqueda}
+        mostrarMapa={mostrarMapa}
+        setMostrarMapa={setMostrarMapa}
+      />
 
       <p className="text-xs text-gray-400 text-center mt-1">
         Puedes buscar por productos, locales o categorías.
