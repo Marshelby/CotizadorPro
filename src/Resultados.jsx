@@ -6,6 +6,7 @@ import NegocioCard from "./components/NegocioCard";
 import NegocioModal from "./components/NegocioModal";
 import BuscadorBarra from "./components/BuscadorBarra";
 import HeaderCotizador from "./components/HeaderCotizador";
+import BotoneraFiltros from "./components/BotoneraFiltros";
 
 export default function Resultados() {
   const [busqueda, setBusqueda] = useState("");
@@ -143,20 +144,7 @@ export default function Resultados() {
             ubicacionUsuario={ubicacionUsuario}
             negocioSeleccionado={negocioSeleccionado}
           />
-          <div className="flex justify-center gap-4 mt-4">
-            <button
-              onClick={() => setVerFavoritos(false)}
-              className="px-4 py-2 bg-slate-500 text-white rounded-full shadow hover:bg-slate-600 flex items-center gap-2"
-            >
-              📋 Ver todos
-            </button>
-            <button
-              onClick={() => setVerFavoritos(true)}
-              className="px-4 py-2 bg-rose-400 text-white rounded-full shadow hover:bg-rose-500 flex items-center gap-2"
-            >
-              ❤️ Ver favoritos
-            </button>
-          </div>
+          <BotoneraFiltros verFavoritos={verFavoritos} setVerFavoritos={setVerFavoritos} />
         </>
       )}
 
